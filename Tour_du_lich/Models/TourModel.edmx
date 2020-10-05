@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBTOURModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DBTOUR.dbo.chiphi' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="chiphi">
+          <Property Name="machiphi" Type="varchar" MaxLength="15" />
+          <Property Name="maloaichiphi" Type="varchar" MaxLength="15" />
+          <Property Name="madoan" Type="varchar" MaxLength="15" />
+          <Property Name="giathanh" Type="float" />
+          <Property Name="ghichu" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DBTOUR.dbo.ctdoan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ctdoan">
+          <Property Name="madoan" Type="varchar" MaxLength="15" />
+          <Property Name="makh" Type="varchar" MaxLength="15" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DBTOUR.dbo.cttour' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="cttour">
+          <Property Name="matour" Type="varchar" MaxLength="15" />
+          <Property Name="madiadiem" Type="varchar" MaxLength="15" />
+          <Property Name="thutu" Type="int" />
+        </EntityType>-->
+        <EntityType Name="diadiem">
+          <Key>
+            <PropertyRef Name="madiadiem" />
+          </Key>
+          <Property Name="madiadiem" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tendiadiem" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="doan">
+          <Key>
+            <PropertyRef Name="madoan" />
+          </Key>
+          <Property Name="madoan" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="matour" Type="varchar" MaxLength="15" />
+          <Property Name="ngaybatdau" Type="datetime" />
+          <Property Name="ngayketthuc" Type="datetime" />
+        </EntityType>
+        <EntityType Name="gia">
+          <Key>
+            <PropertyRef Name="magia" />
+          </Key>
+          <Property Name="magia" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="matour" Type="varchar" MaxLength="15" />
+          <Property Name="giatien" Type="float" />
+          <Property Name="tgbd" Type="datetime" />
+          <Property Name="tgkt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="makh" />
+          </Key>
+          <Property Name="makh" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tenkh" Type="nvarchar" MaxLength="50" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="255" />
+          <Property Name="sdt" Type="varchar" MaxLength="100" />
+          <Property Name="giotinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="cmnd" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="loaichiphi">
+          <Key>
+            <PropertyRef Name="maloaichiphi" />
+          </Key>
+          <Property Name="maloaichiphi" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tenloaichiphi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="loaitour">
+          <Key>
+            <PropertyRef Name="maloai" />
+          </Key>
+          <Property Name="maloai" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tenloai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="nhanvien">
+          <Key>
+            <PropertyRef Name="manv" />
+          </Key>
+          <Property Name="manv" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tennv" Type="nvarchar" MaxLength="50" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DBTOUR.dbo.phancong' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="phancong">
+          <Property Name="madoan" Type="varchar" MaxLength="15" />
+          <Property Name="manv" Type="varchar" MaxLength="15" />
+          <Property Name="nhiemvu" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="tour">
+          <Key>
+            <PropertyRef Name="matour" />
+          </Key>
+          <Property Name="matour" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="tentour" Type="nvarchar" MaxLength="50" />
+          <Property Name="maloai" Type="varchar" MaxLength="15" />
+          <Property Name="dacdiem" Type="nvarchar" MaxLength="255" />
+          <Property Name="giamacdinh" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'DBTOUR.dbo.chiphi' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__chiphi__madoan__48CFD27E" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DBTOUR.dbo.chiphi' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__chiphi__maloaich__47DBAE45" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DBTOUR.dbo.ctdoan' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ctdoan__madoan__5165187F" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DBTOUR.dbo.ctdoan' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ctdoan__makh__52593CB8" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DBTOUR.dbo.cttour' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__cttour__madiadie__412EB0B6" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DBTOUR.dbo.cttour' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__cttour__matour__403A8C7D" />-->
+        <Association Name="FK__doan__matour__440B1D61">
+          <End Role="tour" Type="Self.tour" Multiplicity="0..1" />
+          <End Role="doan" Type="Self.doan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="matour" />
+            </Principal>
+            <Dependent Role="doan">
+              <PropertyRef Name="matour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gia__matour__3C69FB99">
+          <End Role="tour" Type="Self.tour" Multiplicity="0..1" />
+          <End Role="gia" Type="Self.gia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="matour" />
+            </Principal>
+            <Dependent Role="gia">
+              <PropertyRef Name="matour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__phancong__madoan__4CA06362" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__phancong__manv__4D94879B" />-->
+        <Association Name="FK__tour__maloai__398D8EEE">
+          <End Role="loaitour" Type="Self.loaitour" Multiplicity="0..1" />
+          <End Role="tour" Type="Self.tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaitour">
+              <PropertyRef Name="maloai" />
+            </Principal>
+            <Dependent Role="tour">
+              <PropertyRef Name="maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBTOURModelStoreContainer">
+          <EntitySet Name="diadiem" EntityType="Self.diadiem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="doan" EntityType="Self.doan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gia" EntityType="Self.gia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khachhang" EntityType="Self.khachhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaichiphi" EntityType="Self.loaichiphi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaitour" EntityType="Self.loaitour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nhanvien" EntityType="Self.nhanvien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour" EntityType="Self.tour" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__doan__matour__440B1D61" Association="Self.FK__doan__matour__440B1D61">
+            <End Role="tour" EntitySet="tour" />
+            <End Role="doan" EntitySet="doan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gia__matour__3C69FB99" Association="Self.FK__gia__matour__3C69FB99">
+            <End Role="tour" EntitySet="tour" />
+            <End Role="gia" EntitySet="gia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tour__maloai__398D8EEE" Association="Self.FK__tour__maloai__398D8EEE">
+            <End Role="loaitour" EntitySet="loaitour" />
+            <End Role="tour" EntitySet="tour" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBTOURModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="diadiem">
+          <Key>
+            <PropertyRef Name="madiadiem" />
+          </Key>
+          <Property Name="madiadiem" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tendiadiem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="doan">
+          <Key>
+            <PropertyRef Name="madoan" />
+          </Key>
+          <Property Name="madoan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matour" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ngaybatdau" Type="DateTime" Precision="3" />
+          <Property Name="ngayketthuc" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tour" Relationship="Self.FK__doan__matour__440B1D61" FromRole="doan" ToRole="tour" />
+        </EntityType>
+        <EntityType Name="gia">
+          <Key>
+            <PropertyRef Name="magia" />
+          </Key>
+          <Property Name="magia" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="matour" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="giatien" Type="Double" />
+          <Property Name="tgbd" Type="DateTime" Precision="3" />
+          <Property Name="tgkt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tour" Relationship="Self.FK__gia__matour__3C69FB99" FromRole="gia" ToRole="tour" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="makh" />
+          </Key>
+          <Property Name="makh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenkh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="sdt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="giotinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="cmnd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="loaichiphi">
+          <Key>
+            <PropertyRef Name="maloaichiphi" />
+          </Key>
+          <Property Name="maloaichiphi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenloaichiphi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="loaitour">
+          <Key>
+            <PropertyRef Name="maloai" />
+          </Key>
+          <Property Name="maloai" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tenloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tours" Relationship="Self.FK__tour__maloai__398D8EEE" FromRole="loaitour" ToRole="tour" />
+        </EntityType>
+        <EntityType Name="nhanvien">
+          <Key>
+            <PropertyRef Name="manv" />
+          </Key>
+          <Property Name="manv" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tennv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tour">
+          <Key>
+            <PropertyRef Name="matour" />
+          </Key>
+          <Property Name="matour" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="tentour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="maloai" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="dacdiem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="giamacdinh" Type="Double" />
+          <NavigationProperty Name="doans" Relationship="Self.FK__doan__matour__440B1D61" FromRole="tour" ToRole="doan" />
+          <NavigationProperty Name="gias" Relationship="Self.FK__gia__matour__3C69FB99" FromRole="tour" ToRole="gia" />
+          <NavigationProperty Name="loaitour" Relationship="Self.FK__tour__maloai__398D8EEE" FromRole="tour" ToRole="loaitour" />
+        </EntityType>
+        <Association Name="FK__doan__matour__440B1D61">
+          <End Role="tour" Type="Self.tour" Multiplicity="0..1" />
+          <End Role="doan" Type="Self.doan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="matour" />
+            </Principal>
+            <Dependent Role="doan">
+              <PropertyRef Name="matour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gia__matour__3C69FB99">
+          <End Role="tour" Type="Self.tour" Multiplicity="0..1" />
+          <End Role="gia" Type="Self.gia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="matour" />
+            </Principal>
+            <Dependent Role="gia">
+              <PropertyRef Name="matour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tour__maloai__398D8EEE">
+          <End Role="loaitour" Type="Self.loaitour" Multiplicity="0..1" />
+          <End Role="tour" Type="Self.tour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaitour">
+              <PropertyRef Name="maloai" />
+            </Principal>
+            <Dependent Role="tour">
+              <PropertyRef Name="maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBTOUREntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="diadiems" EntityType="Self.diadiem" />
+          <EntitySet Name="doans" EntityType="Self.doan" />
+          <EntitySet Name="gias" EntityType="Self.gia" />
+          <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
+          <EntitySet Name="loaichiphis" EntityType="Self.loaichiphi" />
+          <EntitySet Name="loaitours" EntityType="Self.loaitour" />
+          <EntitySet Name="nhanviens" EntityType="Self.nhanvien" />
+          <EntitySet Name="tours" EntityType="Self.tour" />
+          <AssociationSet Name="FK__doan__matour__440B1D61" Association="Self.FK__doan__matour__440B1D61">
+            <End Role="tour" EntitySet="tours" />
+            <End Role="doan" EntitySet="doans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gia__matour__3C69FB99" Association="Self.FK__gia__matour__3C69FB99">
+            <End Role="tour" EntitySet="tours" />
+            <End Role="gia" EntitySet="gias" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tour__maloai__398D8EEE" Association="Self.FK__tour__maloai__398D8EEE">
+            <End Role="loaitour" EntitySet="loaitours" />
+            <End Role="tour" EntitySet="tours" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBTOURModelStoreContainer" CdmEntityContainer="DBTOUREntities1">
+          <EntitySetMapping Name="diadiems">
+            <EntityTypeMapping TypeName="DBTOURModel.diadiem">
+              <MappingFragment StoreEntitySet="diadiem">
+                <ScalarProperty Name="madiadiem" ColumnName="madiadiem" />
+                <ScalarProperty Name="tendiadiem" ColumnName="tendiadiem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="doans">
+            <EntityTypeMapping TypeName="DBTOURModel.doan">
+              <MappingFragment StoreEntitySet="doan">
+                <ScalarProperty Name="madoan" ColumnName="madoan" />
+                <ScalarProperty Name="matour" ColumnName="matour" />
+                <ScalarProperty Name="ngaybatdau" ColumnName="ngaybatdau" />
+                <ScalarProperty Name="ngayketthuc" ColumnName="ngayketthuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gias">
+            <EntityTypeMapping TypeName="DBTOURModel.gia">
+              <MappingFragment StoreEntitySet="gia">
+                <ScalarProperty Name="magia" ColumnName="magia" />
+                <ScalarProperty Name="matour" ColumnName="matour" />
+                <ScalarProperty Name="giatien" ColumnName="giatien" />
+                <ScalarProperty Name="tgbd" ColumnName="tgbd" />
+                <ScalarProperty Name="tgkt" ColumnName="tgkt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khachhangs">
+            <EntityTypeMapping TypeName="DBTOURModel.khachhang">
+              <MappingFragment StoreEntitySet="khachhang">
+                <ScalarProperty Name="makh" ColumnName="makh" />
+                <ScalarProperty Name="tenkh" ColumnName="tenkh" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+                <ScalarProperty Name="giotinh" ColumnName="giotinh" />
+                <ScalarProperty Name="cmnd" ColumnName="cmnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaichiphis">
+            <EntityTypeMapping TypeName="DBTOURModel.loaichiphi">
+              <MappingFragment StoreEntitySet="loaichiphi">
+                <ScalarProperty Name="maloaichiphi" ColumnName="maloaichiphi" />
+                <ScalarProperty Name="tenloaichiphi" ColumnName="tenloaichiphi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaitours">
+            <EntityTypeMapping TypeName="DBTOURModel.loaitour">
+              <MappingFragment StoreEntitySet="loaitour">
+                <ScalarProperty Name="maloai" ColumnName="maloai" />
+                <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nhanviens">
+            <EntityTypeMapping TypeName="DBTOURModel.nhanvien">
+              <MappingFragment StoreEntitySet="nhanvien">
+                <ScalarProperty Name="manv" ColumnName="manv" />
+                <ScalarProperty Name="tennv" ColumnName="tennv" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tours">
+            <EntityTypeMapping TypeName="DBTOURModel.tour">
+              <MappingFragment StoreEntitySet="tour">
+                <ScalarProperty Name="matour" ColumnName="matour" />
+                <ScalarProperty Name="tentour" ColumnName="tentour" />
+                <ScalarProperty Name="maloai" ColumnName="maloai" />
+                <ScalarProperty Name="dacdiem" ColumnName="dacdiem" />
+                <ScalarProperty Name="giamacdinh" ColumnName="giamacdinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
