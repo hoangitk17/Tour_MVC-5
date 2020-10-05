@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Tour_du_lich.Models;
 
 namespace Tour_du_lich.Controllers
 {
@@ -13,18 +14,22 @@ namespace Tour_du_lich.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult QuanLyTour()
         {
-            ViewBag.Message = "Your application description page.";
+            DBTOUREntities1 DBTour = new DBTOUREntities1();
+            var tourList = DBTour.tours.ToList();
+            return View(tourList);
+        }
 
+        public ActionResult QuanLyDoan()
+        {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult QuanLyKhach()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
+
     }
 }
