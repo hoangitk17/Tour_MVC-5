@@ -14,11 +14,20 @@ namespace Tour_du_lich.Models
     
     public partial class khachhang
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public khachhang()
+        {
+            this.doans = new HashSet<doan>();
+        }
+    
         public string makh { get; set; }
         public string tenkh { get; set; }
         public string diachi { get; set; }
         public string sdt { get; set; }
         public string giotinh { get; set; }
         public string cmnd { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<doan> doans { get; set; }
     }
 }

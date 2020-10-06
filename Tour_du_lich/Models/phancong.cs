@@ -12,19 +12,13 @@ namespace Tour_du_lich.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class nhanvien
+    public partial class phancong
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public nhanvien()
-        {
-            this.phancongs = new HashSet<phancong>();
-        }
-    
+        public string madoan { get; set; }
         public string manv { get; set; }
-        public string tennv { get; set; }
-        public string diachi { get; set; }
+        public string nhiemvu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<phancong> phancongs { get; set; }
+        public virtual doan doan { get; set; }
+        public virtual nhanvien nhanvien { get; set; }
     }
 }

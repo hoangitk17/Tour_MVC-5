@@ -11,24 +11,30 @@ namespace Tour_du_lich.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            DBTOUREntities DBTour = new DBTOUREntities();
+            var tourList = DBTour.tours.ToList();
+            return View(tourList);
         }
 
         public ActionResult QuanLyTour()
         {
-            DBTOUREntities1 DBTour = new DBTOUREntities1();
+            DBTOUREntities DBTour = new DBTOUREntities();
             var tourList = DBTour.tours.ToList();
             return View(tourList);
         }
 
         public ActionResult QuanLyDoan()
         {
-            return View();
+            DBTOUREntities DBDoan = new DBTOUREntities();
+            var doanList = DBDoan.doans.ToList();
+            return View(doanList);
         }
 
         public ActionResult QuanLyKhach()
         {
-            return View();
+            DBTOUREntities DBKhach = new DBTOUREntities();
+            var khachList = DBKhach.khachhangs.ToList();
+            return View(khachList);
         }
 
     }

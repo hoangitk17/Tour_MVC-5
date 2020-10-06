@@ -133,6 +133,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\chiphi.cs">
+      <DependentUpon>TourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cttour.cs">
+      <DependentUpon>TourModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\diadiem.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
@@ -152,6 +158,12 @@
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\nhanvien.cs">
+      <DependentUpon>TourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\phancong.cs">
+      <DependentUpon>TourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tour.cs">
