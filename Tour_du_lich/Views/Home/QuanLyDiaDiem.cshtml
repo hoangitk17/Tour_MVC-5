@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "QuanLyDiaDiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Tour_du_lich.Models.diadiem>
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Quản Lý Địa Điểm</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
+            <li class="breadcrumb-item active">Quản Lý</li>
+            <li class="breadcrumb-item active">Quản Lý Địa Điểm</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header" style="display: flex; justify-content: space-between">
+                <div>
+                    <i class="fas fa-table mr-1"></i>
+                    Bảng Thông Tin Địa Điểm
+                </div>
+                <div>
+                    <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
+                        <a style="color: white; text-decoration: none;" href="#" data-toggle="collapse">
+                            Thêm Địa Điểm
+                            <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
+                        </a>
+                    </button>
+                    @using (Html.BeginForm("QuanLyDiaDiem", "HomeController", FormMethod.Post))
+                    {
+
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 620px">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header" style="background-color: #343a40; color: white">
+                                        <h4 class="modal-title" style="color: white">Thêm Địa Điểm</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div style="margin-left: 50px">
+                                            <div style="margin-top:20px">
+
+                                                <div class="form-group">
+                                                    <label for="madiadiem">Mã Địa Điểm:</label>
+                                                    <input type="text" class="form-control" id="madiadiem" placeholder="Nhập Mã Địa Điểm" name="madiadiem">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="tendiadiem">Tên Địa Điểm:</label>
+                                                    <input type="text" class="form-control" id="tendiadiem" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                        <input type="submit" class="btn btn-success" data-dismiss="modal" value="add"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    </div>
+            </div>
+                    
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="50%">Mã Địa Điểm</th>
+                                <th width="50%">Tên Địa Điểm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.madiadiem</td>
+                                    <td>@item.tendiadiem</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2>@ViewBag.tendiadiem</h2>
+</main>
+

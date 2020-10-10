@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,9 +251,14 @@
     <Content Include="Views\Home\QuanLyTour.cshtml" />
     <Content Include="Views\Home\QuanLyDoan.cshtml" />
     <Content Include="Views\Home\QuanLyKhach.cshtml" />
+    <Content Include="Views\Home\QuanLyNhanVien.cshtml" />
+    <Content Include="Views\Home\QuanLyGia.cshtml" />
+    <Content Include="Views\Home\QuanLyDiaDiem.cshtml" />
+    <Content Include="Views\Home\QuanLyLoaiTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

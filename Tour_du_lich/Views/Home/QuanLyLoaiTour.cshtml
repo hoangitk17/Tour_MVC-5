@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "QuanLyLoaiTour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<Tour_du_lich.Models.loaitour>
+
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Quản Lý Loại Tour</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
+            <li class="breadcrumb-item active">Quản Lý</li>
+            <li class="breadcrumb-item active">Quản Lý Loại Tour</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header" style="display: flex; justify-content: space-between">
+                <div>
+                    <i class="fas fa-table mr-1"></i>
+                    Bảng Thông Tin Loại Tour
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="50%">Mã Loại Tour</th>
+                                <th width="50%">Tên Loại Tour</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.maloai</td>
+                                    <td>@item.tenloai</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
