@@ -14,11 +14,25 @@ namespace Tour_du_lich.Models
     
     public partial class doan
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public doan()
+        {
+            this.chiphis = new HashSet<chiphi>();
+            this.phancongs = new HashSet<phancong>();
+            this.khachhangs = new HashSet<khachhang>();
+        }
+    
         public string madoan { get; set; }
         public string matour { get; set; }
         public Nullable<System.DateTime> ngaybatdau { get; set; }
         public Nullable<System.DateTime> ngayketthuc { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<chiphi> chiphis { get; set; }
         public virtual tour tour { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<phancong> phancongs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<khachhang> khachhangs { get; set; }
     }
 }

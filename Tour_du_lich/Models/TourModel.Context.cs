@@ -13,10 +13,10 @@ namespace Tour_du_lich.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBTOUREntities1 : DbContext
+    public partial class DBTOUREntities : DbContext
     {
-        public DBTOUREntities1()
-            : base("name=DBTOUREntities1")
+        public DBTOUREntities()
+            : base("name=DBTOUREntities")
         {
         }
     
@@ -25,6 +25,8 @@ namespace Tour_du_lich.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<chiphi> chiphis { get; set; }
+        public virtual DbSet<cttour> cttours { get; set; }
         public virtual DbSet<diadiem> diadiems { get; set; }
         public virtual DbSet<doan> doans { get; set; }
         public virtual DbSet<gia> gias { get; set; }
@@ -32,6 +34,8 @@ namespace Tour_du_lich.Models
         public virtual DbSet<loaichiphi> loaichiphis { get; set; }
         public virtual DbSet<loaitour> loaitours { get; set; }
         public virtual DbSet<nhanvien> nhanviens { get; set; }
+        public virtual DbSet<phancong> phancongs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tour> tours { get; set; }
     }
 }

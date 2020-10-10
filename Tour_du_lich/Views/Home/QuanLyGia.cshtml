@@ -1,22 +1,22 @@
 ﻿@{
-    ViewBag.Title = "QuanLyDoan";
+    ViewBag.Title = "QuanLyGia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Tour_du_lich.Models.doan>
+@model List<Tour_du_lich.Models.gia>
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Quản Lý Đoàn</h1>
+        <h1 class="mt-4">Quản Lý Giá Tour</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
             <li class="breadcrumb-item active">Quản Lý</li>
-            <li class="breadcrumb-item active">Quản Lý Đoàn</li>
+            <li class="breadcrumb-item active">Quản Lý Giá Tour</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header" style="display: flex; justify-content: space-between">
                 <div>
                     <i class="fas fa-table mr-1"></i>
-                    Bảng Thông Tin Đoàn
+                    Bảng Thông Tin Giá Tour
                 </div>
             </div>
             <div class="card-body">
@@ -24,20 +24,22 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th width="200px">Mã Đoàn</th>
-                                <th width="200px">Mã Tour</th>
-                                <th width="400px">Ngày Bắt Đầu</th>
-                                <th>Ngày Kết Thúc</th>
+                                <th>Mã Giá Tour</th>
+                                <th>Mã Tour</th>
+                                <th>Giá Tour Tiền</th>
+                                <th>Thời Gian Bắt Đầu</th>
+                                <th>Thời Gian Kết Thúc</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.madoan</td>
+                                    <td>@item.magia</td>
                                     <td>@item.matour</td>
-                                    <td>@item.ngaybatdau</td>
-                                    <td>@item.ngayketthuc</td>
+                                    <td>@item.giatien</td>
+                                    <td>@item.tgbd</td>
+                                    <td>@item.tgkt</td>
                                 </tr>
                             }
                         </tbody>

@@ -11,24 +11,84 @@ namespace Tour_du_lich.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            DBTOUREntities DBTour = new DBTOUREntities();
+            var tourList = DBTour.tours.ToList();
+            return View(tourList);
         }
 
         public ActionResult QuanLyTour()
         {
-            DBTOUREntities1 DBTour = new DBTOUREntities1();
+            DBTOUREntities DBTour = new DBTOUREntities();
             var tourList = DBTour.tours.ToList();
             return View(tourList);
         }
 
         public ActionResult QuanLyDoan()
         {
-            return View();
+            DBTOUREntities DBDoan = new DBTOUREntities();
+            var doanList = DBDoan.doans.ToList();
+            return View(doanList);
         }
 
         public ActionResult QuanLyKhach()
         {
-            return View();
+            DBTOUREntities DBKhach = new DBTOUREntities();
+            var khachList = DBKhach.khachhangs.ToList();
+            return View(khachList);
+        }
+
+        public ActionResult QuanLyNhanVien()
+        {
+            DBTOUREntities DBNhanvien = new DBTOUREntities();
+            var nhanvienList = DBNhanvien.nhanviens.ToList();
+            return View(nhanvienList);
+        }
+
+        public ActionResult QuanLyGia()
+        {
+            DBTOUREntities DBGia = new DBTOUREntities();
+            var giaList = DBGia.gias.ToList();
+            return View(giaList);
+        }
+
+        [HttpGet]
+        public ActionResult QuanLyDiaDiem()
+        {
+            DBTOUREntities DBDiadiem = new DBTOUREntities();
+            var diadiemList = DBDiadiem.diadiems.ToList();
+            return View(diadiemList);
+        }
+        // POST: Home/Create
+        [HttpPost]
+        public ActionResult QuanLyDiaDiem(FormCollection collection)
+        {
+            try
+            {
+                //Method 1: Using Component Name  
+
+                ViewBag.madiadiem = collection["madiadiem"];
+                ViewBag.tendiadiem = collection["tendiadiem"];
+                DBTOUREntities DBTour = new DBTOUREntities();
+                diadiem d = new diadiem();
+                d.tendiadiem = collection["tendiadiem"];
+                d.madiadiem = collection["madiadiem"];
+                DBTour.diadiems.Add(d);
+                DBTour.SaveChanges();
+                return View("QuanLyDiaDiem");
+            }
+            catch
+            {
+                ViewBag.madiadiem = "ma dia diem";
+                ViewBag.tendiadiem = "ten dia diem";
+                return View();
+            }
+        }
+
+        public ActionResult QuanLyLoaiTour()
+        {
+            DBTOUREntities DBLoaitour = new DBTOUREntities();
+            var loaitourList = DBLoaitour.loaitours.ToList();
+            return View(loaitourList);
         }
 
     }

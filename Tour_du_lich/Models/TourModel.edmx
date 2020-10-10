@@ -5,28 +5,34 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="DBTOURModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DBTOUR.dbo.chiphi' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="chiphi">
+          <Key>
+            <PropertyRef Name="maloaichiphi" />
+            <PropertyRef Name="madoan" />
+          </Key>
           <Property Name="machiphi" Type="varchar" MaxLength="15" />
-          <Property Name="maloaichiphi" Type="varchar" MaxLength="15" />
-          <Property Name="madoan" Type="varchar" MaxLength="15" />
+          <Property Name="maloaichiphi" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="madoan" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="giathanh" Type="float" />
           <Property Name="ghichu" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DBTOUR.dbo.ctdoan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="ctdoan">
-          <Property Name="madoan" Type="varchar" MaxLength="15" />
-          <Property Name="makh" Type="varchar" MaxLength="15" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DBTOUR.dbo.cttour' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+          <Key>
+            <PropertyRef Name="madoan" />
+            <PropertyRef Name="makh" />
+          </Key>
+          <Property Name="madoan" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="makh" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
         <EntityType Name="cttour">
-          <Property Name="matour" Type="varchar" MaxLength="15" />
-          <Property Name="madiadiem" Type="varchar" MaxLength="15" />
+          <Key>
+            <PropertyRef Name="matour" />
+            <PropertyRef Name="madiadiem" />
+          </Key>
+          <Property Name="matour" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="madiadiem" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="thutu" Type="int" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="diadiem">
           <Key>
             <PropertyRef Name="madiadiem" />
@@ -86,13 +92,25 @@ warning 6013: The table/view 'DBTOUR.dbo.cttour' does not have a primary key def
           <Property Name="tennv" Type="nvarchar" MaxLength="50" />
           <Property Name="diachi" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DBTOUR.dbo.phancong' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="phancong">
-          <Property Name="madoan" Type="varchar" MaxLength="15" />
-          <Property Name="manv" Type="varchar" MaxLength="15" />
+          <Key>
+            <PropertyRef Name="madoan" />
+            <PropertyRef Name="manv" />
+          </Key>
+          <Property Name="madoan" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="manv" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="nhiemvu" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="tour">
           <Key>
             <PropertyRef Name="matour" />
@@ -103,25 +121,79 @@ warning 6013: The table/view 'DBTOUR.dbo.phancong' does not have a primary key d
           <Property Name="dacdiem" Type="nvarchar" MaxLength="255" />
           <Property Name="giamacdinh" Type="float" />
         </EntityType>
-        <!--Errors Found During Generation:
-error 6004: The table 'DBTOUR.dbo.chiphi' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__chiphi__madoan__48CFD27E" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DBTOUR.dbo.chiphi' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__chiphi__maloaich__47DBAE45" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DBTOUR.dbo.ctdoan' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__ctdoan__madoan__5165187F" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DBTOUR.dbo.ctdoan' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__ctdoan__makh__52593CB8" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DBTOUR.dbo.cttour' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__cttour__madiadie__412EB0B6" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DBTOUR.dbo.cttour' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__cttour__matour__403A8C7D" />-->
-        <Association Name="FK__doan__matour__440B1D61">
+        <Association Name="FK__chiphi__madoan__4AB81AF0">
+          <End Role="doan" Type="Self.doan" Multiplicity="1" />
+          <End Role="chiphi" Type="Self.chiphi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doan">
+              <PropertyRef Name="madoan" />
+            </Principal>
+            <Dependent Role="chiphi">
+              <PropertyRef Name="madoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chiphi__maloaich__49C3F6B7">
+          <End Role="loaichiphi" Type="Self.loaichiphi" Multiplicity="1" />
+          <End Role="chiphi" Type="Self.chiphi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaichiphi">
+              <PropertyRef Name="maloaichiphi" />
+            </Principal>
+            <Dependent Role="chiphi">
+              <PropertyRef Name="maloaichiphi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ctdoan__madoan__5535A963">
+          <End Role="doan" Type="Self.doan" Multiplicity="1" />
+          <End Role="ctdoan" Type="Self.ctdoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doan">
+              <PropertyRef Name="madoan" />
+            </Principal>
+            <Dependent Role="ctdoan">
+              <PropertyRef Name="madoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ctdoan__makh__5629CD9C">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+          <End Role="ctdoan" Type="Self.ctdoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="makh" />
+            </Principal>
+            <Dependent Role="ctdoan">
+              <PropertyRef Name="makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cttour__madiadie__4222D4EF">
+          <End Role="diadiem" Type="Self.diadiem" Multiplicity="1" />
+          <End Role="cttour" Type="Self.cttour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="diadiem">
+              <PropertyRef Name="madiadiem" />
+            </Principal>
+            <Dependent Role="cttour">
+              <PropertyRef Name="madiadiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cttour__matour__412EB0B6">
+          <End Role="tour" Type="Self.tour" Multiplicity="1" />
+          <End Role="cttour" Type="Self.cttour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="matour" />
+            </Principal>
+            <Dependent Role="cttour">
+              <PropertyRef Name="matour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doan__matour__44FF419A">
           <End Role="tour" Type="Self.tour" Multiplicity="0..1" />
           <End Role="doan" Type="Self.doan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -145,12 +217,30 @@ error 6004: The table 'DBTOUR.dbo.cttour' is referenced by a relationship, but c
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__phancong__madoan__4CA06362" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__phancong__manv__4D94879B" />-->
+        <Association Name="FK__phancong__madoan__4F7CD00D">
+          <End Role="doan" Type="Self.doan" Multiplicity="1" />
+          <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doan">
+              <PropertyRef Name="madoan" />
+            </Principal>
+            <Dependent Role="phancong">
+              <PropertyRef Name="madoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__phancong__manv__5070F446">
+          <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="1" />
+          <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nhanvien">
+              <PropertyRef Name="manv" />
+            </Principal>
+            <Dependent Role="phancong">
+              <PropertyRef Name="manv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__tour__maloai__398D8EEE">
           <End Role="loaitour" Type="Self.loaitour" Multiplicity="0..1" />
           <End Role="tour" Type="Self.tour" Multiplicity="*" />
@@ -164,6 +254,9 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBTOURModelStoreContainer">
+          <EntitySet Name="chiphi" EntityType="Self.chiphi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ctdoan" EntityType="Self.ctdoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cttour" EntityType="Self.cttour" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="diadiem" EntityType="Self.diadiem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="doan" EntityType="Self.doan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="gia" EntityType="Self.gia" Schema="dbo" store:Type="Tables" />
@@ -171,14 +264,48 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
           <EntitySet Name="loaichiphi" EntityType="Self.loaichiphi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="loaitour" EntityType="Self.loaitour" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="nhanvien" EntityType="Self.nhanvien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="phancong" EntityType="Self.phancong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tour" EntityType="Self.tour" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__doan__matour__440B1D61" Association="Self.FK__doan__matour__440B1D61">
+          <AssociationSet Name="FK__chiphi__madoan__4AB81AF0" Association="Self.FK__chiphi__madoan__4AB81AF0">
+            <End Role="doan" EntitySet="doan" />
+            <End Role="chiphi" EntitySet="chiphi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chiphi__maloaich__49C3F6B7" Association="Self.FK__chiphi__maloaich__49C3F6B7">
+            <End Role="loaichiphi" EntitySet="loaichiphi" />
+            <End Role="chiphi" EntitySet="chiphi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ctdoan__madoan__5535A963" Association="Self.FK__ctdoan__madoan__5535A963">
+            <End Role="doan" EntitySet="doan" />
+            <End Role="ctdoan" EntitySet="ctdoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ctdoan__makh__5629CD9C" Association="Self.FK__ctdoan__makh__5629CD9C">
+            <End Role="khachhang" EntitySet="khachhang" />
+            <End Role="ctdoan" EntitySet="ctdoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cttour__madiadie__4222D4EF" Association="Self.FK__cttour__madiadie__4222D4EF">
+            <End Role="diadiem" EntitySet="diadiem" />
+            <End Role="cttour" EntitySet="cttour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cttour__matour__412EB0B6" Association="Self.FK__cttour__matour__412EB0B6">
+            <End Role="tour" EntitySet="tour" />
+            <End Role="cttour" EntitySet="cttour" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doan__matour__44FF419A" Association="Self.FK__doan__matour__44FF419A">
             <End Role="tour" EntitySet="tour" />
             <End Role="doan" EntitySet="doan" />
           </AssociationSet>
           <AssociationSet Name="FK__gia__matour__3C69FB99" Association="Self.FK__gia__matour__3C69FB99">
             <End Role="tour" EntitySet="tour" />
             <End Role="gia" EntitySet="gia" />
+          </AssociationSet>
+          <AssociationSet Name="FK__phancong__madoan__4F7CD00D" Association="Self.FK__phancong__madoan__4F7CD00D">
+            <End Role="doan" EntitySet="doan" />
+            <End Role="phancong" EntitySet="phancong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__phancong__manv__5070F446" Association="Self.FK__phancong__manv__5070F446">
+            <End Role="nhanvien" EntitySet="nhanvien" />
+            <End Role="phancong" EntitySet="phancong" />
           </AssociationSet>
           <AssociationSet Name="FK__tour__maloai__398D8EEE" Association="Self.FK__tour__maloai__398D8EEE">
             <End Role="loaitour" EntitySet="loaitour" />
@@ -190,12 +317,37 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBTOURModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="chiphi">
+          <Key>
+            <PropertyRef Name="maloaichiphi" />
+            <PropertyRef Name="madoan" />
+          </Key>
+          <Property Name="machiphi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="maloaichiphi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="madoan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="giathanh" Type="Double" />
+          <Property Name="ghichu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="doan" Relationship="Self.FK__chiphi__madoan__4AB81AF0" FromRole="chiphi" ToRole="doan" />
+          <NavigationProperty Name="loaichiphi" Relationship="Self.FK__chiphi__maloaich__49C3F6B7" FromRole="chiphi" ToRole="loaichiphi" />
+        </EntityType>
+        <EntityType Name="cttour">
+          <Key>
+            <PropertyRef Name="matour" />
+            <PropertyRef Name="madiadiem" />
+          </Key>
+          <Property Name="matour" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="madiadiem" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="thutu" Type="Int32" />
+          <NavigationProperty Name="diadiem" Relationship="Self.FK__cttour__madiadie__4222D4EF" FromRole="cttour" ToRole="diadiem" />
+          <NavigationProperty Name="tour" Relationship="Self.FK__cttour__matour__412EB0B6" FromRole="cttour" ToRole="tour" />
+        </EntityType>
         <EntityType Name="diadiem">
           <Key>
             <PropertyRef Name="madiadiem" />
           </Key>
           <Property Name="madiadiem" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tendiadiem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cttours" Relationship="Self.FK__cttour__madiadie__4222D4EF" FromRole="diadiem" ToRole="cttour" />
         </EntityType>
         <EntityType Name="doan">
           <Key>
@@ -205,7 +357,10 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
           <Property Name="matour" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="ngaybatdau" Type="DateTime" Precision="3" />
           <Property Name="ngayketthuc" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="tour" Relationship="Self.FK__doan__matour__440B1D61" FromRole="doan" ToRole="tour" />
+          <NavigationProperty Name="chiphis" Relationship="Self.FK__chiphi__madoan__4AB81AF0" FromRole="doan" ToRole="chiphi" />
+          <NavigationProperty Name="tour" Relationship="Self.FK__doan__matour__44FF419A" FromRole="doan" ToRole="tour" />
+          <NavigationProperty Name="phancongs" Relationship="Self.FK__phancong__madoan__4F7CD00D" FromRole="doan" ToRole="phancong" />
+          <NavigationProperty Name="khachhangs" Relationship="Self.ctdoan" FromRole="doan" ToRole="khachhang" />
         </EntityType>
         <EntityType Name="gia">
           <Key>
@@ -228,6 +383,7 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
           <Property Name="sdt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="giotinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="cmnd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="doans" Relationship="Self.ctdoan" FromRole="khachhang" ToRole="doan" />
         </EntityType>
         <EntityType Name="loaichiphi">
           <Key>
@@ -235,6 +391,7 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
           </Key>
           <Property Name="maloaichiphi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tenloaichiphi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="chiphis" Relationship="Self.FK__chiphi__maloaich__49C3F6B7" FromRole="loaichiphi" ToRole="chiphi" />
         </EntityType>
         <EntityType Name="loaitour">
           <Key>
@@ -251,6 +408,28 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
           <Property Name="manv" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tennv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="diachi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="phancongs" Relationship="Self.FK__phancong__manv__5070F446" FromRole="nhanvien" ToRole="phancong" />
+        </EntityType>
+        <EntityType Name="phancong">
+          <Key>
+            <PropertyRef Name="madoan" />
+            <PropertyRef Name="manv" />
+          </Key>
+          <Property Name="madoan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="manv" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nhiemvu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="doan" Relationship="Self.FK__phancong__madoan__4F7CD00D" FromRole="phancong" ToRole="doan" />
+          <NavigationProperty Name="nhanvien" Relationship="Self.FK__phancong__manv__5070F446" FromRole="phancong" ToRole="nhanvien" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="tour">
           <Key>
@@ -261,11 +440,60 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
           <Property Name="maloai" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="dacdiem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="giamacdinh" Type="Double" />
-          <NavigationProperty Name="doans" Relationship="Self.FK__doan__matour__440B1D61" FromRole="tour" ToRole="doan" />
+          <NavigationProperty Name="cttours" Relationship="Self.FK__cttour__matour__412EB0B6" FromRole="tour" ToRole="cttour" />
+          <NavigationProperty Name="doans" Relationship="Self.FK__doan__matour__44FF419A" FromRole="tour" ToRole="doan" />
           <NavigationProperty Name="gias" Relationship="Self.FK__gia__matour__3C69FB99" FromRole="tour" ToRole="gia" />
           <NavigationProperty Name="loaitour" Relationship="Self.FK__tour__maloai__398D8EEE" FromRole="tour" ToRole="loaitour" />
         </EntityType>
-        <Association Name="FK__doan__matour__440B1D61">
+        <Association Name="FK__chiphi__madoan__4AB81AF0">
+          <End Role="doan" Type="Self.doan" Multiplicity="1" />
+          <End Role="chiphi" Type="Self.chiphi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doan">
+              <PropertyRef Name="madoan" />
+            </Principal>
+            <Dependent Role="chiphi">
+              <PropertyRef Name="madoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chiphi__maloaich__49C3F6B7">
+          <End Role="loaichiphi" Type="Self.loaichiphi" Multiplicity="1" />
+          <End Role="chiphi" Type="Self.chiphi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaichiphi">
+              <PropertyRef Name="maloaichiphi" />
+            </Principal>
+            <Dependent Role="chiphi">
+              <PropertyRef Name="maloaichiphi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cttour__madiadie__4222D4EF">
+          <End Role="diadiem" Type="Self.diadiem" Multiplicity="1" />
+          <End Role="cttour" Type="Self.cttour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="diadiem">
+              <PropertyRef Name="madiadiem" />
+            </Principal>
+            <Dependent Role="cttour">
+              <PropertyRef Name="madiadiem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__cttour__matour__412EB0B6">
+          <End Role="tour" Type="Self.tour" Multiplicity="1" />
+          <End Role="cttour" Type="Self.cttour" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tour">
+              <PropertyRef Name="matour" />
+            </Principal>
+            <Dependent Role="cttour">
+              <PropertyRef Name="matour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__doan__matour__44FF419A">
           <End Role="tour" Type="Self.tour" Multiplicity="0..1" />
           <End Role="doan" Type="Self.doan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -274,6 +502,18 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
             </Principal>
             <Dependent Role="doan">
               <PropertyRef Name="matour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__phancong__madoan__4F7CD00D">
+          <End Role="doan" Type="Self.doan" Multiplicity="1" />
+          <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doan">
+              <PropertyRef Name="madoan" />
+            </Principal>
+            <Dependent Role="phancong">
+              <PropertyRef Name="madoan" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -301,7 +541,25 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBTOUREntities1" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__phancong__manv__5070F446">
+          <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="1" />
+          <End Role="phancong" Type="Self.phancong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nhanvien">
+              <PropertyRef Name="manv" />
+            </Principal>
+            <Dependent Role="phancong">
+              <PropertyRef Name="manv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ctdoan">
+          <End Role="doan" Type="Self.doan" Multiplicity="*" />
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DBTOUREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="chiphis" EntityType="Self.chiphi" />
+          <EntitySet Name="cttours" EntityType="Self.cttour" />
           <EntitySet Name="diadiems" EntityType="Self.diadiem" />
           <EntitySet Name="doans" EntityType="Self.doan" />
           <EntitySet Name="gias" EntityType="Self.gia" />
@@ -309,10 +567,32 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
           <EntitySet Name="loaichiphis" EntityType="Self.loaichiphi" />
           <EntitySet Name="loaitours" EntityType="Self.loaitour" />
           <EntitySet Name="nhanviens" EntityType="Self.nhanvien" />
+          <EntitySet Name="phancongs" EntityType="Self.phancong" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tours" EntityType="Self.tour" />
-          <AssociationSet Name="FK__doan__matour__440B1D61" Association="Self.FK__doan__matour__440B1D61">
+          <AssociationSet Name="FK__chiphi__madoan__4AB81AF0" Association="Self.FK__chiphi__madoan__4AB81AF0">
+            <End Role="doan" EntitySet="doans" />
+            <End Role="chiphi" EntitySet="chiphis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chiphi__maloaich__49C3F6B7" Association="Self.FK__chiphi__maloaich__49C3F6B7">
+            <End Role="loaichiphi" EntitySet="loaichiphis" />
+            <End Role="chiphi" EntitySet="chiphis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cttour__madiadie__4222D4EF" Association="Self.FK__cttour__madiadie__4222D4EF">
+            <End Role="diadiem" EntitySet="diadiems" />
+            <End Role="cttour" EntitySet="cttours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__cttour__matour__412EB0B6" Association="Self.FK__cttour__matour__412EB0B6">
+            <End Role="tour" EntitySet="tours" />
+            <End Role="cttour" EntitySet="cttours" />
+          </AssociationSet>
+          <AssociationSet Name="FK__doan__matour__44FF419A" Association="Self.FK__doan__matour__44FF419A">
             <End Role="tour" EntitySet="tours" />
             <End Role="doan" EntitySet="doans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__phancong__madoan__4F7CD00D" Association="Self.FK__phancong__madoan__4F7CD00D">
+            <End Role="doan" EntitySet="doans" />
+            <End Role="phancong" EntitySet="phancongs" />
           </AssociationSet>
           <AssociationSet Name="FK__gia__matour__3C69FB99" Association="Self.FK__gia__matour__3C69FB99">
             <End Role="tour" EntitySet="tours" />
@@ -322,13 +602,41 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
             <End Role="loaitour" EntitySet="loaitours" />
             <End Role="tour" EntitySet="tours" />
           </AssociationSet>
+          <AssociationSet Name="FK__phancong__manv__5070F446" Association="Self.FK__phancong__manv__5070F446">
+            <End Role="nhanvien" EntitySet="nhanviens" />
+            <End Role="phancong" EntitySet="phancongs" />
+          </AssociationSet>
+          <AssociationSet Name="ctdoan" Association="Self.ctdoan">
+            <End Role="doan" EntitySet="doans" />
+            <End Role="khachhang" EntitySet="khachhangs" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBTOURModelStoreContainer" CdmEntityContainer="DBTOUREntities1">
+        <EntityContainerMapping StorageEntityContainer="DBTOURModelStoreContainer" CdmEntityContainer="DBTOUREntities">
+          <EntitySetMapping Name="chiphis">
+            <EntityTypeMapping TypeName="DBTOURModel.chiphi">
+              <MappingFragment StoreEntitySet="chiphi">
+                <ScalarProperty Name="machiphi" ColumnName="machiphi" />
+                <ScalarProperty Name="maloaichiphi" ColumnName="maloaichiphi" />
+                <ScalarProperty Name="madoan" ColumnName="madoan" />
+                <ScalarProperty Name="giathanh" ColumnName="giathanh" />
+                <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cttours">
+            <EntityTypeMapping TypeName="DBTOURModel.cttour">
+              <MappingFragment StoreEntitySet="cttour">
+                <ScalarProperty Name="matour" ColumnName="matour" />
+                <ScalarProperty Name="madiadiem" ColumnName="madiadiem" />
+                <ScalarProperty Name="thutu" ColumnName="thutu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="diadiems">
             <EntityTypeMapping TypeName="DBTOURModel.diadiem">
               <MappingFragment StoreEntitySet="diadiem">
@@ -395,6 +703,26 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="phancongs">
+            <EntityTypeMapping TypeName="DBTOURModel.phancong">
+              <MappingFragment StoreEntitySet="phancong">
+                <ScalarProperty Name="madoan" ColumnName="madoan" />
+                <ScalarProperty Name="manv" ColumnName="manv" />
+                <ScalarProperty Name="nhiemvu" ColumnName="nhiemvu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBTOURModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tours">
             <EntityTypeMapping TypeName="DBTOURModel.tour">
               <MappingFragment StoreEntitySet="tour">
@@ -406,6 +734,14 @@ error 6004: The table 'DBTOUR.dbo.phancong' is referenced by a relationship, but
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="ctdoan" TypeName="DBTOURModel.ctdoan" StoreEntitySet="ctdoan">
+            <EndProperty Name="doan">
+              <ScalarProperty Name="madoan" ColumnName="madoan" />
+            </EndProperty>
+            <EndProperty Name="khachhang">
+              <ScalarProperty Name="makh" ColumnName="makh" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

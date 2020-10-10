@@ -12,18 +12,13 @@ namespace Tour_du_lich.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class diadiem
+    public partial class cttour
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public diadiem()
-        {
-            this.cttours = new HashSet<cttour>();
-        }
-    
+        public string matour { get; set; }
         public string madiadiem { get; set; }
-        public string tendiadiem { get; set; }
+        public Nullable<int> thutu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cttour> cttours { get; set; }
+        public virtual diadiem diadiem { get; set; }
+        public virtual tour tour { get; set; }
     }
 }

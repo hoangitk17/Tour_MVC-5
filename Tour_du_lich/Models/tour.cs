@@ -17,6 +17,7 @@ namespace Tour_du_lich.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tour()
         {
+            this.cttours = new HashSet<cttour>();
             this.doans = new HashSet<doan>();
             this.gias = new HashSet<gia>();
         }
@@ -27,6 +28,8 @@ namespace Tour_du_lich.Models
         public string dacdiem { get; set; }
         public Nullable<double> giamacdinh { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cttour> cttours { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<doan> doans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

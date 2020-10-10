@@ -12,18 +12,15 @@ namespace Tour_du_lich.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class loaichiphi
+    public partial class chiphi
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public loaichiphi()
-        {
-            this.chiphis = new HashSet<chiphi>();
-        }
-    
+        public string machiphi { get; set; }
         public string maloaichiphi { get; set; }
-        public string tenloaichiphi { get; set; }
+        public string madoan { get; set; }
+        public Nullable<double> giathanh { get; set; }
+        public string ghichu { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<chiphi> chiphis { get; set; }
+        public virtual doan doan { get; set; }
+        public virtual loaichiphi loaichiphi { get; set; }
     }
 }

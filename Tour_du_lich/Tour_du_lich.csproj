@@ -130,8 +130,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\chiphi.cs">
+      <DependentUpon>TourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\cttour.cs">
+      <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\diadiem.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
@@ -152,6 +159,12 @@
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\nhanvien.cs">
+      <DependentUpon>TourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\phancong.cs">
+      <DependentUpon>TourModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tour.cs">
@@ -238,9 +251,14 @@
     <Content Include="Views\Home\QuanLyTour.cshtml" />
     <Content Include="Views\Home\QuanLyDoan.cshtml" />
     <Content Include="Views\Home\QuanLyKhach.cshtml" />
+    <Content Include="Views\Home\QuanLyNhanVien.cshtml" />
+    <Content Include="Views\Home\QuanLyGia.cshtml" />
+    <Content Include="Views\Home\QuanLyDiaDiem.cshtml" />
+    <Content Include="Views\Home\QuanLyLoaiTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
