@@ -51,39 +51,48 @@ namespace Tour_du_lich.Controllers
             return View(giaList);
         }
 
-        [HttpGet]
+
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult QuanLyDiaDiem()
         {
+            ViewBag.name = "GET";
             DBTOUREntities DBDiadiem = new DBTOUREntities();
             var diadiemList = DBDiadiem.diadiems.ToList();
             return View(diadiemList);
         }
         // POST: Home/Create
-        [HttpPost]
-        public ActionResult QuanLyDiaDiem(FormCollection collection)
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult QuanLyDiaDiem(diadiem d)
         {
+            ViewBag.name = "POST";
             try
             {
-                //Method 1: Using Component Name  
-
-                ViewBag.madiadiem = collection["madiadiem"];
-                ViewBag.tendiadiem = collection["tendiadiem"];
+              
                 DBTOUREntities DBTour = new DBTOUREntities();
-                diadiem d = new diadiem();
-                d.tendiadiem = collection["tendiadiem"];
-                d.madiadiem = collection["madiadiem"];
                 DBTour.diadiems.Add(d);
                 DBTour.SaveChanges();
-                return View("QuanLyDiaDiem");
+                DBTOUREntities DBDiadiem = new DBTOUREntities();
+                string message = "SUCCESS";
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
             }
-            catch
+            catch(Exception ex)
             {
-                ViewBag.madiadiem = "ma dia diem";
-                ViewBag.tendiadiem = "ten dia diem";
-                return View();
+                string message = "FAIL";
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
             }
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult getDiaDiem(string id)
+        {
+            
+            DBTOUREntities DBDiadiem = new DBTOUREntities();
+            DBDiadiem.Configuration.ProxyCreationEnabled = false;
+            List<diadiem> diadiemList = DBDiadiem.diadiems.ToList();
+            return Json(new {
+                diadiemList
+            }, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult QuanLyLoaiTour()
         {
             DBTOUREntities DBLoaitour = new DBTOUREntities();
