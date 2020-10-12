@@ -29,6 +29,7 @@
                                 <th>Giá Tour Tiền</th>
                                 <th>Thời Gian Bắt Đầu</th>
                                 <th>Thời Gian Kết Thúc</th>
+                                <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,6 +41,10 @@
                                     <td>@item.giatien</td>
                                     <td>@item.tgbd</td>
                                     <td>@item.tgkt</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" data-id="@item.magia">Sửa</button>
+                                        <button type="button" class="btn btn-danger" data-id="@item.magia">Xóa</button>
+                                    </td>
                                 </tr>
                             }
                         </tbody>

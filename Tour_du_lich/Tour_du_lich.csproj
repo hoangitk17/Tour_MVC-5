@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -159,6 +160,7 @@
     <Compile Include="Models\loaitour.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\nhanvien.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
@@ -196,6 +198,7 @@
     <Content Include="Assets\assets\demo\datatables-demo.js" />
     <Content Include="Assets\assets\img\error-404-monochrome.svg" />
     <Content Include="Assets\css\styles.css" />
+    <Content Include="Assets\js\controller\giaController.js" />
     <Content Include="Assets\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -253,14 +256,14 @@
     <Content Include="Views\Home\QuanLyDoan.cshtml" />
     <Content Include="Views\Home\QuanLyKhach.cshtml" />
     <Content Include="Views\Home\QuanLyNhanVien.cshtml" />
-    <Content Include="Views\Home\QuanLyGia.cshtml" />
+    <Content Include="Views\Gia\QuanLyGia.cshtml" />
     <Content Include="Views\Home\QuanLyDiaDiem.cshtml" />
     <Content Include="Views\Home\QuanLyLoaiTour.cshtml" />
-    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Login\" />
+    <Folder Include="Dao\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
