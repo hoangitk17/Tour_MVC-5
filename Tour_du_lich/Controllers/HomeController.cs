@@ -13,7 +13,16 @@ namespace Tour_du_lich.Controllers
         {
             DBTOUREntities DBTour = new DBTOUREntities();
             var tourList = DBTour.tours.ToList();
-            return View(tourList);
+            //return View(tourList);
+            if (Session["login"] != null)
+            {
+                return View(tourList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
         }
 
         public ActionResult QuanLyTour()
@@ -44,12 +53,6 @@ namespace Tour_du_lich.Controllers
             return View(nhanvienList);
         }
 
-        public ActionResult QuanLyGia()
-        {
-            DBTOUREntities DBGia = new DBTOUREntities();
-            var giaList = DBGia.gias.ToList();
-            return View(giaList);
-        }
 
         [HttpGet]
         public ActionResult QuanLyDiaDiem()
