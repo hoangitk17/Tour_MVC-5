@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DiaDiemController.cs" />
     <Compile Include="Controllers\GiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -257,7 +258,7 @@
     <Content Include="Views\Home\QuanLyKhach.cshtml" />
     <Content Include="Views\Home\QuanLyNhanVien.cshtml" />
     <Content Include="Views\Gia\QuanLyGia.cshtml" />
-    <Content Include="Views\Home\QuanLyDiaDiem.cshtml" />
+    <Content Include="Views\DiaDiem\QuanLyDiaDiem.cshtml" />
     <Content Include="Views\Home\QuanLyLoaiTour.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
