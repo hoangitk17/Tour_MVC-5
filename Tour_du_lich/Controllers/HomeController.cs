@@ -54,39 +54,8 @@ namespace Tour_du_lich.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult QuanLyDiaDiem()
-        {
-            DBTOUREntities DBDiadiem = new DBTOUREntities();
-            var diadiemList = DBDiadiem.diadiems.ToList();
-            return View(diadiemList);
-        }
-        // POST: Home/Create
-        [HttpPost]
-        public ActionResult QuanLyDiaDiem(FormCollection collection)
-        {
-            try
-            {
-                //Method 1: Using Component Name  
 
-                ViewBag.madiadiem = collection["madiadiem"];
-                ViewBag.tendiadiem = collection["tendiadiem"];
-                DBTOUREntities DBTour = new DBTOUREntities();
-                diadiem d = new diadiem();
-                d.tendiadiem = collection["tendiadiem"];
-                d.madiadiem = collection["madiadiem"];
-                DBTour.diadiems.Add(d);
-                DBTour.SaveChanges();
-                return View("QuanLyDiaDiem");
-            }
-            catch
-            {
-                ViewBag.madiadiem = "ma dia diem";
-                ViewBag.tendiadiem = "ten dia diem";
-                return View();
-            }
-        }
-
+        
         public ActionResult QuanLyLoaiTour()
         {
             DBTOUREntities DBLoaitour = new DBTOUREntities();

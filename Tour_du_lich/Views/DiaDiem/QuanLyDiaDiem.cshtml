@@ -7,6 +7,7 @@
 <main>
     <div class="container-fluid">
         <h1 class="mt-4">Quản Lý Địa Điểm</h1>
+        <h2>@ViewBag.name</h2>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
             <li class="breadcrumb-item active">Quản Lý</li>
@@ -25,7 +26,7 @@
                             <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
                         </a>
                     </button>
-                    @using (Html.BeginForm("QuanLyDiaDiem", "HomeController", FormMethod.Post))
+                    @using (Html.BeginForm())
                     {
 
                         <!-- The Modal -->
@@ -52,7 +53,7 @@
                                                     <label for="tendiadiem">Tên Địa Điểm:</label>
                                                     <input type="text" class="form-control" id="tendiadiem" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
                                                 </div>
-                                               
+
                                             </div>
                                         </div>
                                     </div>
@@ -60,18 +61,18 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <input type="submit" class="btn btn-success" data-dismiss="modal" value="add"/>
+                                        <input type="submit" id="btnAddDiaDiem"class="btn btn-success" value="add" />
                                     </div>
 
                                 </div>
                             </div>
                         </div>
                     }
-                    </div>
+                </div>
             </div>
-                    
+
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive" id="tbldiadiem">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -80,19 +81,85 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @*@foreach (var item in Model)
                             {
                                 <tr>
                                     <td>@item.madiadiem</td>
                                     <td>@item.tendiadiem</td>
                                 </tr>
-                            }
+                            }*@
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    <h2>@ViewBag.tendiadiem</h2>
+
 </main>
 
+@section Scripts
+{
+    <script type="text/javascript">
+
+    $(function () {
+        LoadData();
+        $("#btnAddDiaDiem").click(function (e) {
+            //alert("");
+            e.preventDefault();
+            var diadiem = {};
+            diadiem.madiadiem = $("#madiadiem").val();
+            diadiem.tendiadiem = $("#tendiadiem").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("QUANLYDIADIEM")',
+                data: '{d: ' + JSON.stringify(diadiem) + '}',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Data has been added successfully.");
+                    LoadData();
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                }
+            });
+            return false;
+        });
+    });
+
+    function LoadData() {
+        $("#tbldiadiem table tbody tr").remove();
+        
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("getDiaDiem")',
+            dataType: 'json',
+            data: { id: '1' },
+            success: function (data) {
+                
+                var items = '';
+                $.each(data.diadiemList, function (i, item) {
+                    var rows = "<tr>"
+                        + "<td >" + item.madiadiem + "</td>"
+                        + "<td >" + item.tendiadiem + "</td>"
+                        + "</tr>";
+                  
+                    $('#tbldiadiem table tbody').append(rows);
+                });
+                
+            },
+            error: function (ex) {
+              
+                console.log(ex);
+                var r = jQuery.parseJSON(response.responseText);
+                console.log(r);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+        
+        return false;
+    }
+    </script>
+}
