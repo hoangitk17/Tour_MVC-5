@@ -35,17 +35,25 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@item.magia</td>
-                                    <td>@item.matour</td>
-                                    <td>@item.giatien</td>
-                                    <td>@item.tgbd</td>
-                                    <td>@item.tgkt</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning" data-id="@item.magia">Sửa</button>
-                                        <button type="button" class="btn btn-danger" data-id="@item.magia">Xóa</button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>@item.magia</td>
+                                <td>@item.matour</td>
+                                <td>@item.giatien</td>
+                                <td>@item.tgbd</td>
+                                <td>@item.tgkt</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" data-id="@item.magia"><a style="text-decoration: none; color:#FFFFFF" href="/Edit">Sửa</a></button>
+                                    <button type="button" class="btn btn-danger" data-id="@item.magia">
+                                        <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
+                                    </button>
+                                </td>
+                                @*@Ajax.ActionLink("Xóa", "Delete", new { @id = item.magia }, new AjaxOptions
+                                {
+                                    Confirm="Bạn có muốn xóa bản ghi này?",
+                                    OnComplete = "$('#row_"+@item.magia+"').remove()",
+                                    HttpMethod = "Delete"
+                                })*@
+                            </tr>
                             }
                         </tbody>
                     </table>

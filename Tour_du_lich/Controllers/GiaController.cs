@@ -41,5 +41,12 @@ namespace Tour_du_lich.Controllers
         {
             return View();
         }
+
+        [HttpDelete]
+        public ActionResult Delete(string id)
+        {
+            new GiaDao().Delete(id);
+            return RedirectToAction("QuanLyGia");
+        }
     }
 }
