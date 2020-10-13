@@ -18,10 +18,28 @@ namespace Tour_du_lich.Controllers
             return View(giaList);
         }
 
-        public ActionResult Edit(string id)
+        [HttpPost]
+        public ActionResult Edit(gia gia)
         {
-            var gia = new GiaDao().GetById(id);
-            return View(gia);
+            if(ModelState.IsValid)
+            {
+                var dao = new GiaDao();
+                var result = dao.Update(gia);
+                if (result)
+                {
+                    return RedirectToAction("QuanLyGia","Gia");
+                }else
+                {
+                    ModelState.AddModelError("", "Cập nhật giá thành công");
+                }
+            }
+            return View("QuanLyGia");
+        }
+
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            return View();
         }
     }
 }
