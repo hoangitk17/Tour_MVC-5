@@ -9,12 +9,12 @@ namespace Tour_du_lich.Dao
     public class GiaDao
     {
         DBTOUREntities DBTOUR = new DBTOUREntities();
-        public bool Update(string id, double giatien)
+        public bool Update(gia g)
         {
             try
             {
-                var gia = DBTOUR.gias.Find(id);
-                gia.giatien = giatien;
+                var gia = DBTOUR.gias.Find(g.magia);
+                gia.giatien = g.giatien;
                 DBTOUR.SaveChanges();
                 return true;
             }
