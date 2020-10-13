@@ -200,6 +200,7 @@
     <Content Include="Assets\assets\demo\datatables-demo.js" />
     <Content Include="Assets\assets\img\error-404-monochrome.svg" />
     <Content Include="Assets\css\styles.css" />
+    <Content Include="Assets\js\controller\DiaDiemController.js" />
     <Content Include="Assets\js\controller\giaController.js" />
     <Content Include="Assets\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
