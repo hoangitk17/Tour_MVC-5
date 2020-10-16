@@ -1,33 +1,33 @@
 ﻿@{
-    ViewBag.Title = "QuanLyGia";
+    ViewBag.Title = "QuanLyDoan";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Tour_du_lich.Models.gia>
+@model List<Tour_du_lich.Models.doan>
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Quản Lý Giá Tour</h1>
+        <h1 class="mt-4">Quản Lý Đoàn</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
             <li class="breadcrumb-item active">Quản Lý</li>
-            <li class="breadcrumb-item active">Quản Lý Giá Tour</li>
+            <li class="breadcrumb-item active">Quản Lý Đoàn</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header" style="display: flex; justify-content: space-between">
                 <div>
                     <i class="fas fa-table mr-1"></i>
-                    Bảng Thông Tin Giá Tour
+                    Bảng Thông Tin Đoàn
                 </div>
                 <div>
                     <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
                         <a style="color: white; text-decoration: none;" href="#" data-toggle="collapse">
-                            Thêm Giá 
+                            Thêm Đoàn
                             <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
                         </a>
                     </button>
 
                     <!-- The Modal -->
-                    @using (Html.BeginForm("QuanLyGia", "Gia", FormMethod.Post))
+                    @using (Html.BeginForm("QuanLyDoan", "Doan", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModal">
                             <div class="modal-dialog">
@@ -35,7 +35,7 @@
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
-                                        <h4 class="modal-title">Thêm Giá Tour</h4>
+                                        <h4 class="modal-title">Thêm Đoàn</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
@@ -142,11 +142,10 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Mã Giá Tour</th>
-                                <th>Mã Tour</th>
-                                <th>Giá Tour Tiền</th>
-                                <th>Thời Gian Bắt Đầu</th>
-                                <th>Thời Gian Kết Thúc</th>
+                                <th width="200px">Mã Đoàn</th>
+                                <th width="200px">Mã Tour</th>
+                                <th width="300px">Ngày Bắt Đầu</th>
+                                <th>Ngày Kết Thúc</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -154,23 +153,16 @@
                             @foreach (var item in Model)
                             {
                             <tr>
-                                <td>@item.magia</td>
+                                <td>@item.madoan</td>
                                 <td>@item.matour</td>
-                                <td>@item.giatien</td>
-                                <td>@item.tgbd</td>
-                                <td>@item.tgkt</td>
+                                <td>@item.ngaybatdau</td>
+                                <td>@item.ngayketthuc</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-id="@item.magia"><a style="text-decoration: none; color:#FFFFFF" href="/Edit">Sửa</a></button>
-                                    <button type="button" class="btn btn-danger" data-id="@item.magia">
+                                    <button type="button" class="btn btn-warning" data-id="@item.madoan"><a style="text-decoration: none; color:#FFFFFF" href="/Edit">Sửa</a></button>
+                                    <button type="button" class="btn btn-danger" data-id="@item.madoan">
                                         <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
                                     </button>
                                 </td>
-                                @*@Ajax.ActionLink("Xóa", "Delete", new { @id = item.magia }, new AjaxOptions
-                                {
-                                    Confirm="Bạn có muốn xóa bản ghi này?",
-                                    OnComplete = "$('#row_"+@item.magia+"').remove()",
-                                    HttpMethod = "Delete"
-                                })*@
                             </tr>
                             }
                         </tbody>

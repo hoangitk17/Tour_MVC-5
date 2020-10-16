@@ -37,7 +37,7 @@
                                         <!-- Modal Header -->
                                         <div class="modal-header" style="background-color: #343a40; color: white">
                                             <h4 class="modal-title">Thêm Tour</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                         </div>
 
                                         <!-- Modal body -->
@@ -143,23 +143,30 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th width="70px">Mã Tour</th>
-                                    <th width="70px">Tên Tour</th>
-                                    <th width="110px">Mã Loại Tour</th>
-                                    <th>Đặc Điểm</th>
+                                    <th width="100px">Mã Tour</th>
+                                    <th width="100px">Tên Tour</th>
+                                    <th width="150px">Mã Loại Tour</th>
+                                    <th width="600px">Đặc Điểm</th>
                                     <th>Giá</th>
+                                    <th>#</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>@item.matour</td>
-                                        <td>@item.tentour</td>
-                                        <td>@item.maloai</td>
-                                        <td>@item.dacdiem</td>
-                                        <td>@item.giamacdinh</td>
-                                    </tr>
+                                <tr>
+                                    <td>@item.matour</td>
+                                    <td>@item.tentour</td>
+                                    <td>@item.maloai</td>
+                                    <td>@item.dacdiem</td>
+                                    <td>@item.giamacdinh</td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" data-id="@item.matour"><a style="text-decoration: none; color:#FFFFFF" href="/Edit">Sửa</a></button>
+                                        <button type="button" class="btn btn-danger" data-id="@item.matour">
+                                            <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
+                                        </button>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>

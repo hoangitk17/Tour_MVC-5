@@ -28,5 +28,20 @@ namespace Tour_du_lich.Dao
         {
             return DBTOUR.gias.SingleOrDefault(x => x.magia == id);
         }
+
+        public bool Delete(string id)
+        {
+            try
+            {
+                var gia = DBTOUR.gias.Find(id);
+                DBTOUR.gias.Remove(gia);
+                DBTOUR.SaveChanges();
+                return true;
+            }catch(Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }
