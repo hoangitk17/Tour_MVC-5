@@ -133,6 +133,7 @@
     <Compile Include="Controllers\GiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Dao\DiaDiemDAO.cs" />
     <Compile Include="Dao\GiaDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -199,6 +200,7 @@
     <Content Include="Assets\assets\demo\chart-pie-demo.js" />
     <Content Include="Assets\assets\demo\datatables-demo.js" />
     <Content Include="Assets\assets\img\error-404-monochrome.svg" />
+    <Content Include="Assets\css\diadiem.css" />
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\js\controller\DiaDiemController.js" />
     <Content Include="Assets\js\controller\giaController.js" />

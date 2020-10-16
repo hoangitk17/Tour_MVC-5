@@ -6,16 +6,37 @@
         var diadiem = {};
         diadiem.madiadiem = $("#madiadiem").val();
         diadiem.tendiadiem = $("#tendiadiem").val();
+        var flag = true;
+        if (diadiem.madiadiem == "") {
+            $("#place-management #show-err-ma").addClass("show-err");
+            $("#place-management #show-err-ma").text("Mã không được để trống");
+            flag = false;
+        }
+        if (diadiem.madiadiem == "tendiadiem") {
+            $("#place-management #show-err-name").addClass("show-err");
+            $("#place-management #show-err-name").text("Tên không được để trống");
+            flag = false;
+        }
+        if (flag == false) {
+            alert("Dữ liệu chưa nhập đủ");
+            return false;
+        }
         $.ajax({
             type: "POST",
             url: 'QUANLYDIADIEM',
             data: '{d: ' + JSON.stringify(diadiem) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
-            success: function () {
-                alert("Data has been added successfully.");
-                LoadData();
-                $('#close-them-dia-diem').click();
+            success: function (data) {
+                if (data.Code == "201") {
+                    alert("Thêm địa điểm thành công");
+                    LoadData();
+                    $('#close-them-dia-diem').click();
+                } else if(data.Code == "400") {
+                    alert("Mã địa điểm đã tồn tại");
+
+                }
+                
             },
             error: function () {
                 alert("Error while inserting data");
@@ -24,6 +45,8 @@
         return false;
     });
 });
+
+
 
 function LoadData() {
     $("#tbldiadiem table tbody tr").remove();
@@ -39,7 +62,10 @@ function LoadData() {
             $.each(data.diadiemList, function (i, item) {
                 var rows = "<tr>"
                     + "<td >" + item.madiadiem + "</td>"
-                    + "<td >" + item.tendiadiem + "</td>"
+                    + "<td >" + item.tendiadiem + "</td>"+
+                    `<td><button type ="button" class="btn btn-warning" data-id="${item.madiadiem}" ><a href="/DiaDiem/Edit/${item.madiadiem}"> Sửa</a></button >`+
+                    `<button type="button" class="btn btn-danger" data-id="${item.madiadiem}"><a href="/DiaDiem/Delete/${item.madiadiem}">Xóa</a></button>`+
+                                    `</td >`+
                     + "</tr>";
 
                 $('#tbldiadiem table tbody').append(rows);

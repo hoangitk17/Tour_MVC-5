@@ -4,34 +4,40 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Tour_du_lich.Models;
+using Tour_du_lich.Dao;
 
 namespace Tour_du_lich.Controllers
 {
+
     public class DiaDiemController : Controller
     {
         // GET: DiaDiem
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult QuanLyDiaDiem()
         {
-            ViewBag.name = "GET";
-            DBTOUREntities DBDiadiem = new DBTOUREntities();
-            var diadiemList = DBDiadiem.diadiems.ToList();
+            var diadiemList = new DiaDiemDAO().GetDiaDiem() ;
             return View(diadiemList);
         }
         // POST: Home/Create
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult QuanLyDiaDiem(diadiem d)
         {
-            ViewBag.name = "POST";
+            
+           
             try
             {
-
-                DBTOUREntities DBTour = new DBTOUREntities();
-                DBTour.diadiems.Add(d);
-                DBTour.SaveChanges();
-                DBTOUREntities DBDiadiem = new DBTOUREntities();
-                string message = "SUCCESS";
-                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+                string code;
+                DiaDiemDAO diadiems = new DiaDiemDAO();
+                if(diadiems.ExistId(d.madiadiem))
+                {
+                    code = "400";
+                } else
+                {
+                    diadiems.AddDiaDiem(d);
+                    code = "201";
+                }
+                
+                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }
             catch (Exception ex)
             {
@@ -43,14 +49,19 @@ namespace Tour_du_lich.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public JsonResult getDiaDiem(string id)
         {
-
-            DBTOUREntities DBDiadiem = new DBTOUREntities();
-            DBDiadiem.Configuration.ProxyCreationEnabled = false;
-            List<diadiem> diadiemList = DBDiadiem.diadiems.ToList();
+            List<diadiem> diadiemList = new DiaDiemDAO().GetDiaDiem();
             return Json(new
             {
                 diadiemList
             }, JsonRequestBehavior.AllowGet);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Delete(string id)
+        {
+            new DiaDiemDAO().Delete(id);
+            List<diadiem> diadiemList = new DiaDiemDAO().GetDiaDiem();
+            return RedirectToAction("QuanLyDiaDiem", "DiaDiem", diadiemList);
         }
     }
 }
