@@ -130,9 +130,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DiaDiemController.cs" />
+    <Compile Include="Controllers\DoanController.cs" />
     <Compile Include="Controllers\GiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachController.cs" />
+    <Compile Include="Controllers\LoaiTourController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Dao\GiaDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -255,13 +260,13 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LeftMenu.cshtml" />
-    <Content Include="Views\Home\QuanLyTour.cshtml" />
-    <Content Include="Views\Home\QuanLyDoan.cshtml" />
-    <Content Include="Views\Home\QuanLyKhach.cshtml" />
-    <Content Include="Views\Home\QuanLyNhanVien.cshtml" />
+    <Content Include="Views\Tour\QuanLyTour.cshtml" />
+    <Content Include="Views\Doan\QuanLyDoan.cshtml" />
+    <Content Include="Views\Khach\QuanLyKhach.cshtml" />
+    <Content Include="Views\NhanVien\QuanLyNhanVien.cshtml" />
     <Content Include="Views\Gia\QuanLyGia.cshtml" />
     <Content Include="Views\DiaDiem\QuanLyDiaDiem.cshtml" />
-    <Content Include="Views\Home\QuanLyLoaiTour.cshtml" />
+    <Content Include="Views\LoaiTour\QuanLyLoaiTour.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Gia\Edit.cshtml" />
   </ItemGroup>
