@@ -15,7 +15,14 @@ namespace Tour_du_lich.Controllers
         {
             DBTOUREntities DBGia = new DBTOUREntities();
             var giaList = DBGia.gias.ToList();
-            return View(giaList);
+            if (Session["login"] != null)
+            {
+                return View(giaList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         [HttpPost]

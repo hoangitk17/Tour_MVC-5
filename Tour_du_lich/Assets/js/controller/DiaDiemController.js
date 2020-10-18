@@ -12,7 +12,7 @@
             $("#place-management #show-err-ma").text("Mã không được để trống");
             flag = false;
         }
-        if (diadiem.madiadiem == "tendiadiem") {
+        if (diadiem.tendiadiem == "") {
             $("#place-management #show-err-name").addClass("show-err");
             $("#place-management #show-err-name").text("Tên không được để trống");
             flag = false;
@@ -63,8 +63,8 @@ function LoadData() {
                 var rows = "<tr>"
                     + "<td >" + item.madiadiem + "</td>"
                     + "<td >" + item.tendiadiem + "</td>"+
-                    `<td><button type ="button" class="btn btn-warning" data-id="${item.madiadiem}" ><a href="/DiaDiem/Edit/${item.madiadiem}"> Sửa</a></button >`+
-                    `<button type="button" class="btn btn-danger" data-id="${item.madiadiem}"><a href="/DiaDiem/Delete/${item.madiadiem}">Xóa</a></button>`+
+                    `<td><button style="margin-right: 5px" type ="button" class="btn btn-warning" data-id="${item.madiadiem}" ><a style="text-decoration: none; color:#FFFFFF" href="/DiaDiem/Edit/${item.madiadiem}"> Sửa</a></button >`+
+                    `<button type="button" class="btn btn-danger" data-id="${item.madiadiem}"><a style="text-decoration: none; color:#FFFFFF" href="/DiaDiem/Delete/${item.madiadiem}">Xóa</a></button>`+
                                     `</td >`+
                     + "</tr>";
 

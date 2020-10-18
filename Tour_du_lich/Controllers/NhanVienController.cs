@@ -14,7 +14,14 @@ namespace Tour_du_lich.Controllers
         {
             DBTOUREntities DBNhanvien = new DBTOUREntities();
             var nhanvienList = DBNhanvien.nhanviens.ToList();
-            return View(nhanvienList);
+            if (Session["login"] != null)
+            {
+                return View(nhanvienList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }

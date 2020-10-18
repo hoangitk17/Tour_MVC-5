@@ -14,7 +14,14 @@ namespace Tour_du_lich.Controllers
         {
             DBTOUREntities DBDoan = new DBTOUREntities();
             var doanList = DBDoan.doans.ToList();
-            return View(doanList);
+            if (Session["login"] != null)
+            {
+                return View(doanList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }

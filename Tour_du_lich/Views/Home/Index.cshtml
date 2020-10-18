@@ -99,7 +99,7 @@
                                     <th width="70px">Mã Tour</th>
                                     <th width="70px">Tên Tour</th>
                                     <th width="110px">Mã Loại Tour</th>
-                                    <th>Đặc Điểm</th>
+                                    <th width="600px">Đặc Điểm</th>
                                     <th>Giá</th>
                                 </tr>
                             </thead>
@@ -111,7 +111,7 @@
                                         <td>@item.tentour</td>
                                         <td>@item.maloai</td>
                                         <td>@item.dacdiem</td>
-                                        <td>@item.giamacdinh</td>
+                                        <td>@String.Format("{0:0,0 vnđ}", @item.giamacdinh)</td>
                                     </tr>
                                 }
                             </tbody>

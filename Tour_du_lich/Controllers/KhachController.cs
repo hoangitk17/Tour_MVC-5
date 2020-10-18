@@ -14,7 +14,14 @@ namespace Tour_du_lich.Controllers
         {
             DBTOUREntities DBKhach = new DBTOUREntities();
             var khachList = DBKhach.khachhangs.ToList();
-            return View(khachList);
+            if (Session["login"] != null)
+            {
+                return View(khachList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }

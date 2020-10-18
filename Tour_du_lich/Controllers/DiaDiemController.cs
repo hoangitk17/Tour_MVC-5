@@ -16,7 +16,14 @@ namespace Tour_du_lich.Controllers
         public ActionResult QuanLyDiaDiem()
         {
             var diadiemList = new DiaDiemDAO().GetDiaDiem() ;
-            return View(diadiemList);
+            if (Session["login"] != null)
+            {
+                return View(diadiemList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
         // POST: Home/Create
         [AcceptVerbs(HttpVerbs.Post)]

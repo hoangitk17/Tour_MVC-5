@@ -14,7 +14,14 @@ namespace Tour_du_lich.Controllers
         {
             DBTOUREntities DBLoaitour = new DBTOUREntities();
             var loaitourList = DBLoaitour.loaitours.ToList();
-            return View(loaitourList);
+            if (Session["login"] != null)
+            {
+                return View(loaitourList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }

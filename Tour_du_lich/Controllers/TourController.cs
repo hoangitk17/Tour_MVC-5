@@ -13,7 +13,14 @@ namespace Tour_du_lich.Controllers
         {
             DBTOUREntities DBTour = new DBTOUREntities();
             var tourList = DBTour.tours.ToList();
-            return View(tourList);
+            if (Session["login"] != null)
+            {
+                return View(tourList);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
     }
 }
