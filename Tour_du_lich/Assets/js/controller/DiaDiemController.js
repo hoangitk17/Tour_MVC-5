@@ -38,8 +38,8 @@
                 }
                 
             },
-            error: function () {
-                alert("Error while inserting data");
+            error: function (e) {
+                alert(e.Message);
             }
         });
         return false;

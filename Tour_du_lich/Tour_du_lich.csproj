@@ -140,6 +140,7 @@
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Dao\GiaDao.cs" />
+    <Compile Include="Dao\LoaiTourDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,6 +169,7 @@
     <Compile Include="Models\loaitour.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoaiTourModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\nhanvien.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
@@ -209,6 +211,7 @@
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\js\controller\DiaDiemController.js" />
     <Content Include="Assets\js\controller\giaController.js" />
+    <Content Include="Assets\js\controller\LoaiTourController.js" />
     <Content Include="Assets\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -219,6 +222,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Compile Include="Models\Constants.cs" />
     <Content Include="Models\TourModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TourModel.edmx</DependentUpon>
