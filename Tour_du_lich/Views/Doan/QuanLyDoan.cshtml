@@ -19,7 +19,7 @@
                     Bảng Thông Tin Đoàn
                 </div>
                 <div>
-                    <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
+                    <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAdd">
                         <a style="color: white; text-decoration: none;" href="#" data-toggle="collapse">
                             Thêm Đoàn
                             <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
@@ -29,7 +29,7 @@
                     <!-- The Modal -->
                     @using (Html.BeginForm("QuanLyDoan", "Doan", FormMethod.Post))
                     {
-                        <div class="modal fade" id="myModal">
+                        <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="width: 620px">
 
@@ -65,7 +65,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                       
+
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
@@ -97,6 +97,105 @@
                             </div>
                         </div>
                     }
+                    <!-- The Modal -->
+                    @using (Html.BeginForm("QuanLyDoan", "Doan", FormMethod.Post))
+                    {
+                        <div class="modal fade" id="myModalEdit">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 620px">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header" style="background-color: #343a40; color: white">
+                                        <h4 class="modal-title">Sửa Đoàn</h4>
+                                        <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div style="margin-left: 50px">
+                                            <div style="margin-top:50px" class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Mã Đoàn
+                                                    </div>
+                                                    <div>
+                                                        <input />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Mã Tour
+                                                    </div>
+                                                    <div>
+                                                        <select id="tours" style="color: black">
+                                                            <option value="volvo">Volvo</option>
+                                                            <option value="saab">Saab</option>
+                                                            <option value="vw">VW</option>
+                                                            <option value="audi" selected>Audi</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top:50px" class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Ngày Bắt Đầu
+                                                    </div>
+                                                    <div>
+                                                        <input type="date" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Ngày Kết Thúc
+                                                    </div>
+                                                    <div>
+                                                        <input type="date" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Sửa</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!-- The Modal -->
+                    @using (Html.BeginForm("QuanLyDoan", "Doan", FormMethod.Post))
+                    {
+                        <div class="modal fade" id="myModalDelete">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 620px">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header" style="background-color: #343a40; color: white">
+                                        <h4 class="modal-title">Xóa Đoàn</h4>
+                                        <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div>Bạn có muốn xóa đoàn này không?</div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Xóa</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
             <div class="card-body">
@@ -120,8 +219,8 @@
                                 <td>@item.ngaybatdau</td>
                                 <td>@item.ngayketthuc</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-id="@item.madoan"><a style="text-decoration: none; color:#FFFFFF" href="/Edit">Sửa</a></button>
-                                    <button type="button" class="btn btn-danger" data-id="@item.madoan">
+                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" data-id="@item.madoan"><a style="text-decoration: none; color:#FFFFFF" href="#">Sửa</a></button>
+                                    <button data-toggle="modal" data-target="#myModalDelete" type="button" class="btn btn-danger" data-id="@item.madoan">
                                         <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
                                     </button>
                                 </td>
