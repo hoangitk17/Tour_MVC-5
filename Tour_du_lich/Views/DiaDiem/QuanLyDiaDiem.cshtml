@@ -19,17 +19,18 @@
                     Bảng Thông Tin Địa Điểm
                 </div>
                 <div>
-                    <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
+                    <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAdd">
                         <a style="color: white; text-decoration: none;" href="#" data-toggle="collapse">
                             Thêm Địa Điểm
                             <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
                         </a>
                     </button>
+                    @* Popup Add *@
                     @using (Html.BeginForm())
                     {
 
                         <!-- The Modal -->
-                        <div class="modal fade" id="myModal">
+                        <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="width: 620px">
 
@@ -69,6 +70,87 @@
                             </div>
                         </div>
                     }
+                    @* Popup Edit *@
+                    @using (Html.BeginForm())
+                    {
+
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModalEdit">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 620px">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header" style="background-color: #343a40; color: white">
+                                        <h4 class="modal-title" style="color: white">Sửa Địa Điểm</h4>
+                                        <button type="button" id="close-them-dia-diem" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div style="margin-left: 50px">
+                                            <div style="margin-top:20px">
+
+                                                <div class="form-group">
+                                                    <label for="madiadiem">Mã Địa Điểm:</label>
+                                                    <input type="text" class="form-control" id="madiadiem" placeholder="Nhập Mã Địa Điểm" name="madiadiem">
+                                                </div>
+                                                <div id="show-err-ma"></div>
+                                                <div class="form-group">
+                                                    <label for="tendiadiem">Tên Địa Điểm:</label>
+                                                    <input type="text" class="form-control" id="tendiadiem" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
+                                                </div>
+                                                <div id="show-err-name"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                        <button type="submit" id="btnAddDiaDiem" class="btn btn-success">Sửa</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @* Popup Xóa *@
+                    @using (Html.BeginForm())
+                    {
+
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModalDelete">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 620px">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header" style="background-color: #343a40; color: white">
+                                        <h4 class="modal-title" style="color: white">Xóa Địa Điểm</h4>
+                                        <button type="button" id="close-them-dia-diem" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div style="margin-left: 50px">
+                                            <div style="margin-top:20px">
+
+                                                <div>Bạn Có Muốn Xóa Địa Điểm Này Không?</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                        <button type="submit" id="btnAddDiaDiem" class="btn btn-success">Xóa</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
 
@@ -83,19 +165,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @*@foreach (var item in Model)
+                            @foreach (var item in Model)
                             {
                             <tr>
                                 <td>@item.madiadiem</td>
                                 <td>@item.tendiadiem</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-id="@item.madiadiem"><a style="text-decoration: none; color:#FFFFFF" href="/Edit">Sửa</a></button>
-                                    <button type="button" class="btn btn-danger" data-id="@item.madiadiem">
+                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" data-id="@item.madiadiem"><a style="text-decoration: none; color:#FFFFFF" href="#">Sửa</a></button>
+                                    <button data-toggle="modal" data-target="#myModalDelete" type="button" class="btn btn-danger" data-id="@item.madiadiem">
                                         <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
                                     </button>
                                 </td>
                             </tr>
-                            }*@
+                            }
                         </tbody>
                     </table>
                 </div>

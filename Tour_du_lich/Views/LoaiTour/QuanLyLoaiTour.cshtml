@@ -2,7 +2,7 @@
     ViewBag.Title = "QuanLyLoaiTour";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Tour_du_lich.Models.LoaiTourModel>
+@model List<Tour_du_lich.Models.loaitour>
 
 <main>
     <div class="container-fluid">
@@ -19,7 +19,7 @@
                     Bảng Thông Tin Loại Tour
                 </div>
                 <div>
-                    <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
+                    <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAdd">
                         <a style="color: white; text-decoration: none;" href="#" data-toggle="collapse">
                             Thêm Loại Tour
                             <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
@@ -29,7 +29,7 @@
                     <!-- The Modal -->
                     @using (Html.BeginForm("QuanLyLoaiTour", "LoaiTour", FormMethod.Post))
                     {
-                        <div class="modal fade" id="myModal">
+                        <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="width: 620px">
 
@@ -48,7 +48,7 @@
                                                         Mã Loại Tour
                                                     </div>
                                                     <div>
-                                                        <input id="inputMaLoaiTour" type="text" name="maloai"/>
+                                                        <input />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -56,7 +56,7 @@
                                                         Tên Loại Tour
                                                     </div>
                                                     <div>
-                                                        <input id="inputTenLoaiTour" type="text" name="tenloai"/>
+                                                        <input />
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,7 +66,82 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button id="btnAddLoaiTour" type="submit" class="btn btn-success">Thêm</button>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!-- The Modal -->
+                    @using (Html.BeginForm("QuanLyLoaiTour", "LoaiTour", FormMethod.Post))
+                    {
+                        <div class="modal fade" id="myModalEdit">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 620px">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header" style="background-color: #343a40; color: white">
+                                        <h4 class="modal-title">Sửa Loại Tour</h4>
+                                        <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div style="margin-left: 50px">
+                                            <div style="margin-top:50px" class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Mã Loại Tour
+                                                    </div>
+                                                    <div>
+                                                        <input />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Tên Loại Tour
+                                                    </div>
+                                                    <div>
+                                                        <input />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Sửa</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!-- The Modal -->
+                    @using (Html.BeginForm("QuanLyLoaiTour", "LoaiTour", FormMethod.Post))
+                    {
+                        <div class="modal fade" id="myModalDelete">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 620px">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header" style="background-color: #343a40; color: white">
+                                        <h4 class="modal-title">Xóa Loại Tour</h4>
+                                        <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div>Bạn có muốn xóa loại tour này không?</div>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Xóa</button>
                                     </div>
 
                                 </div>
@@ -88,16 +163,16 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>@item.maloai</td>
-                                    <td>@item.tenloai</td>
-                                    <td>
-                                        <button type="button" class="btn btn-warning" data-id="@item.maloai"><a style="text-decoration: none; color:#FFFFFF" href="/Edit">Sửa</a></button>
-                                        <button type="button" class="btn btn-danger" data-id="@item.maloai">
-                                            <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
-                                        </button>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>@item.maloai</td>
+                                <td>@item.tenloai</td>
+                                <td>
+                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" data-id="@item.maloai"><a style="text-decoration: none; color:#FFFFFF" href="#">Sửa</a></button>
+                                    <button data-toggle="modal" data-target="#myModalDelete" type="button" class="btn btn-danger" data-id="@item.maloai">
+                                        <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
+                                    </button>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -106,5 +181,4 @@
         </div>
     </div>
 </main>
-
 
