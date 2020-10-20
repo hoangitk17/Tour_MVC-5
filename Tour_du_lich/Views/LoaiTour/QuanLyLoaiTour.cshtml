@@ -2,7 +2,7 @@
     ViewBag.Title = "QuanLyLoaiTour";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Tour_du_lich.Models.loaitour>
+@model List<Tour_du_lich.Models.LoaiTourModel>
 
 <main>
     <div class="container-fluid">
@@ -48,7 +48,7 @@
                                                         Mã Loại Tour
                                                     </div>
                                                     <div>
-                                                        <input />
+                                                        <input id="inputMaLoaiTour"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -56,7 +56,7 @@
                                                         Tên Loại Tour
                                                     </div>
                                                     <div>
-                                                        <input />
+                                                        <input id="inputTenLoaiTour"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,7 +66,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
+                                        <button id="btnAddLoaiTour" type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
                                     </div>
 
                                 </div>

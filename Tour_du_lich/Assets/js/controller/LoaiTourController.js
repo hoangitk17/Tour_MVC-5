@@ -26,7 +26,11 @@
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                alert("success");
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
                 if (data.Code == "SUCCESS") {
                     window.location.href = "/LoaiTour/QuanLyLoaiTour";         
                 } else if (data.Code == "EXISTS") {
