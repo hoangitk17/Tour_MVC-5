@@ -10,5 +10,6 @@ namespace Tour_du_lich.Models
 		public static String SUCCESS = "SUCCESS";
 		public static String FAIL = "FAIL";
 		public static String EXISTS = "EXISTS";
+		public static String NOT_EXISTS = "NOT_EXISTS";
 	}
 }

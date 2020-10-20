@@ -2,7 +2,7 @@
     ViewBag.Title = "QuanLyLoaiTour";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Tour_du_lich.Models.loaitour>
+@model List<Tour_du_lich.Models.LoaiTourModel>
 
 <main>
     <div class="container-fluid">
@@ -48,7 +48,7 @@
                                                         Mã Loại Tour
                                                     </div>
                                                     <div>
-                                                        <input />
+                                                        <input id="them-ma-loai-tour"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -56,7 +56,7 @@
                                                         Tên Loại Tour
                                                     </div>
                                                     <div>
-                                                        <input />
+                                                        <input id="them-ten-loai-tour" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,7 +66,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
+                                        <button type="button" id="btnAddLoaiTour" class="btn btn-success" data-dismiss="modal">Thêm</button>
                                     </div>
 
                                 </div>
@@ -95,7 +95,7 @@
                                                         Mã Loại Tour
                                                     </div>
                                                     <div>
-                                                        <input />
+                                                        <input id="sua-ma-loai-tour"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -103,7 +103,7 @@
                                                         Tên Loại Tour
                                                     </div>
                                                     <div>
-                                                        <input />
+                                                        <input id="sua-ten-loai-tour"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,7 +113,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Sửa</button>
+                                        <button type="button" id="btnEditLoaiTour" class="btn btn-success">Sửa</button>
                                     </div>
 
                                 </div>
@@ -167,9 +167,10 @@
                                 <td>@item.maloai</td>
                                 <td>@item.tenloai</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" data-id="@item.maloai"><a style="text-decoration: none; color:#FFFFFF" href="#">Sửa</a></button>
-                                    <button data-toggle="modal" data-target="#myModalDelete" type="button" class="btn btn-danger" data-id="@item.maloai">
-                                        <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
+                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoTour('@item.maloai')">Sửa</button>
+                                    <button  type="button" class="btn btn-danger" onclick="onClickDeleteTour('@item.maloai)">
+                                        
+                                        Xóa
                                     </button>
                                 </td>
                             </tr>

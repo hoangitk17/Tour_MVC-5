@@ -37,11 +37,11 @@ namespace Tour_du_lich.Controllers
                 DiaDiemDAO diadiems = new DiaDiemDAO();
                 if(diadiems.ExistId(d.madiadiem))
                 {
-                    code = "400";
+                    code = Constants.EXISTS;
                 } else
                 {
                     diadiems.AddDiaDiem(d);
-                    code = "201";
+                    code = Constants.SUCCESS;
                 }
                 
                 return Json(new { Code = code, JsonRequestBehavior.AllowGet });

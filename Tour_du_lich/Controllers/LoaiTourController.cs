@@ -52,5 +52,64 @@ namespace Tour_du_lich.Controllers
                 return Json(new { Message = message, JsonRequestBehavior.AllowGet });
             }
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult DeleteTour(string id)
+        {
+            try
+            {
+                loaiTourDao.Delete(id);
+                string code = Constants.SUCCESS;
+                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult GetLoaiTour(string id)
+        {
+            try
+            {
+                LoaiTourModel loaitour = loaiTourDao.GetLoaiTour(id);
+                string code = Constants.SUCCESS;
+                return Json(new { Code = code, maloai = loaitour.maloai, tenloai = loaitour.tenloai, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
+
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditLoaiTour(LoaiTourModel loaitour)
+        {
+            try
+            {
+                string code;
+                if (loaiTourDao.ExistId(loaitour.maloai) == false)
+                {
+                    code = Constants.NOT_EXISTS;
+                }
+                else
+                {
+                    loaiTourDao.Update(loaitour);
+                    code = Constants.SUCCESS;
+                }
+
+                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
     }
 }

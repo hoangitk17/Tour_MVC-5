@@ -47,12 +47,12 @@
 
                                                 <div class="form-group">
                                                     <label for="madiadiem">Mã Địa Điểm:</label>
-                                                    <input type="text" class="form-control" id="madiadiem" placeholder="Nhập Mã Địa Điểm" name="madiadiem">
+                                                    <input type="text" class="form-control" id="ma-dia-diem-them" placeholder="Nhập Mã Địa Điểm" name="madiadiem">
                                                 </div>
                                                 <div id="show-err-ma"></div>
                                                 <div class="form-group">
                                                     <label for="tendiadiem">Tên Địa Điểm:</label>
-                                                    <input type="text" class="form-control" id="tendiadiem" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
+                                                    <input type="text" class="form-control" id="ten-dia-diem-them" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
                                                 </div>
                                                 <div id="show-err-name"></div>
 
@@ -63,7 +63,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="submit" id="btnAddDiaDiem" class="btn btn-success">Thêm</button>
+                                        <button type="button" id="btnAddDiaDiem" class="btn btn-success">Thêm</button>
                                     </div>
 
                                 </div>
@@ -82,7 +82,7 @@
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
                                         <h4 class="modal-title" style="color: white">Sửa Địa Điểm</h4>
-                                        <button type="button" id="close-them-dia-diem" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                        <button type="button" id="close-sua-dia-diem" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
                                     <!-- Modal body -->
@@ -108,7 +108,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="submit" id="btnAddDiaDiem" class="btn btn-success">Sửa</button>
+                                        <button type="submit" id="btnEditDiaDiem" class="btn btn-success">Sửa</button>
                                     </div>
 
                                 </div>
@@ -127,7 +127,7 @@
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
                                         <h4 class="modal-title" style="color: white">Xóa Địa Điểm</h4>
-                                        <button type="button" id="close-them-dia-diem" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                        <button type="button" id="close-delete-dia-diem" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
                                     <!-- Modal body -->
@@ -144,7 +144,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="submit" id="btnAddDiaDiem" class="btn btn-success">Xóa</button>
+                                        <button type="submit" id="btnDeleteDiaDiem" class="btn btn-success">Xóa</button>
                                     </div>
 
                                 </div>
@@ -187,9 +187,4 @@
 
 </main>
 
-@section Scripts
-{
-    <script type="text/javascript" src="~/Assets/js/controller/DiaDiemController.js">
 
-       </script>
-}
