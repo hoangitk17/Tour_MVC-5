@@ -7,39 +7,80 @@ using Tour_du_lich.Models;
 
 namespace Tour_du_lich.Dao
 {
-    public class DiaDiemDAO
+    public class DiaDiemDao
     {
         DBTOUREntities DB = new DBTOUREntities();
-        public void AddDiaDiem(diadiem d)
+
+        public List<DiaDiemModel> GetAllDiaDiem()
         {
-            DB.diadiems.Add(d);
-            DB.SaveChanges();
+            DB.Configuration.ProxyCreationEnabled = false;
+            List<DiaDiemModel> result = new List<DiaDiemModel>();
+            foreach (diadiem temp in DB.diadiems)
+            {
+                DiaDiemModel dd = new DiaDiemModel(temp.madiadiem, temp.tendiadiem);
+                result.Add(dd);
+            }
+
+            return result;
         }
 
-        public bool ExistId(String id)
+        public DiaDiemModel GetDiaDiem(string id)
         {
-           var dd =  DB.diadiems.SingleOrDefault(x => x.madiadiem == id);
-            if(dd == null)
+            diadiem temp = DB.diadiems.SingleOrDefault(dd => dd.madiadiem == id);
+            DiaDiemModel diadiem = new DiaDiemModel();
+            if (temp != null)
+            {
+                diadiem.madiadiem = temp.madiadiem;
+                diadiem.tendiadiem = temp.tendiadiem;
+            }
+
+            return diadiem;
+        }
+        public void AddDiaDiem(DiaDiemModel diadiem)
+        {
+            try
+            {
+                diadiem data = new diadiem() ;
+                data.madiadiem = diadiem.madiadiem;
+                data.tendiadiem = diadiem.tendiadiem;
+                DB.diadiems.Add(data);
+                DB.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                
+            }
+        }
+
+        public bool ExistId(string id)
+        {
+            var dd = DB.diadiems.SingleOrDefault(x => x.madiadiem == id);
+            if (dd == null)
             {
                 return false;
-            } else
+            }
+            else
             {
                 return true;
             }
         }
 
-        public List<diadiem> GetDiaDiem()
+        public void Delete(string id)
         {
-            DB.Configuration.ProxyCreationEnabled = false;
-            return DB.diadiems.ToList();
-        }
-
-        public void Delete(String id)
-        {
-            diadiem d = DB.diadiems.SingleOrDefault(diadiem => diadiem.madiadiem == id);
-            if(d != null)
+            diadiem d = DB.diadiems.SingleOrDefault(loaitour => loaitour.madiadiem == id);
+            if (d != null)
             {
                 DB.diadiems.Remove(d);
+            }
+            DB.SaveChanges();
+        }
+
+        public void Edit(DiaDiemModel editedDiaDiem)
+        {
+            diadiem d = DB.diadiems.SingleOrDefault(diadiem => diadiem.madiadiem == editedDiaDiem.madiadiem);
+            if (d != null)
+            {
+                d.tendiadiem = editedDiaDiem.tendiadiem;
             }
             DB.SaveChanges();
         }

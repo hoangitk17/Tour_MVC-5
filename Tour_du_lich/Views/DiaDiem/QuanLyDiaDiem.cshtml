@@ -2,7 +2,7 @@
     ViewBag.Title = "QuanLyDiaDiem";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Tour_du_lich.Models.diadiem>
+@model List<Tour_du_lich.Models.DiaDiemModel>
 
 <main id="place-management">
     <div class="container-fluid">
@@ -92,12 +92,12 @@
 
                                                 <div class="form-group">
                                                     <label for="madiadiem">Mã Địa Điểm:</label>
-                                                    <input type="text" class="form-control" id="madiadiem" placeholder="Nhập Mã Địa Điểm" name="madiadiem">
+                                                    <input type="text" class="form-control" id="sua-ma-dia-diem" placeholder="Nhập Mã Địa Điểm" name="madiadiem">
                                                 </div>
                                                 <div id="show-err-ma"></div>
                                                 <div class="form-group">
                                                     <label for="tendiadiem">Tên Địa Điểm:</label>
-                                                    <input type="text" class="form-control" id="tendiadiem" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
+                                                    <input type="text" class="form-control" id="sua-ten-dia-diem" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
                                                 </div>
                                                 <div id="show-err-name"></div>
 
@@ -115,42 +115,8 @@
                             </div>
                         </div>
                     }
-                    @* Popup Xóa *@
-                    @using (Html.BeginForm())
-                    {
-
-                        <!-- The Modal -->
-                        <div class="modal fade" id="myModalDelete">
-                            <div class="modal-dialog">
-                                <div class="modal-content" style="width: 620px">
-
-                                    <!-- Modal Header -->
-                                    <div class="modal-header" style="background-color: #343a40; color: white">
-                                        <h4 class="modal-title" style="color: white">Xóa Địa Điểm</h4>
-                                        <button type="button" id="close-delete-dia-diem" class="close" data-dismiss="modal" style="color: white">&times;</button>
-                                    </div>
-
-                                    <!-- Modal body -->
-                                    <div class="modal-body">
-                                        <div style="margin-left: 50px">
-                                            <div style="margin-top:20px">
-
-                                                <div>Bạn Có Muốn Xóa Địa Điểm Này Không?</div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="submit" id="btnDeleteDiaDiem" class="btn btn-success">Xóa</button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    }
+             
+                   
                 </div>
             </div>
 
@@ -171,9 +137,9 @@
                                 <td>@item.madiadiem</td>
                                 <td>@item.tendiadiem</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" data-id="@item.madiadiem"><a style="text-decoration: none; color:#FFFFFF" href="#">Sửa</a></button>
-                                    <button data-toggle="modal" data-target="#myModalDelete" type="button" class="btn btn-danger" data-id="@item.madiadiem">
-                                        <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
+                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoDiaDiem('@item.madiadiem');">Sửa </button>
+                                    <button type="button" class="btn btn-danger" onclick="onDeleteDiaDiem('@item.madiadiem');">
+                                        Xóa
                                     </button>
                                 </td>
                             </tr>
