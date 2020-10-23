@@ -140,6 +140,7 @@
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Dao\GiaDao.cs" />
+    <Compile Include="Dao\NhanVienDao.cs" />
     <Compile Include="Dao\LoaiTourDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,6 +170,7 @@
     <Compile Include="Models\loaitour.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NhanVienModel.cs" />
     <Compile Include="Models\LoaiTourModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\nhanvien.cs">
@@ -210,8 +212,11 @@
     <Content Include="Assets\css\diadiem.css" />
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\js\controller\DiaDiemController.js" />
-    <Content Include="Assets\js\controller\giaController.js" />
+    <Content Include="Assets\js\controller\DoanController.js" />
+    <Content Include="Assets\js\controller\GiaController.js" />
+    <Content Include="Assets\js\controller\KhachHangController.js" />
     <Content Include="Assets\js\controller\LoaiTourController.js" />
+    <Content Include="Assets\js\controller\NhanVienController.js" />
     <Content Include="Assets\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -242,6 +247,7 @@
     <Content Include="Models\TourModel.edmx.diagram">
       <DependentUpon>TourModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Content\StyleSheet1.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
