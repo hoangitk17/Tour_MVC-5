@@ -11,6 +11,8 @@ namespace Tour_du_lich.Models
         public string tentour { get; set; }
         public string maloai { get; set; }
         public string dacdiem { get; set; }
+
+
         public Nullable<double> giamacdinh { get; set; }
 
         public TourDataModel()

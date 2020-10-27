@@ -162,6 +162,7 @@
     <Compile Include="Models\gia.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GiaModel.cs" />
     <Compile Include="Models\khachhang.cs">
       <DependentUpon>TourModel.tt</DependentUpon>
     </Compile>

@@ -2,8 +2,8 @@
     ViewBag.Title = "QuanLyTour";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using Tour_du_lich.Models
 
-@model List<Tour_du_lich.Models.TourDataModel>
 
     <main>
         <div class="container-fluid">
@@ -58,10 +58,10 @@
                                                         </div>
                                                         <div>
                                                             <select id="tours" style="color: black">
-                                                                <option value="volvo">Volvo</option>
-                                                                <option value="saab">Saab</option>
-                                                                <option value="vw">VW</option>
-                                                                <option value="audi" selected>Audi</option>
+                                                                @foreach (LoaiTourModel item in ViewBag.loaitours)
+                                                                {
+                                                                    <option value="@item.maloai">@item.tenloai</option>
+                                                                }
                                                             </select>
                                                         </div>
                                                     </div>
@@ -164,11 +164,12 @@
                                                         </div>
                                                         <div>
                                                             <select id="tours" style="color: black">
-                                                                <option value="volvo">Volvo</option>
-                                                                <option value="saab">Saab</option>
-                                                                <option value="vw">VW</option>
-                                                                <option value="audi" selected>Audi</option>
+                                                                @foreach (LoaiTourModel item in ViewBag.loaitours)
+                                                                {
+                                                                    <option value="@item.maloai">@item.tenloai</option>
+                                                                }
                                                             </select>
+                                                           
                                                         </div>
                                                     </div>
                                                 </div>
@@ -283,7 +284,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
+                                @foreach (TourDataModel item in ViewBag.tours)
                                 {
                                 <tr>
                                     <td>@item.matour</td>

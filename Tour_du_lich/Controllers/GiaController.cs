@@ -10,14 +10,16 @@ namespace Tour_du_lich.Controllers
 {
     public class GiaController : Controller
     {
+        GiaDao gDao = new GiaDao();
+        TourDao tDao = new TourDao();
         // GET: Gia
         public ActionResult QuanLyGia()
         {
-            DBTOUREntities DBGia = new DBTOUREntities();
-            var giaList = DBGia.gias.ToList();
+            ViewBag.gias = gDao.GetAllGia();
+            ViewBag.tours = tDao.GetAllTour();
             if (Session["login"] != null)
             {
-                return View(giaList);
+                return View();
             }
             else
             {
@@ -30,8 +32,8 @@ namespace Tour_du_lich.Controllers
         {
             if(ModelState.IsValid)
             {
-                var dao = new GiaDao();
-                var result = dao.Update(gia);
+                
+                var result = gDao.Update(gia);
                 if (result)
                 {
                     return RedirectToAction("QuanLyGia","Gia");
@@ -43,17 +45,84 @@ namespace Tour_du_lich.Controllers
             return View("QuanLyGia");
         }
 
+        // POST: Create a dia diem
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult QuanLyGia(GiaModel gia)
+        {
+
+
+            try
+            {
+                string code;
+
+                if (gDao.ExistId(gia.magia))
+                {
+                    code = Constants.EXISTS;
+                }
+                else
+                {
+                    gDao.AddGia(gia);
+                    code = Constants.SUCCESS;
+                }
+
+                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                string message = "FAIL";
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
+
         [HttpGet]
         public ActionResult Edit()
         {
             return View();
         }
 
-        [HttpDelete]
+        [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Delete(string id)
         {
-            new GiaDao().Delete(id);
-            return RedirectToAction("QuanLyGia");
+            try
+            {
+                gDao.Delete(id);
+                string code = Constants.SUCCESS;
+                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult GetGia(string id)
+        {
+            try
+            {
+                GiaModel gia = gDao.GetGia(id);
+                string code = Constants.SUCCESS;
+                DateTime dtbd = Convert.ToDateTime(gia.tgbd.ToString());
+                DateTime dtkt = Convert.ToDateTime(gia.tgkt.ToString());
+
+                return Json(new
+                {
+                    Code = code,
+                    magia = gia.magia,
+                    matour = gia.matour,
+                    tgbd = dtbd.ToString("yyyy-MM-dd"),
+                    tgkt = dtkt.ToString("yyyy-MM-dd"),
+                    giatien = gia.giatien
+                    ,
+                    JsonRequestBehavior.AllowGet
+                });
+            }
+            catch (Exception ex)
+            { 
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
         }
     }
 }

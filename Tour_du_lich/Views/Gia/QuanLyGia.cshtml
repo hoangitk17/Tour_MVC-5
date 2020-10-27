@@ -2,7 +2,7 @@
     ViewBag.Title = "QuanLyGia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model List<Tour_du_lich.Models.gia>
+@using Tour_du_lich.Models
 
 <main>
     <div class="container-fluid">
@@ -48,7 +48,7 @@
                                                         Mã Giá Tour
                                                     </div>
                                                     <div>
-                                                        <input />
+                                                        <input id="ma-gia-them"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -56,11 +56,13 @@
                                                         Mã Tour
                                                     </div>
                                                     <div>
-                                                        <select id="tours" style="color: black">
-                                                            <option value="volvo">Volvo</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="vw">VW</option>
-                                                            <option value="audi" selected>Audi</option>
+                                                        <select id="ma-tour-them" style="color: black">
+
+                                                            @foreach (TourDataModel item in ViewBag.tours)
+                                                            {
+                                                                <option value="@item.matour">@item.matour</option>
+                                                            }
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -72,7 +74,7 @@
                                                         Ngày Bắt Đầu
                                                     </div>
                                                     <div>
-                                                        <input type="date" />
+                                                        <input type="date" id="tgbd-them"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -80,7 +82,7 @@
                                                         Ngày Kết Thúc
                                                     </div>
                                                     <div>
-                                                        <input type="date" />
+                                                        <input type="date" id="tgkt-them"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +91,7 @@
                                                     <div>
                                                         Giá Tour
                                                     </div>
-                                                    <input type="text" />
+                                                    <input type="text" id="gia-tien-them"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,7 +100,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
+                                        <button type="button" class="btn btn-success" id="btnAddGia">Thêm</button>
                                     </div>
 
                                 </div>
@@ -127,7 +129,7 @@
                                                         Mã Giá Tour
                                                     </div>
                                                     <div>
-                                                        <input />
+                                                        <input id="ma-gia-sua"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -135,11 +137,13 @@
                                                         Mã Tour
                                                     </div>
                                                     <div>
-                                                        <select id="tours" style="color: black">
-                                                            <option value="volvo">Volvo</option>
-                                                            <option value="saab">Saab</option>
-                                                            <option value="vw">VW</option>
-                                                            <option value="audi" selected>Audi</option>
+                                                        <select id="ma-tour-sua" style="color: black">
+                                                            
+                                                                @foreach (TourDataModel item in ViewBag.tours)
+                                                                {
+                                                                    <option value="@item.matour">@item.matour</option>
+                                                                }
+                                                            
                                                         </select>
                                                     </div>
                                                 </div>
@@ -151,7 +155,7 @@
                                                         Ngày Bắt Đầu
                                                     </div>
                                                     <div>
-                                                        <input type="date" />
+                                                        <input type="date" id="tgbd-sua"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -159,7 +163,7 @@
                                                         Ngày Kết Thúc
                                                     </div>
                                                     <div>
-                                                        <input type="date" />
+                                                        <input type="date" id="tgkt-sua"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -168,7 +172,7 @@
                                                     <div>
                                                         Giá Tour
                                                     </div>
-                                                    <input type="text" />
+                                                    <input type="text" id="gia-tien-sua"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,7 +181,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Sửa</button>
+                                        <button type="button" class="btn btn-success" id="btnEditGia">Sửa</button>
                                     </div>
 
                                 </div>
@@ -230,7 +234,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (GiaModel item in ViewBag.gias)
                             {
                             <tr>
                                 <td>@item.magia</td>
@@ -239,9 +243,9 @@
                                 <td>@item.tgbd</td>
                                 <td>@item.tgkt</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" data-id="@item.magia"><a style="text-decoration: none; color:#FFFFFF"href="#" @*href="~/Gia/Edit"*@>Sửa</a></button>
-                                    <button data-toggle="modal" data-target="#myModalDelete" type="button" class="btn btn-danger" data-id="@item.magia">
-                                        <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
+                                    <button  type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModalEdit" onclick="onGetInfoGia('@item.magia');">Sửa</button>
+                                    <button  type="button" class="btn btn-danger" onclick="onDeleteGia('@item.magia');">
+                                        Xóa
                                     </button>
                                 </td>
                                 @*@Ajax.ActionLink("Xóa", "Delete", new { @id = item.magia }, new AjaxOptions

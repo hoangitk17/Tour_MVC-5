@@ -10,14 +10,19 @@ namespace Tour_du_lich.Controllers
     public class TourController : Controller
     {
         TourDao tDao = new TourDao();
+        LoaiTourDao ltDao = new LoaiTourDao();
+
+     
         // GET: Tour
         public ActionResult QuanLyTour()
         {
 
-            var tourList = tDao.GetAllTour();
+  
+            ViewBag.tours = tDao.GetAllTour();
+            ViewBag.loaitours = ltDao.GetAllLoaiTour();
             if (Session["login"] != null)
             {
-                return View(tourList);
+                return View();
             }
             else
             {
