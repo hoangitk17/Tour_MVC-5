@@ -247,7 +247,7 @@
     <Content Include="Models\TourModel.edmx.diagram">
       <DependentUpon>TourModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\StyleSheet1.scss" />
+    <Content Include="Assets\css\StyleSheet1.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
