@@ -282,7 +282,6 @@
     <Content Include="Views\DiaDiem\QuanLyDiaDiem.cshtml" />
     <Content Include="Views\LoaiTour\QuanLyLoaiTour.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Gia\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
