@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="68f84dc321554be6813dbdea59fa8c50" Name="Diagram1">
+        <EntityTypeShape EntityType="DBTOURModel.chiphi" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.ctdoan" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.cttour" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.diadiem" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.doan" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.gia" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.khachhang" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.loaichiphi" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.loaitour" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.nhanvien" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.phancong" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.tour" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="DBTOURModel.FK__chiphi__madoan__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__chiphi__maloaich__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__ctdoan__madoan__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__ctdoan__makh__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__cttour__madiadie__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__cttour__matour__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__doan__matour__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__phancong__madoan__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__gia__matour__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__tour__maloai__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DBTOURModel.FK__phancong__manv__5070F446" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

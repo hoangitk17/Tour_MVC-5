@@ -17,7 +17,7 @@ namespace Tour_du_lich.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public khachhang()
         {
-            this.doans = new HashSet<doan>();
+            this.ctdoans = new HashSet<ctdoan>();
         }
     
         public string makh { get; set; }
@@ -28,6 +28,6 @@ namespace Tour_du_lich.Models
         public string cmnd { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<doan> doans { get; set; }
+        public virtual ICollection<ctdoan> ctdoans { get; set; }
     }
 }

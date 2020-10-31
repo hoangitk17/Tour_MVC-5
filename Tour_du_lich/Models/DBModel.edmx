@@ -23,6 +23,7 @@
           </Key>
           <Property Name="madoan" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="makh" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="mota" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="cttour">
           <Key>
@@ -330,6 +331,17 @@
           <NavigationProperty Name="doan" Relationship="Self.FK__chiphi__madoan__4AB81AF0" FromRole="chiphi" ToRole="doan" />
           <NavigationProperty Name="loaichiphi" Relationship="Self.FK__chiphi__maloaich__49C3F6B7" FromRole="chiphi" ToRole="loaichiphi" />
         </EntityType>
+        <EntityType Name="ctdoan">
+          <Key>
+            <PropertyRef Name="madoan" />
+            <PropertyRef Name="makh" />
+          </Key>
+          <Property Name="madoan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="makh" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mota" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="doan" Relationship="Self.FK__ctdoan__madoan__5535A963" FromRole="ctdoan" ToRole="doan" />
+          <NavigationProperty Name="khachhang" Relationship="Self.FK__ctdoan__makh__5629CD9C" FromRole="ctdoan" ToRole="khachhang" />
+        </EntityType>
         <EntityType Name="cttour">
           <Key>
             <PropertyRef Name="matour" />
@@ -358,9 +370,9 @@
           <Property Name="ngaybatdau" Type="DateTime" Precision="3" />
           <Property Name="ngayketthuc" Type="DateTime" Precision="3" />
           <NavigationProperty Name="chiphis" Relationship="Self.FK__chiphi__madoan__4AB81AF0" FromRole="doan" ToRole="chiphi" />
+          <NavigationProperty Name="ctdoans" Relationship="Self.FK__ctdoan__madoan__5535A963" FromRole="doan" ToRole="ctdoan" />
           <NavigationProperty Name="tour" Relationship="Self.FK__doan__matour__44FF419A" FromRole="doan" ToRole="tour" />
           <NavigationProperty Name="phancongs" Relationship="Self.FK__phancong__madoan__4F7CD00D" FromRole="doan" ToRole="phancong" />
-          <NavigationProperty Name="khachhangs" Relationship="Self.ctdoan" FromRole="doan" ToRole="khachhang" />
         </EntityType>
         <EntityType Name="gia">
           <Key>
@@ -383,7 +395,7 @@
           <Property Name="sdt" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="giotinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="cmnd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="doans" Relationship="Self.ctdoan" FromRole="khachhang" ToRole="doan" />
+          <NavigationProperty Name="ctdoans" Relationship="Self.FK__ctdoan__makh__5629CD9C" FromRole="khachhang" ToRole="ctdoan" />
         </EntityType>
         <EntityType Name="loaichiphi">
           <Key>
@@ -466,6 +478,30 @@
             </Principal>
             <Dependent Role="chiphi">
               <PropertyRef Name="maloaichiphi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ctdoan__madoan__5535A963">
+          <End Role="doan" Type="Self.doan" Multiplicity="1" />
+          <End Role="ctdoan" Type="Self.ctdoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="doan">
+              <PropertyRef Name="madoan" />
+            </Principal>
+            <Dependent Role="ctdoan">
+              <PropertyRef Name="madoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ctdoan__makh__5629CD9C">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+          <End Role="ctdoan" Type="Self.ctdoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="makh" />
+            </Principal>
+            <Dependent Role="ctdoan">
+              <PropertyRef Name="makh" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -553,12 +589,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ctdoan">
-          <End Role="doan" Type="Self.doan" Multiplicity="*" />
-          <End Role="khachhang" Type="Self.khachhang" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="DBTOUREntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBTOUREntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="chiphis" EntityType="Self.chiphi" />
+          <EntitySet Name="ctdoans" EntityType="Self.ctdoan" />
           <EntitySet Name="cttours" EntityType="Self.cttour" />
           <EntitySet Name="diadiems" EntityType="Self.diadiem" />
           <EntitySet Name="doans" EntityType="Self.doan" />
@@ -577,6 +610,14 @@
           <AssociationSet Name="FK__chiphi__maloaich__49C3F6B7" Association="Self.FK__chiphi__maloaich__49C3F6B7">
             <End Role="loaichiphi" EntitySet="loaichiphis" />
             <End Role="chiphi" EntitySet="chiphis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ctdoan__madoan__5535A963" Association="Self.FK__ctdoan__madoan__5535A963">
+            <End Role="doan" EntitySet="doans" />
+            <End Role="ctdoan" EntitySet="ctdoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ctdoan__makh__5629CD9C" Association="Self.FK__ctdoan__makh__5629CD9C">
+            <End Role="khachhang" EntitySet="khachhangs" />
+            <End Role="ctdoan" EntitySet="ctdoans" />
           </AssociationSet>
           <AssociationSet Name="FK__cttour__madiadie__4222D4EF" Association="Self.FK__cttour__madiadie__4222D4EF">
             <End Role="diadiem" EntitySet="diadiems" />
@@ -606,17 +647,13 @@
             <End Role="nhanvien" EntitySet="nhanviens" />
             <End Role="phancong" EntitySet="phancongs" />
           </AssociationSet>
-          <AssociationSet Name="ctdoan" Association="Self.ctdoan">
-            <End Role="doan" EntitySet="doans" />
-            <End Role="khachhang" EntitySet="khachhangs" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBTOURModelStoreContainer" CdmEntityContainer="DBTOUREntities">
+        <EntityContainerMapping StorageEntityContainer="DBTOURModelStoreContainer" CdmEntityContainer="DBTOUREntities2">
           <EntitySetMapping Name="chiphis">
             <EntityTypeMapping TypeName="DBTOURModel.chiphi">
               <MappingFragment StoreEntitySet="chiphi">
@@ -625,6 +662,15 @@
                 <ScalarProperty Name="madoan" ColumnName="madoan" />
                 <ScalarProperty Name="giathanh" ColumnName="giathanh" />
                 <ScalarProperty Name="ghichu" ColumnName="ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ctdoans">
+            <EntityTypeMapping TypeName="DBTOURModel.ctdoan">
+              <MappingFragment StoreEntitySet="ctdoan">
+                <ScalarProperty Name="madoan" ColumnName="madoan" />
+                <ScalarProperty Name="makh" ColumnName="makh" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -734,14 +780,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ctdoan" TypeName="DBTOURModel.ctdoan" StoreEntitySet="ctdoan">
-            <EndProperty Name="doan">
-              <ScalarProperty Name="madoan" ColumnName="madoan" />
-            </EndProperty>
-            <EndProperty Name="khachhang">
-              <ScalarProperty Name="makh" ColumnName="makh" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

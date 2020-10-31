@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="730cac4f6f534c7e9f17cb281dde7f3d" Name="Diagram1">
-        <EntityTypeShape EntityType="DBTOURModel.chiphi" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+      <Diagram DiagramId="abbac07def5d4f51a890082c9e9e1644" Name="Diagram1">
+        <EntityTypeShape EntityType="DBTOURModel.chiphi" Width="1.5" PointX="5.875" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.cttour" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.diadiem" Width="1.5" PointX="1.375" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.doan" Width="1.5" PointX="5.375" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.gia" Width="1.5" PointX="1.375" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.khachhang" Width="1.5" PointX="3.25" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.loaichiphi" Width="1.5" PointX="6.375" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.diadiem" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.doan" Width="1.5" PointX="8" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.gia" Width="1.5" PointX="1.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.khachhang" Width="1.5" PointX="5.125" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.loaichiphi" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.loaitour" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.nhanvien" Width="1.5" PointX="9.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.nhanvien" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.phancong" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.tour" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />

@@ -18,8 +18,8 @@ namespace Tour_du_lich.Models
         public doan()
         {
             this.chiphis = new HashSet<chiphi>();
+            this.ctdoans = new HashSet<ctdoan>();
             this.phancongs = new HashSet<phancong>();
-            this.khachhangs = new HashSet<khachhang>();
         }
     
         public string madoan { get; set; }
@@ -29,10 +29,10 @@ namespace Tour_du_lich.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chiphi> chiphis { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ctdoan> ctdoans { get; set; }
         public virtual tour tour { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<phancong> phancongs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<khachhang> khachhangs { get; set; }
     }
 }
