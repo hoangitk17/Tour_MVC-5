@@ -4,7 +4,6 @@
 }
 @using Tour_du_lich.Models
 
-
 <main>
     <div class="container-fluid">
         <h1 class="mt-4">Quản Lý Tour</h1>
@@ -40,88 +39,78 @@
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div style="margin-left: 50px">
-                                                <div style="margin-top:50px" class="row">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Mã Tour
-                                                        </div>
-                                                        <div>
-                                                            <input />
-                                                        </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div style="margin-left: 50px">
+                                            <div style="margin-top:50px" class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Mã Tour
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Loại Tour
-                                                        </div>
-                                                        <div>
-                                                            <select id="tours" style="color: black">
-                                                                <option value="volvo">Volvo</option>
-                                                                <option value="saab">Saab</option>
-                                                                <option value="vw">VW</option>
-                                                                <option value="audi" selected>Audi</option>
-                                                            </select>
-                                                        </div>
+                                                    <div>
+                                                        <input />
                                                     </div>
                                                 </div>
-                                                <div style="margin-top:50px" class="row">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Tên Tour
-                                                        </div>
-                                                        <div>
-                                                            <input />
-                                                        </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Loại Tour
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Giá Tour
-                                                        </div>
-                                                        <div>
-                                                            <select id="tours" style="color: black">
-                                                                <option value="volvo">Volvo</option>
-                                                                <option value="saab">Saab</option>
-                                                                <option value="vw">VW</option>
-                                                                <option value="audi" selected>Audi</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div style="margin-top:50px" class="row">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Ngày Bắt Đầu
-                                                        </div>
-                                                        <div>
-                                                            <input type="date" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Ngày Kết Thúc
-                                                        </div>
-                                                        <div>
-                                                            <input type="date" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div style="margin-top:50px" class="row">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Địa Điểm
-                                                        </div>
-                                                        <div>
-                                                            <textarea></textarea>
-                                                        </div>
-                                                        <div>
-                                                            <button style="background-color: lightgreen;color:black">Chọn địa điểm</button>
-                                                        </div>
+                                                    <div>
+                                                        <select id="tours" style="color: black">
+                                                            <option value="volvo">Volvo</option>
+                                                            <option value="saab">Saab</option>
+                                                            <option value="vw">VW</option>
+                                                            <option value="audi" selected>Audi</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div style="margin-top:50px" class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Tên Tour
+                                                    </div>
+                                                    <div>
+                                                        <input />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div style="margin-top:50px" class="row">
+                                                Chọn Địa Điểm
+                                            </div>
+                                            <div style="margin-top:50px" class="row">
+                                                <!-- Demo -->
+                                                <div class="col-md-5">
+                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="demo2" title="duallistbox_demo2">
+                                                        <option value="option1" selected="selected">Option 1</option>
+                                                        <option value="option2">Option 2</option>
+                                                        <option value="option3">Option 3</option>
+                                                        <option value="option4">Option 4</option>
+                                                        <option value="option5">Option 5</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2" style="display: flex; flex-direction: column">
+                                                    <button type="button" class="btn btn-primary" style="margin-top: 15px">></button>
+                                                    <button type="button" class="btn btn-primary" style="margin-top: 15px">>></button>
+                                                    <button type="button" class="btn btn-primary" style="margin-top: 15px"><</button>
+                                                    <button type="button" class="btn btn-primary" style="margin-top: 15px"><<</button>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="demo2" title="duallistbox_demo2">
+                                                        <option value="option1" selected="selected">Option 1</option>
+                                                        <option value="option2">Option 2</option>
+                                                        <option value="option3">Option 3</option>
+                                                        <option value="option4">Option 4</option>
+                                                        <option value="option5">Option 5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
+
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
@@ -146,88 +135,74 @@
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div style="margin-left: 50px">
-                                                <div style="margin-top:50px" class="row">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Mã Tour
-                                                        </div>
-                                                        <div>
-                                                            <input />
-                                                        </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <div style="margin-left: 50px">
+                                            <div style="margin-top:50px" class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Mã Tour
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Loại Tour
-                                                        </div>
-                                                        <div>
-                                                            <select id="tours" style="color: black">
-                                                                <option value="volvo">Volvo</option>
-                                                                <option value="saab">Saab</option>
-                                                                <option value="vw">VW</option>
-                                                                <option value="audi" selected>Audi</option>
-                                                            </select>
-                                                        </div>
+                                                    <div>
+                                                        <input />
                                                     </div>
                                                 </div>
-                                                <div style="margin-top:50px" class="row">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Tên Tour
-                                                        </div>
-                                                        <div>
-                                                            <input />
-                                                        </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Loại Tour
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Giá Tour
-                                                        </div>
-                                                        <div>
-                                                            <select id="tours" style="color: black">
-                                                                <option value="volvo">Volvo</option>
-                                                                <option value="saab">Saab</option>
-                                                                <option value="vw">VW</option>
-                                                                <option value="audi" selected>Audi</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div style="margin-top:50px" class="row">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Ngày Bắt Đầu
-                                                        </div>
-                                                        <div>
-                                                            <input type="date" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Ngày Kết Thúc
-                                                        </div>
-                                                        <div>
-                                                            <input type="date" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div style="margin-top:50px" class="row">
-                                                    <div class="col-md-6">
-                                                        <div>
-                                                            Địa Điểm
-                                                        </div>
-                                                        <div>
-                                                            <textarea></textarea>
-                                                        </div>
-                                                        <div>
-                                                            <button style="background-color: lightgreen;color:black">Chọn địa điểm</button>
-                                                        </div>
+                                                    <div>
+                                                        <select id="tours" style="color: black">
+                                                            <option value="volvo">Volvo</option>
+                                                            <option value="saab">Saab</option>
+                                                            <option value="vw">VW</option>
+                                                            <option value="audi" selected>Audi</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div style="margin-top:50px" class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        Tên Tour
+                                                    </div>
+                                                    <div>
+                                                        <input />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="margin-top:50px" class="row">
+                                                Chọn Địa Điểm
+                                            </div>
+                                            <div style="margin-top:50px" class="row">
+                                                <!-- Demo -->
+                                                <div class="col-md-5">
+                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="demo2" title="duallistbox_demo2">
+                                                        <option value="option1" selected="selected">Option 1</option>
+                                                        <option value="option2">Option 2</option>
+                                                        <option value="option3">Option 3</option>
+                                                        <option value="option4">Option 4</option>
+                                                        <option value="option5">Option 5</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2" style="display: flex; flex-direction: column">
+                                                    <button type="button" class="btn btn-primary" style="margin-top: 15px">></button>
+                                                    <button type="button" class="btn btn-primary" style="margin-top: 15px">>></button>
+                                                    <button type="button" class="btn btn-primary" style="margin-top: 15px"><</button>
+                                                    <button type="button" class="btn btn-primary" style="margin-top: 15px"><<</button>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="demo2" title="duallistbox_demo2">
+                                                        <option value="option1" selected="selected">Option 1</option>
+                                                        <option value="option2">Option 2</option>
+                                                        <option value="option3">Option 3</option>
+                                                        <option value="option4">Option 4</option>
+                                                        <option value="option5">Option 5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
+                                    </div>
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
@@ -263,28 +238,28 @@
                                         <button type="button" class="btn btn-success" data-dismiss="modal">Xóa</button>
                                     </div>
 
-                                    </div>
                                 </div>
                             </div>
-                        }
-                    </div>
+                        </div>
+                    }
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th width="100px">Mã Tour</th>
-                                    <th width="100px">Tên Tour</th>
-                                    <th width="130px">Mã Loại Tour</th>
-                                    <th width="400px">Đặc Điểm</th>
-                                    <th>Giá</th>
-                                    <th>#</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (TourDataModel item in ViewBag.tours)
-                                {
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="100px">Mã Tour</th>
+                                <th width="100px">Tên Tour</th>
+                                <th width="130px">Mã Loại Tour</th>
+                                <th width="400px">Đặc Điểm</th>
+                                <th>Giá</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (TourDataModel item in ViewBag.tours)
+                            {
                                 <tr>
                                     <td>@item.matour</td>
                                     <td>@item.tentour</td>
@@ -306,6 +281,9 @@
         </div>
     </div>
 </main>
+
+
+
 
 
 
