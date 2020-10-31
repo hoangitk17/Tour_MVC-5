@@ -26,6 +26,7 @@ namespace Tour_du_lich.Models
         }
     
         public virtual DbSet<chiphi> chiphis { get; set; }
+        public virtual DbSet<ctdoan> ctdoans { get; set; }
         public virtual DbSet<cttour> cttours { get; set; }
         public virtual DbSet<diadiem> diadiems { get; set; }
         public virtual DbSet<doan> doans { get; set; }

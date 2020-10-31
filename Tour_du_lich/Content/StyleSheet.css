@@ -4,6 +4,10 @@
     width: 200px;
 }
 
+input[type=radio] {
+    width: 20px !important;
+}
+
 .modal .modal-dialog .modal-content .modal-body {
-    margin-bottom: 50px !important;
+    margin-bottom: 50px;
 }
