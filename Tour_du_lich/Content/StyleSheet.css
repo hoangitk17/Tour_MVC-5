@@ -1,6 +1,11 @@
 ﻿input, select, textarea {
     border: 1px solid black;
     border-radius: 5px;
+    width: 200px;
+}
+
+input[type=radio] {
+    width: 0px !important;
 }
 
 .modal .modal-dialog .modal-content .modal-body {
