@@ -1,87 +1,47 @@
 ﻿$(function () {
-    $("#btnAddDoan").click(function (e) {
+
+    $("#btnAddChiPhi").click(function (e) {
         e.preventDefault();
-        var Doan = {};
-        Doan.madoan = $("#them-ma-doan").val();
-        Doan.matour = $("#them-ma-tour").val();
-        Doan.ngaybatdau = $("#them-ngay-bat-dau").val();
-        Doan.ngayketthuc = $("#them-ngay-ket-thuc").val();
+        var ChiPhi = {};
+        ChiPhi.ghichu = $("#them-ghi-chu").val();
+        ChiPhi.madoan = $("#them-ma-doan").val();
+        ChiPhi.maloaichiphi = $("#them-ma-loai-chi-phi").val();
+        ChiPhi.giathanh = $("#them-gia-thanh").val();
+        ChiPhi.machiphi = "";
         var flag = true;
-        if (Doan.madoan == "") {
-            alert("mã đoàn không được để trống");
+        if (ChiPhi.maloaichiphi == "") {
+            alert("Mã loại chi phí không được rỗng");
             flag = false;
         }
-        if (Doan.ngaybatdau == "") {
-            alert("thời gian bắt đầu là bắt buộc");
+        if (ChiPhi.madoan == "") {
+            alert("Mã đoàn không được rỗng");
             flag = false;
         }
-        if (Doan.ngayketthuc == "") {
-            alert("thời gian kết thúc là bắt buộc");
+        if (ChiPhi.ghichu == "") {
+            alert("Ghi chú không được rỗng");
+            flag = false;
+        }
+        if (ChiPhi.giathanh == "") {
+            alert("Giá thành không được rỗng");
             flag = false;
         }
         if (flag == false) {
             alert("Dữ liệu chưa nhập đủ");
             return false;
         }
+        console.log(ChiPhi);
         $.ajax({
             type: "POST",
-            url: '/Doan/QuanLyDoan',
-            data: '{Doan: ' + JSON.stringify(Doan) + '}',
+            url: '/ChiPhi/QuanLyChiPhi',
+            data: '{ChiPhi: ' + JSON.stringify(ChiPhi) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Thêm đoàn thành công");
-                    window.location.href = "/Doan/QuanLyDoan";
+                    alert("Phân công nhiệm vụ cho nhân viên thành công");
+                    window.location.href = "/ChiPhi/QuanLyChiPhi";
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã đoàn đã tồn tại");
-
-                }
-
-            },
-            error: function () {
-                alert("Error while inserting data");
-            }
-        });
-        return false;
-    });
-
-    $("#btnEditDoan").click(function (e) {
-        e.preventDefault();
-        var Doan = {};
-        Doan.madoan = $("#sua-ma-doan").val();
-        Doan.matour = $("#sua-ma-tour").val();
-        Doan.ngaybatdau = $("#sua-ngay-bat-dau").val();
-        Doan.ngayketthuc = $("#sua-ngay-ket-thuc").val();
-        var flag = true;
-        if (Doan.madoan == "") {
-            alert("mã đoàn không được để trống");
-            flag = false;
-        }
-        if (Doan.ngaybatdau == "") {
-            alert("thời gian bắt đầu là bắt buộc");
-            flag = false;
-        }
-        if (Doan.ngayketthuc == "") {
-            alert("thời gian kết thúc là bắt buộc");
-            flag = false;
-        }
-        if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
-            return false;
-        }
-        $.ajax({
-            type: "POST",
-            url: '/Doan/EditDoan',
-            data: '{Doan: ' + JSON.stringify(Doan) + '}',
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                if (data.Code == "SUCCESS") {
-                    alert("Sửa thành công", data);
-                    window.location.href = "/Doan/QuanLyDoan";
-                } else if (data.Code == "NOT_EXISTS") {
-                    alert("Mã đoàn không tồn tại");
+                    alert("Mã nhân viên và Mã đoàn này đã tồn tại");
 
                 }
 
@@ -96,9 +56,65 @@
 
     });
 
-    onClickDeleteDoan = (id) => {
+    $("#btnEditChiPhi").click(function (e) {
+        e.preventDefault();
+        var ChiPhi = {};
+        ChiPhi.ghichu = $("#sua-ghi-chu").val();
+        ChiPhi.madoan = $("#sua-ma-doan").val();
+        ChiPhi.maloaichiphi = $("#sua-ma-loai-chi-phi").val();
+        ChiPhi.giathanh = $("#sua-gia-thanh").val();
+        ChiPhi.machiphi = "";
+        var flag = true;
+        if (ChiPhi.maloaichiphi == "") {
+            alert("Mã loại chi phí không được rỗng");
+            flag = false;
+        }
+        if (ChiPhi.madoan == "") {
+            alert("Mã đoàn không được rỗng");
+            flag = false;
+        }
+        if (ChiPhi.ghichu == "") {
+            alert("Ghi chú không được rỗng");
+            flag = false;
+        }
+        if (ChiPhi.giathanh == "") {
+            alert("Giá thành không được rỗng");
+            flag = false;
+        }
+        if (flag == false) {
+            alert("Dữ liệu chưa nhập đủ");
+            return false;
+        }
+        console.log(ChiPhi);
+        $.ajax({
+            type: "POST",
+            url: '/ChiPhi/EditChiPhi',
+            data: '{ChiPhi: ' + JSON.stringify(ChiPhi) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.Code == "SUCCESS") {
+                    alert("Sửa thành công");
+                    window.location.href = "/ChiPhi/QuanLyChiPhi";
+                } else if (data.Code == "NOT_EXISTS") {
+                    alert("Mã loại chi phí và mã đoàn này không tồn tại không tồn tại");
+
+                }
+
+            },
+            error: function (data) {
+                console.log(data);
+                alert("Error while inserting data");
+                alert(data.Message);
+            }
+        });
+        return false;
+
+    });
+
+    onClickDeleteChiPhi = (id_chiphi, id_doan) => {
         Swal.fire({
-            title: 'Bạn có chắc chắn muốn xóa đoàn này?',
+            title: 'Bạn có chắc chắn muốn phân công cho nhân viên này?',
             text: "Không thể khôi phục sau khi xóa!",
             icon: 'warning',
             showCancelButton: true,
@@ -109,8 +125,8 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "POST",
-                    url: '/Doan/DeleteDoan',
-                    data: '{id: ' + JSON.stringify(id) + '}',
+                    url: '/ChiPhi/DeleteChiPhi',
+                    data: '{id_chiphi: ' + JSON.stringify(id_chiphi) + ',id_doan: ' + JSON.stringify(id_doan) + '}',
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
@@ -120,12 +136,12 @@
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            window.location.href = "/Doan/QuanLyDoan";
+                            window.location.href = "/ChiPhi/QuanLyChiPhi";
                         }
 
                     },
                     error: function (data) {
-                        alert(id)
+                        alert(id_chiphi, id_doan)
                         console.log(data);
                         alert("Error while inserting data");
                         alert(data.Message);
@@ -134,36 +150,34 @@
 
             }
         })
-
-
     };
-    onGetInfoDoan = (id) => {
+
+    onGetInfoChiPhi = (id_chiphi , id_doan) => {
 
         $.ajax({
             type: "POST",
-            url: '/Doan/GetDoan',
-            data: '{id: ' + JSON.stringify(id) + '}',
+            url: '/ChiPhi/GetChiPhi',
+            data: '{id_chiphi: ' + JSON.stringify(id_chiphi) + ', id_doan: ' + JSON.stringify(id_doan) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    console.log(data);
+                    $("#sua-ghi-chu").val(data.ghichu);
+                    $("#sua-ma-loai-chi-phi").val(data.maloaichiphi);
+                    $("#sua-gia-thanh").val(data.giathanh);
                     $("#sua-ma-doan").val(data.madoan);
-                    $("#sua-ma-tour").val(data.matour);
-                    $("#sua-ngay-bat-dau").val(data.ngaybatdau);
-                    $("#sua-ngay-ket-thuc").val(data.ngayketthuc);
 
                 }
+
             },
             error: function (data) {
-                alert(id)
+                alert(id_chiphi, id_doan)
                 console.log(data);
                 alert("Error while inserting data");
                 alert(data.Message);
             }
         });
     };
+
 });
-
-
 

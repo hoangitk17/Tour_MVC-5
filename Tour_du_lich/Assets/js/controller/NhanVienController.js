@@ -58,11 +58,11 @@
         nhanvien.diachi = $("#sua-dia-chi-nhan-vien").val();
         var flag = true;
         if (nhanvien.manv == "") {
-            alert("Mã loại tour không được rỗng");
+            alert("Mã nhân viên không được rỗng");
             flag = false;
         }
         if (nhanvien.tennv == "") {
-            alert("Tên loại tour không được rỗng");
+            alert("Tên nhân viên không được rỗng");
             flag = false;
         }
         if (nhanvien.diachi == "") {
@@ -102,7 +102,7 @@
 
     onClickDeleteNhanVien = (id) => {
         Swal.fire({
-            title: 'Bạn có chắc chắn muốn nhân viên này?',
+            title: 'Bạn có chắc chắn muốn xóa nhân viên này?',
             text: "Không thể khôi phục sau khi xóa!",
             icon: 'warning',
             showCancelButton: true,

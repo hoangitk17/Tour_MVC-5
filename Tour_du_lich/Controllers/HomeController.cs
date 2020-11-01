@@ -12,8 +12,7 @@ namespace Tour_du_lich.Controllers
         public ActionResult Index()
         {
             DBTOUREntities DBTour = new DBTOUREntities();
-            var tourList = DBTour.tours.ToList();
-            //return View(tourList);
+            List<tour> tourList = DBTour.tours.ToList();
             if (Session["login"] != null)
             {
                 return View(tourList);

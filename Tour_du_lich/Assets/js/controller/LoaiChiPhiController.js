@@ -1,87 +1,36 @@
 ﻿$(function () {
-    $("#btnAddDoan").click(function (e) {
+
+    $("#btnAddLoaiChiPhi").click(function (e) {
         e.preventDefault();
-        var Doan = {};
-        Doan.madoan = $("#them-ma-doan").val();
-        Doan.matour = $("#them-ma-tour").val();
-        Doan.ngaybatdau = $("#them-ngay-bat-dau").val();
-        Doan.ngayketthuc = $("#them-ngay-ket-thuc").val();
+        var LoaiChiPhi = {};
+        LoaiChiPhi.maloaichiphi = $("#them-ma-loai-chi-phi").val();
+        LoaiChiPhi.tenloaichiphi = $("#them-ten-loai-chi-phi").val();
         var flag = true;
-        if (Doan.madoan == "") {
-            alert("mã đoàn không được để trống");
+        if (LoaiChiPhi.maloaichiphi == "") {
+            alert("Mã loại chi phí không được rỗng");
             flag = false;
         }
-        if (Doan.ngaybatdau == "") {
-            alert("thời gian bắt đầu là bắt buộc");
-            flag = false;
-        }
-        if (Doan.ngayketthuc == "") {
-            alert("thời gian kết thúc là bắt buộc");
+        if (LoaiChiPhi.tenloaichiphi == "") {
+            alert("Tên loại chi phí không được rỗng");
             flag = false;
         }
         if (flag == false) {
             alert("Dữ liệu chưa nhập đủ");
             return false;
         }
+        console.log(LoaiChiPhi);
         $.ajax({
             type: "POST",
-            url: '/Doan/QuanLyDoan',
-            data: '{Doan: ' + JSON.stringify(Doan) + '}',
+            url: '/LoaiChiPhi/QuanLyLoaiChiPhi',
+            data: '{LoaiChiPhi: ' + JSON.stringify(LoaiChiPhi) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Thêm đoàn thành công");
-                    window.location.href = "/Doan/QuanLyDoan";
+                    alert("Thêm loại chi phí thành công");
+                    window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã đoàn đã tồn tại");
-
-                }
-
-            },
-            error: function () {
-                alert("Error while inserting data");
-            }
-        });
-        return false;
-    });
-
-    $("#btnEditDoan").click(function (e) {
-        e.preventDefault();
-        var Doan = {};
-        Doan.madoan = $("#sua-ma-doan").val();
-        Doan.matour = $("#sua-ma-tour").val();
-        Doan.ngaybatdau = $("#sua-ngay-bat-dau").val();
-        Doan.ngayketthuc = $("#sua-ngay-ket-thuc").val();
-        var flag = true;
-        if (Doan.madoan == "") {
-            alert("mã đoàn không được để trống");
-            flag = false;
-        }
-        if (Doan.ngaybatdau == "") {
-            alert("thời gian bắt đầu là bắt buộc");
-            flag = false;
-        }
-        if (Doan.ngayketthuc == "") {
-            alert("thời gian kết thúc là bắt buộc");
-            flag = false;
-        }
-        if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
-            return false;
-        }
-        $.ajax({
-            type: "POST",
-            url: '/Doan/EditDoan',
-            data: '{Doan: ' + JSON.stringify(Doan) + '}',
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                if (data.Code == "SUCCESS") {
-                    alert("Sửa thành công", data);
-                    window.location.href = "/Doan/QuanLyDoan";
-                } else if (data.Code == "NOT_EXISTS") {
-                    alert("Mã đoàn không tồn tại");
+                    alert("Mã loại chi phí đã tồn tại");
 
                 }
 
@@ -96,9 +45,54 @@
 
     });
 
-    onClickDeleteDoan = (id) => {
+    $("#btnEditLoaiChiPhi").click(function (e) {
+        e.preventDefault();
+        var LoaiChiPhi = {};
+        LoaiChiPhi.maloaichiphi = $("#sua-ma-loai-chi-phi").val();
+        LoaiChiPhi.tenloaichiphi = $("#sua-ten-loai-chi-phi").val();
+        var flag = true;
+        if (LoaiChiPhi.maloaichiphi == "") {
+            alert("Mã loại chi phí không được rỗng");
+            flag = false;
+        }
+        if (LoaiChiPhi.tenloaichiphi == "") {
+            alert("Tên loại chi phí không được rỗng");
+            flag = false;
+        }
+        if (flag == false) {
+            alert("Dữ liệu chưa nhập đủ");
+            return false;
+        }
+        console.log(LoaiChiPhi);
+        $.ajax({
+            type: "POST",
+            url: '/LoaiChiPhi/EditLoaiChiPhi',
+            data: '{LoaiChiPhi: ' + JSON.stringify(LoaiChiPhi) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.Code == "SUCCESS") {
+                    alert("Sửa thành công");
+                    window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
+                } else if (data.Code == "NOT_EXISTS") {
+                    alert("Mã loại chi phí không tồn tại");
+
+                }
+
+            },
+            error: function (data) {
+                console.log(data);
+                alert("Error while inserting data");
+                alert(data.Message);
+            }
+        });
+        return false;
+
+    });
+
+    onClickDeleteLoaiChiPhi = (id) => {
         Swal.fire({
-            title: 'Bạn có chắc chắn muốn xóa đoàn này?',
+            title: 'Bạn có chắc chắn muốn xóa loại chi phí này?',
             text: "Không thể khôi phục sau khi xóa!",
             icon: 'warning',
             showCancelButton: true,
@@ -109,7 +103,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "POST",
-                    url: '/Doan/DeleteDoan',
+                    url: '/LoaiChiPhi/DeleteLoaiChiPhi',
                     data: '{id: ' + JSON.stringify(id) + '}',
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
@@ -120,7 +114,7 @@
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            window.location.href = "/Doan/QuanLyDoan";
+                            window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
                         }
 
                     },
@@ -134,26 +128,23 @@
 
             }
         })
-
-
     };
-    onGetInfoDoan = (id) => {
+
+    onGetInfoLoaiChiPhi = (id) => {
 
         $.ajax({
             type: "POST",
-            url: '/Doan/GetDoan',
+            url: '/LoaiChiPhi/GetLoaiChiPhi',
             data: '{id: ' + JSON.stringify(id) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    console.log(data);
-                    $("#sua-ma-doan").val(data.madoan);
-                    $("#sua-ma-tour").val(data.matour);
-                    $("#sua-ngay-bat-dau").val(data.ngaybatdau);
-                    $("#sua-ngay-ket-thuc").val(data.ngayketthuc);
+                    $("#sua-ma-loai-chi-phi").val(data.maloaichiphi);
+                    $("#sua-ten-loai-chi-phi").val(data.tenloaichiphi);
 
                 }
+
             },
             error: function (data) {
                 alert(id)
@@ -163,7 +154,6 @@
             }
         });
     };
+
 });
-
-
 

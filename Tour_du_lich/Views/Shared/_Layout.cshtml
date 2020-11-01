@@ -7,10 +7,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Quản Lý Du Lịch</title>
-    <link href="~/Assets/css/styles.css?number=random" rel="stylesheet" />
+    <link href="~/Assets/css/styles.css?v=<%=version %>" rel="stylesheet" />
     <link href="~/Content/StyleSheet.css?v=<%=version %>" rel="stylesheet" />
-    <link href="~/Assets/css/diadiem.css?number=random" rel="stylesheet" type="text/css" />
-    <link href="~/Assets/css/StyleSheet1.scss?number=random" />
+    <link href="~/Assets/css/diadiem.css?v=<%=version %>" rel="stylesheet" type="text/css" />
+    <link href="~/Assets/css/StyleSheet1.scss?v=<%=version %>" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
 </head>
@@ -74,6 +74,11 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="~/Assets/js/controller/NhanVienController.js?number=random"></script>
     <script src="~/Assets/js/controller/TourController.js?v=<%=version %>"></script>
+    <script src="~/Assets/js/controller/KhachHangController.js?version=100"></script>
+    <script src="~/Assets/js/controller/LoaiChiPhiController.js?version=100"></script>
+    <script src="~/Assets/js/controller/DoanController.js?version=100"></script>
+    <script src="~/Assets/js/controller/PhanCongController.js?version=100"></script>
+    <script src="~/Assets/js/controller/ChiPhiController.js?version=100"></script>
     @RenderSection("ClientScript", false)
 
 

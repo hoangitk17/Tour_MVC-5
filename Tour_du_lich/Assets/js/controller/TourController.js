@@ -104,7 +104,6 @@
     });
     /////////////////////////////////////////////////////
     $("#btnAddTour").click(function (e) {
-        alert("here");
         e.preventDefault();
         var tour = {};
         tour.matour = $("#ma-tour-them").val();
@@ -133,8 +132,14 @@
             alert("Dữ liệu chưa nhập đủ");
             return false;
         }
-        console.log(tour);
-        alert("Data ok");
+        if (tour.diadiems.length == 0) {
+            Swal.fire(
+                'Lỗi!',
+                'Địa điểm không được để trống',
+                'error'
+            )
+            return false;
+        }
         $.ajax({
             type: "POST",
             url: '/Tour/QuanLyTour',
@@ -143,11 +148,19 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Thêm Tour thành công");
-                    window.location.href = "/Tour/QuanLyTour";
-                    $('#close-them-dia-diem').click();
+                    Swal.fire(
+                        'Thành Công!',
+                        'Thêm tour thành công',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/Tour/QuanLyTour";
+                    });
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã tour đã tồn tại");
+                    Swal.fire(
+                        'Thêm thất bại!',
+                        'Mã tour đã tồn tại. Vui lòng nhập mã tour khác',
+                        'error'
+                    )
 
                 }
 
@@ -239,11 +252,13 @@
                     success: function (data) {
                         if (data.Code == "SUCCESS") {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Xóa thành công!',
+                                'Xóa tour thành công',
                                 'success'
-                            )
-                            window.location.href = "/Tour/QuanLyTour";
+                            ).then((value) => {
+                                window.location.href = "/Tour/QuanLyTour";
+                            });
+                          
                         } else if (data.Code == "EXISTS_FOREIGN_KEY") {
                             Swal.fire(
                                 'Xóa thất bại!',
