@@ -11,7 +11,7 @@ namespace Tour_du_lich.Models
         public string tentour { get; set; }
         public string maloai { get; set; }
         public string dacdiem { get; set; }
-
+        public List<DiaDiemModel> diadiems { get; set; }
 
         public Nullable<double> giamacdinh { get; set; }
 
@@ -19,13 +19,14 @@ namespace Tour_du_lich.Models
         {
 
         }
-        public TourDataModel(string matour, String tentour, String maloai, string dacdiem, Nullable<double> giamacdinh)
+        public TourDataModel(string matour, String tentour, String maloai, string dacdiem, Nullable<double> giamacdinh, List<DiaDiemModel> diadiems)
         {
             this.matour = matour;
             this.maloai = maloai;
             this.tentour = tentour;
             this.dacdiem = dacdiem;
             this.giamacdinh = giamacdinh;
+            this.diadiems = diadiems;
         }
     }
 }

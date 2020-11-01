@@ -11,5 +11,6 @@ namespace Tour_du_lich.Models
 		public static String FAIL = "FAIL";
 		public static String EXISTS = "EXISTS";
 		public static String NOT_EXISTS = "NOT_EXISTS";
+		public static String EXISTS_FOREIGN_KEY = "EXISTS_FOREIGN_KEY";
 	}
 }
