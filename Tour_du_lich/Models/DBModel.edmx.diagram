@@ -10,12 +10,12 @@
         <EntityTypeShape EntityType="DBTOURModel.cttour" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.diadiem" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.doan" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.gia" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.khachhang" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.loaichiphi" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.gia" Width="1.5" PointX="1.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.khachhang" Width="1.5" PointX="6.375" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.loaichiphi" Width="1.5" PointX="9.5" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.loaitour" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.nhanvien" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.phancong" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.nhanvien" Width="1.5" PointX="7.375" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.phancong" Width="1.5" PointX="4.625" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.tour" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
         <AssociationConnector Association="DBTOURModel.FK__chiphi__madoan__4AB81AF0" ManuallyRouted="false" />

@@ -27,7 +27,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Thêm mã loại tour thành công");
+                    alert("Thêm loại tour thành công");
                     window.location.href = "/LoaiTour/QuanLyLoaiTour";         
                 } else if (data.Code == "EXISTS") {
                     alert("Mã loại tour đã tồn tại");

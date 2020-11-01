@@ -1,33 +1,34 @@
-﻿@{
-    ViewBag.Title = "QuanLyDoan";
+﻿
+@{
+    ViewBag.Title = "QuanLyChiPhi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using Tour_du_lich.Models
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Quản Lý Đoàn</h1>
+        <h1 class="mt-4">Quản Lý Chi Phí</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
             <li class="breadcrumb-item active">Quản Lý</li>
-            <li class="breadcrumb-item active">Quản Lý Đoàn</li>
+            <li class="breadcrumb-item active">Quản Lý Chi Phí</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header" style="display: flex; justify-content: space-between">
                 <div>
                     <i class="fas fa-table mr-1"></i>
-                    Bảng Thông Tin Đoàn
+                    Bảng Thông Tin Chi Phí
                 </div>
                 <div>
                     <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAdd">
                         <a style="color: white; text-decoration: none;" href="#" data-toggle="collapse">
-                            Thêm Đoàn
+                            Thêm Chi Phí
                             <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
                         </a>
                     </button>
 
                     <!-- The Modal -->
-                    @using (Html.BeginForm("QuanLyDoan", "Doan", FormMethod.Post))
+                    @using (Html.BeginForm("QuanLyChiPhi", "ChiPhi", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
@@ -35,7 +36,7 @@
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
-                                        <h4 class="modal-title">Thêm Đoàn</h4>
+                                        <h4 class="modal-title">Thêm Chi Phí</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
@@ -45,42 +46,46 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Đoàn
+                                                        Mã Loại Chi Phí
                                                     </div>
                                                     <div>
-                                                        <input id="them-ma-doan"/>
+                                                        <select id="them-ma-loai-chi-phi" style="color: black">
+                                                            @foreach (LoaiChiPhiModel item in ViewBag.loaichiphis)
+                                                            {
+                                                                <option value="@item.maloaichiphi">@item.maloaichiphi</option>
+                                                            }
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Tour
+                                                        Mã Đoàn
                                                     </div>
                                                     <div>
-                                                        <select id="them-ma-tour" style="color: black">
-                                                            @foreach (TourDataModel item in ViewBag.tours)
+                                                        <select id="them-ma-doan" style="color: black">
+                                                            @foreach (DoanModel item in ViewBag.doans)
                                                             {
-                                                                <option value="@item.matour">@item.matour</option>
+                                                                <option value="@item.madoan">@item.madoan</option>
                                                             }
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Bắt Đầu
+                                                        Giá Thành
                                                     </div>
                                                     <div>
-                                                        <input type="date" id="them-ngay-bat-dau"/>
+                                                        <input type="text" id="them-gia-thanh"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Kết Thúc
+                                                        Ghi Chú
                                                     </div>
                                                     <div>
-                                                        <input type="date" id="them-ngay-ket-thuc"/>
+                                                        <textarea id="them-ghi-chu"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,7 +95,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button id="btnAddDoan" type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
+                                        <button id="btnAddChiPhi" type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
                                     </div>
 
                                 </div>
@@ -98,7 +103,7 @@
                         </div>
                     }
                     <!-- The Modal -->
-                    @using (Html.BeginForm("EditDoan", "Doan", FormMethod.Post))
+                    @using (Html.BeginForm("EditChiPhi", "ChiPhi", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalEdit">
                             <div class="modal-dialog">
@@ -106,7 +111,7 @@
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
-                                        <h4 class="modal-title">Sửa Đoàn</h4>
+                                        <h4 class="modal-title">Sửa Chi Phí</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
@@ -116,42 +121,46 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Đoàn
+                                                        Mã Loại Chi Phí
                                                     </div>
                                                     <div>
-                                                        <input id="sua-ma-doan" disabled/>
+                                                        <select id="sua-ma-loai-chi-phi" style="color: black" disabled>
+                                                            @foreach (LoaiChiPhiModel item in ViewBag.loaichiphis)
+                                                            {
+                                                                <option value="@item.maloaichiphi">@item.maloaichiphi</option>
+                                                            }
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Tour
+                                                        Mã Đoàn
                                                     </div>
                                                     <div>
-                                                        <select id="sua-ma-tour" style="color: black">
-                                                            @foreach (TourDataModel item in ViewBag.tours)
+                                                        <select id="sua-ma-doan" style="color: black" disabled>
+                                                            @foreach (DoanModel item in ViewBag.doans)
                                                             {
-                                                                <option value="@item.matour">@item.matour</option>
+                                                                <option value="@item.madoan">@item.madoan</option>
                                                             }
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Bắt Đầu
+                                                        Giá Thành
                                                     </div>
                                                     <div>
-                                                        <input type="date" id="sua-ngay-bat-dau"/>
+                                                        <input type="text" id="sua-gia-thanh"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Kết Thúc
+                                                        Ghi Chú
                                                     </div>
                                                     <div>
-                                                        <input type="date" id="sua-ngay-ket-thuc"/>
+                                                        <textarea id="sua-ghi-chu"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -161,7 +170,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button id="btnEditDoan" type="button" class="btn btn-success" data-dismiss="modal">Sửa</button>
+                                        <button id="btnEditChiPhi" type="button" class="btn btn-success" data-dismiss="modal">Sửa</button>
                                     </div>
 
                                 </div>
@@ -169,7 +178,7 @@
                         </div>
                     }
                     <!-- The Modal -->
-                    @using (Html.BeginForm("DeleteDoan", "Doan", FormMethod.Post))
+                    @using (Html.BeginForm("DeleteChiPhi", "ChiPhi", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalDelete">
                             <div class="modal-dialog">
@@ -177,13 +186,13 @@
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
-                                        <h4 class="modal-title">Xóa Đoàn</h4>
+                                        <h4 class="modal-title">Xóa Chi Phí</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div>Bạn có muốn xóa đoàn này không?</div>
+                                        <div>Bạn có muốn xóa Chi Phí này không?</div>
                                     </div>
 
                                     <!-- Modal footer -->
@@ -203,24 +212,24 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th width="200px">Mã Đoàn</th>
-                                <th width="200px">Mã Tour</th>
-                                <th width="300px">Ngày Bắt Đầu</th>
-                                <th>Ngày Kết Thúc</th>
+                                <th width="20%">Mã Loại Chi Phí</th>
+                                <th width="20%">Mã Đoàn</th>
+                                <th width="15%">Giá Thành</th>
+                                <th width="35%">Ghi Chú</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (DoanModel item in ViewBag.doans)
+                            @foreach (ChiPhiModel item in ViewBag.chiphis)
                             {
                             <tr>
+                                <td>@item.maloaichiphi</td>
                                 <td>@item.madoan</td>
-                                <td>@item.matour</td>
-                                <td>@item.ngaybatdau</td>
-                                <td>@item.ngayketthuc</td>
+                                <td>@String.Format("{0:0,0 vnđ}", @item.giathanh)</td>
+                                <td>@item.ghichu</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoDoan('@item.madoan')">Sửa</button>
-                                    <button type="button" class="btn btn-danger" onclick="onClickDeleteDoan('@item.madoan')">
+                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoChiPhi('@item.maloaichiphi','@item.madoan')">Sửa</button>
+                                    <button type="button" class="btn btn-danger" onclick="onClickDeleteChiPhi('@item.maloaichiphi','@item.madoan')">
                                         Xóa
                                     </button>
                                 </td>
@@ -233,4 +242,8 @@
         </div>
     </div>
 </main>
+
+
+
+
 

@@ -8,15 +8,19 @@ using Tour_du_lich.Dao;
 
 namespace Tour_du_lich.Controllers
 {
-    public class DoanController : Controller
+    public class ChiPhiController : Controller
     {
-        DoanDao gDao = new DoanDao();
-        TourDao tDao = new TourDao();
-        // GET: Doan
-        public ActionResult QuanLyDoan()
+        DoanDao d = new DoanDao();
+        LoaiChiPhiDao lcp = new LoaiChiPhiDao();
+        ChiPhiDao cp = new ChiPhiDao();
+
+        // GET: ChiPhi
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult QuanLyChiPhi()
         {
-            ViewBag.doans = gDao.GetAllDoan();
-            ViewBag.tours = tDao.GetAllTour();
+            ViewBag.doans = d.GetAllDoan();
+            ViewBag.loaichiphis = lcp.GetAllLoaiChiPhi();
+            ViewBag.chiphis = cp.GetAllChiPhi();
             if (Session["login"] != null)
             {
                 return View();
@@ -28,47 +32,19 @@ namespace Tour_du_lich.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditDoan(DoanModel doan)
+        public ActionResult QuanLyChiPhi(ChiPhiModel ChiPhi)
         {
-            DoanDao doanDao = new DoanDao();
+            ChiPhiDao ChiPhiDao = new ChiPhiDao();
             try
             {
                 string code;
-                if (doanDao.ExistId(doan.madoan) == false)
-                {
-                    code = Constants.NOT_EXISTS;
-                }
-                else
-                {
-                    doanDao.Update(doan);
-                    code = Constants.SUCCESS;
-                }
-
-                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
-            }
-            catch (Exception ex)
-            {
-                string message = ex.Message;
-                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
-            }
-        }
-
-        // POST: Create a đoàn
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult QuanLyDoan(DoanModel Doan)
-        {
-
-            try
-            {
-                string code;
-
-                if (gDao.ExistId(Doan.madoan))
+                if (ChiPhiDao.ExistId(ChiPhi.maloaichiphi, ChiPhi.madoan))
                 {
                     code = Constants.EXISTS;
                 }
                 else
                 {
-                    gDao.AddDoan(Doan);
+                    ChiPhiDao.AddChiPhi(ChiPhi);
                     code = Constants.SUCCESS;
                 }
 
@@ -76,17 +52,18 @@ namespace Tour_du_lich.Controllers
             }
             catch (Exception ex)
             {
-                string message = "FAIL";
+                string message = ex.Message;
                 return Json(new { Message = message, JsonRequestBehavior.AllowGet });
             }
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult DeleteDoan(string id)
+        public ActionResult DeleteChiPhi(string id_chiphi, string id_doan)
         {
+            ChiPhiDao ChiPhiDao = new ChiPhiDao();
             try
             {
-                gDao.Delete(id);
+                ChiPhiDao.Delete(id_chiphi, id_doan);
                 string code = Constants.SUCCESS;
                 return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }
@@ -98,24 +75,42 @@ namespace Tour_du_lich.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult GetDoan(string id)
+        public ActionResult GetChiPhi(string id_chiphi, string id_doan)
         {
+            ChiPhiDao ChiPhiDao = new ChiPhiDao();
             try
             {
-                DoanModel Doan = gDao.GetDoan(id);
+                ChiPhiModel ChiPhi = ChiPhiDao.GetChiPhiById(id_chiphi, id_doan);
                 string code = Constants.SUCCESS;
-                DateTime ngaybatdau = Convert.ToDateTime(Doan.ngaybatdau.ToString());
-                DateTime ngayketthuc = Convert.ToDateTime(Doan.ngayketthuc.ToString());
+                return Json(new { Code = code, machiphi = ChiPhi.machiphi, maloaichiphi = ChiPhi.maloaichiphi, madoan = ChiPhi.madoan, giathanh = ChiPhi.giathanh, ghichu = ChiPhi.ghichu, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
 
-                return Json(new
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditChiPhi(ChiPhiModel ChiPhi)
+        {
+            ChiPhiDao ChiPhiDao = new ChiPhiDao();
+            try
+            {
+                string code;
+                if (ChiPhiDao.ExistId(ChiPhi.maloaichiphi, ChiPhi.madoan) == false)
                 {
-                    Code = code,
-                    madoan = Doan.madoan,
-                    matour = Doan.matour,
-                    ngaybatdau = ngaybatdau.ToString("yyyy-MM-dd"),
-                    ngayketthuc = ngayketthuc.ToString("yyyy-MM-dd"),
-                    JsonRequestBehavior.AllowGet
-                });
+                    code = Constants.NOT_EXISTS;
+                }
+                else
+                {
+                    ChiPhiDao.Update(ChiPhi);
+                    code = Constants.SUCCESS;
+                }
+
+                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }
             catch (Exception ex)
             {
@@ -124,4 +119,6 @@ namespace Tour_du_lich.Controllers
             }
         }
     }
+
+    
 }

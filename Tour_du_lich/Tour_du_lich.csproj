@@ -134,13 +134,20 @@
     <Compile Include="Controllers\GiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachController.cs" />
+    <Compile Include="Controllers\LoaiChiPhiController.cs" />
     <Compile Include="Controllers\LoaiTourController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ChiPhiController.cs" />
+    <Compile Include="Controllers\PhanCongController.cs" />
     <Compile Include="Dao\DiaDiemDao.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\TourController.cs" />
+    <Compile Include="Dao\DoanDao.cs" />
     <Compile Include="Dao\GiaDao.cs" />
     <Compile Include="Dao\KhachDao.cs" />
+    <Compile Include="Dao\LoaiChiPhiDao.cs" />
+    <Compile Include="Dao\ChiPhiDao.cs" />
+    <Compile Include="Dao\PhanCongDao.cs" />
     <Compile Include="Dao\NhanVienDao.cs" />
     <Compile Include="Dao\LoaiTourDao.cs" />
     <Compile Include="Dao\TourDao.cs" />
@@ -185,6 +192,7 @@
     <Compile Include="Models\khachhang.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DoanModel.cs" />
     <Compile Include="Models\loaichiphi.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -195,6 +203,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\KhachModel.cs" />
+    <Compile Include="Models\LoaiChiPhiModel.cs" />
+    <Compile Include="Models\ChiPhiModel.cs" />
+    <Compile Include="Models\PhanCongModel.cs" />
     <Compile Include="Models\NhanVienModel.cs" />
     <Compile Include="Models\LoaiTourModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -223,6 +234,9 @@
     <Content Include="Assets\js\controller\GiaController.js" />
     <Content Include="Assets\js\controller\KhachHangController.js" />
     <Content Include="Assets\js\controller\LoaiTourController.js" />
+    <Content Include="Assets\js\controller\LoaiChiPhiController.js" />
+    <Content Include="Assets\js\controller\ChiPhiController.js" />
+    <Content Include="Assets\js\controller\PhanCongController.js" />
     <Content Include="Assets\js\controller\NhanVienController.js" />
     <Content Include="Assets\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -287,6 +301,9 @@
     <Content Include="Views\DiaDiem\QuanLyDiaDiem.cshtml" />
     <Content Include="Views\LoaiTour\QuanLyLoaiTour.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\LoaiChiPhi\QuanLyLoaiChiPhi.cshtml" />
+    <Content Include="Views\PhanCong\QuanLyPhanCong.cshtml" />
+    <Content Include="Views\ChiPhi\QuanLyChiPhi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

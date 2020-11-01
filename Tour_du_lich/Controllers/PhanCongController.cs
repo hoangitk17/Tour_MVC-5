@@ -8,15 +8,19 @@ using Tour_du_lich.Dao;
 
 namespace Tour_du_lich.Controllers
 {
-    public class DoanController : Controller
+    public class PhanCongController : Controller
     {
-        DoanDao gDao = new DoanDao();
-        TourDao tDao = new TourDao();
-        // GET: Doan
-        public ActionResult QuanLyDoan()
+        DoanDao d = new DoanDao();
+        NhanVienDao nv = new NhanVienDao();
+        PhanCongDao pc = new PhanCongDao();
+
+        // GET: PhanCong
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult QuanLyPhanCong()
         {
-            ViewBag.doans = gDao.GetAllDoan();
-            ViewBag.tours = tDao.GetAllTour();
+            ViewBag.doans = d.GetAllDoan();
+            ViewBag.phancongs = pc.GetAllPhanCong();
+            ViewBag.nhanviens = nv.GetAllNhanVien();
             if (Session["login"] != null)
             {
                 return View();
@@ -28,47 +32,19 @@ namespace Tour_du_lich.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditDoan(DoanModel doan)
+        public ActionResult QuanLyPhanCong(PhanCongModel PhanCong)
         {
-            DoanDao doanDao = new DoanDao();
+            PhanCongDao PhanCongDao = new PhanCongDao();
             try
             {
                 string code;
-                if (doanDao.ExistId(doan.madoan) == false)
-                {
-                    code = Constants.NOT_EXISTS;
-                }
-                else
-                {
-                    doanDao.Update(doan);
-                    code = Constants.SUCCESS;
-                }
-
-                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
-            }
-            catch (Exception ex)
-            {
-                string message = ex.Message;
-                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
-            }
-        }
-
-        // POST: Create a đoàn
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult QuanLyDoan(DoanModel Doan)
-        {
-
-            try
-            {
-                string code;
-
-                if (gDao.ExistId(Doan.madoan))
+                if (PhanCongDao.ExistId(PhanCong.manv, PhanCong.madoan))
                 {
                     code = Constants.EXISTS;
                 }
                 else
                 {
-                    gDao.AddDoan(Doan);
+                    PhanCongDao.AddPhanCong(PhanCong);
                     code = Constants.SUCCESS;
                 }
 
@@ -76,17 +52,18 @@ namespace Tour_du_lich.Controllers
             }
             catch (Exception ex)
             {
-                string message = "FAIL";
+                string message = ex.Message;
                 return Json(new { Message = message, JsonRequestBehavior.AllowGet });
             }
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult DeleteDoan(string id)
+        public ActionResult DeletePhanCong(string id_nv, string id_doan)
         {
+            PhanCongDao PhanCongDao = new PhanCongDao();
             try
             {
-                gDao.Delete(id);
+                PhanCongDao.Delete(id_nv, id_doan);
                 string code = Constants.SUCCESS;
                 return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }
@@ -98,24 +75,42 @@ namespace Tour_du_lich.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult GetDoan(string id)
+        public ActionResult GetPhanCong(string id_nv, string id_doan)
         {
+            PhanCongDao PhanCongDao = new PhanCongDao();
             try
             {
-                DoanModel Doan = gDao.GetDoan(id);
+                PhanCongModel PhanCong = PhanCongDao.GetPhanCongById(id_nv, id_doan);
                 string code = Constants.SUCCESS;
-                DateTime ngaybatdau = Convert.ToDateTime(Doan.ngaybatdau.ToString());
-                DateTime ngayketthuc = Convert.ToDateTime(Doan.ngayketthuc.ToString());
+                return Json(new { Code = code, manv = PhanCong.manv, madoan = PhanCong.madoan, nhiemvu = PhanCong.nhiemvu, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
 
-                return Json(new
+
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditPhanCong(PhanCongModel PhanCong)
+        {
+            PhanCongDao PhanCongDao = new PhanCongDao();
+            try
+            {
+                string code;
+                if (PhanCongDao.ExistId(PhanCong.manv, PhanCong.madoan) == false)
                 {
-                    Code = code,
-                    madoan = Doan.madoan,
-                    matour = Doan.matour,
-                    ngaybatdau = ngaybatdau.ToString("yyyy-MM-dd"),
-                    ngayketthuc = ngayketthuc.ToString("yyyy-MM-dd"),
-                    JsonRequestBehavior.AllowGet
-                });
+                    code = Constants.NOT_EXISTS;
+                }
+                else
+                {
+                    PhanCongDao.Update(PhanCong);
+                    code = Constants.SUCCESS;
+                }
+
+                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }
             catch (Exception ex)
             {
@@ -124,4 +119,6 @@ namespace Tour_du_lich.Controllers
             }
         }
     }
+
+    
 }
