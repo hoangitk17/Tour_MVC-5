@@ -48,7 +48,7 @@
                                                         Mã Khách Hàng
                                                     </div>
                                                     <div>
-                                                        <input type="text" />
+                                                        <input type="text" id="them-ma-khach-hang"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -56,7 +56,7 @@
                                                         Tên Khách Hàng
                                                     </div>
                                                     <div>
-                                                        <input type="text" />
+                                                        <input type="text" id="them-ten-khach-hang"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,7 +66,7 @@
                                                         Địa chỉ
                                                     </div>
                                                     <div>
-                                                        <textarea></textarea>
+                                                        <textarea id="them-dia-chi-khach-hang"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -74,7 +74,7 @@
                                                         Số Điện Thoại
                                                     </div>
                                                     <div>
-                                                        <input type="number" />
+                                                        <input type="number" id="them-so-dien-thoai-khach-hang"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,13 +85,13 @@
                                                     </div>
                                                     <div>
                                                         <div class="form-check-inline">
-                                                            <label class="form-check-label" for="name">
-                                                                <input type="radio" class="form-check-input" id="Nam" name="gender" value="name" checked>Nam
+                                                            <label class="form-check-label" for="nam">
+                                                                <input type="radio" class="form-check-input" id="Nam" name="gender" value="Nam" checked>Nam
                                                             </label>
                                                         </div>
                                                         <div class="form-check-inline">
                                                             <label class="form-check-label" for="nu">
-                                                                <input type="radio" class="form-check-input" id="Nu" name="gender" value="nu">Nữ
+                                                                <input type="radio" class="form-check-input" id="Nu" name="gender" value="Nữ">Nữ
                                                             </label>
                                                         </div>
                                                     </div>
@@ -101,7 +101,7 @@
                                                         Số cmnd
                                                     </div>
                                                     <div>
-                                                        <input type="number" />
+                                                        <input type="number" id="them-cmnd-khach-hang"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,7 +111,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
+                                        <button id="btnAddKhachHang" type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
                                     </div>
 
                                 </div>
@@ -119,7 +119,7 @@
                         </div>
                     }
                     <!-- The Modal -->
-                    @using (Html.BeginForm("QuanLyKhach", "Khach", FormMethod.Post))
+                    @using (Html.BeginForm("EditKhach", "Khach", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalEdit">
                             <div class="modal-dialog">
@@ -140,7 +140,7 @@
                                                         Mã Khách Hàng
                                                     </div>
                                                     <div>
-                                                        <input type="text" />
+                                                        <input type="text" id="sua-ma-khach-hang" disabled/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -148,7 +148,7 @@
                                                         Tên Khách Hàng
                                                     </div>
                                                     <div>
-                                                        <input type="text" />
+                                                        <input type="text" id="sua-ten-khach-hang"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -158,7 +158,7 @@
                                                         Địa chỉ
                                                     </div>
                                                     <div>
-                                                        <textarea></textarea>
+                                                        <textarea id="sua-dia-chi-khach-hang"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -166,7 +166,7 @@
                                                         Số Điện Thoại
                                                     </div>
                                                     <div>
-                                                        <input type="number" />
+                                                        <input type="number" id="sua-so-dien-thoai-khach-hang"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,13 +177,13 @@
                                                     </div>
                                                     <div>
                                                         <div class="form-check-inline">
-                                                            <label class="form-check-label" for="radio1">
-                                                                <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Nam
+                                                            <label class="form-check-label" for="namEdit">
+                                                                <input type="radio" class="form-check-input" id="NamEdit" name="genderEdit" value="Nam">Nam
                                                             </label>
                                                         </div>
                                                         <div class="form-check-inline">
-                                                            <label class="form-check-label" for="radio2">
-                                                                <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Nữ
+                                                            <label class="form-check-label" for="nuEdit">
+                                                                <input type="radio" class="form-check-input" id="NuEdit" name="genderEdit" value="Nữ">Nữ
                                                             </label>
                                                         </div>
                                                     </div>
@@ -193,7 +193,7 @@
                                                         Số cmnd
                                                     </div>
                                                     <div>
-                                                        <input type="number" />
+                                                        <input type="number" id="sua-cmnd-khach-hang"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,7 +203,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">Sửa</button>
+                                        <button id="btnEditKhach" type="button" class="btn btn-success" data-dismiss="modal">Sửa</button>
                                     </div>
 
                                 </div>
@@ -211,7 +211,7 @@
                         </div>
                     }
                     <!-- The Modal -->
-                    @using (Html.BeginForm("QuanLyKhach", "Khach", FormMethod.Post))
+                    @using (Html.BeginForm("DeleteKhach", "Khach", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalDelete">
                             <div class="modal-dialog">
@@ -267,9 +267,9 @@
                                 <td>@item.giotinh</td>
                                 <td>@item.cmnd</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" data-id="@item.makh"><a style="text-decoration: none; color:#FFFFFF" href="#">Sửa</a></button>
-                                    <button data-toggle="modal" data-target="#myModalDelete" type="button" class="btn btn-danger" data-id="@item.makh">
-                                        <a style="text-decoration: none; color:#FFFFFF" href="#">Xóa</a>
+                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoKhachHang('@item.makh')">Sửa</button>
+                                    <button type="button" class="btn btn-danger" onclick="onClickDeleteKhachHang('@item.makh')">
+                                        Xóa
                                     </button>
                                 </td>
                             </tr>

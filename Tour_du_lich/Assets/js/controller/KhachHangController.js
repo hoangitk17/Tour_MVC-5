@@ -2,41 +2,52 @@
 
     $("#btnAddKhachHang").click(function (e) {
         e.preventDefault();
-        var nhanvien = {};
-        nhanvien.manv = $("#them-ma-khach-hang").val();
-        nhanvien.tennv = $("#them-ten-khach-hang").val();
-        nhanvien.diachi = $("#them-dia-chi-khach-hang").val();
-        $("input[name='gender']:checked").val();
+        var Khach = {};
+        Khach.makh = $("#them-ma-khach-hang").val();
+        Khach.tenkh = $("#them-ten-khach-hang").val();
+        Khach.diachi = $("#them-dia-chi-khach-hang").val();
+        Khach.sdt = $("#them-so-dien-thoai-khach-hang").val();
+        Khach.gioitinh = $("input[name='gender']:checked").val();
+        Khach.cmnd = $("#them-cmnd-khach-hang").val();
+        
         var flag = true;
-        if (nhanvien.manv == "") {
-            alert("Mã nhân viên không được rỗng");
+        if (Khach.makh == "") {
+            alert("Mã khách hàng không được rỗng");
             flag = false;
         }
-        if (nhanvien.tennv == "") {
-            alert("Tên nhân viên không được rỗng");
+        if (Khach.tenkh == "") {
+            alert("Tên khách hàng không được rỗng");
             flag = false;
         }
-        if (nhanvien.diachi == "") {
+        if (Khach.diachi == "") {
             alert("Địa chỉ không được rỗng");
+            flag = false;
+        }
+        if (Khach.sdt == "") {
+            alert("Số điện thoại không được rỗng");
+            flag = false;
+        }
+        if (Khach.cmnd == "") {
+            alert("Chứng minh nhân dân không được rỗng");
             flag = false;
         }
         if (flag == false) {
             alert("Dữ liệu chưa nhập đủ");
             return false;
         }
-        console.log(nhanvien);
+        console.log(Khach);
         $.ajax({
             type: "POST",
-            url: '/NhanVien/QuanLyNhanVien',
-            data: '{nhanvien: ' + JSON.stringify(nhanvien) + '}',
+            url: '/Khach/QuanLyKhach',
+            data: '{Khach: ' + JSON.stringify(Khach) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Thêm nhân viên thành công");
-                    window.location.href = "/NhanVien/QuanLyNhanVien";
+                    alert("Thêm khách hàng thành công");
+                    window.location.href = "/Khach/QuanLyKhach";
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã nhân viên đã tồn tại");
+                    alert("Mã khách hàng đã tồn tại");
 
                 }
 
@@ -51,42 +62,54 @@
 
     });
 
-    $("#btnEditNhanVien").click(function (e) {
+    $("#btnEditKhach").click(function (e) {
         e.preventDefault();
-        var nhanvien = {};
-        nhanvien.manv = $("#sua-ma-khach-hang").val();
-        nhanvien.tennv = $("#sua-ten-khach-hang").val();
-        nhanvien.diachi = $("#sua-dia-chi-khach-hang").val();
+        var Khach = {};
+        Khach.makh = $("#sua-ma-khach-hang").val();
+        Khach.tenkh = $("#sua-ten-khach-hang").val();
+        Khach.diachi = $("#sua-dia-chi-khach-hang").val();
+        Khach.sdt = $("#sua-so-dien-thoai-khach-hang").val();
+        Khach.gioitinh = $("input[name='genderEdit']:checked").val();
+        Khach.cmnd = $("#sua-cmnd-khach-hang").val();
+
         var flag = true;
-        if (nhanvien.manv == "") {
-            alert("Mã loại tour không được rỗng");
+        if (Khach.makh == "") {
+            alert("Mã khách hàng không được rỗng");
             flag = false;
         }
-        if (nhanvien.tennv == "") {
-            alert("Tên loại tour không được rỗng");
+        if (Khach.tenkh == "") {
+            alert("Tên khách hàng không được rỗng");
             flag = false;
         }
-        if (nhanvien.diachi == "") {
+        if (Khach.diachi == "") {
             alert("Địa chỉ không được rỗng");
+            flag = false;
+        }
+        if (Khach.sdt == "") {
+            alert("Số điện thoại không được rỗng");
+            flag = false;
+        }
+        if (Khach.cmnd == "") {
+            alert("Chứng minh nhân dân không được rỗng");
             flag = false;
         }
         if (flag == false) {
             alert("Dữ liệu chưa nhập đủ");
             return false;
         }
-        console.log(nhanvien);
+        console.log(Khach);
         $.ajax({
             type: "POST",
-            url: '/NhanVien/EditNhanVien',
-            data: '{nhanvien: ' + JSON.stringify(nhanvien) + '}',
+            url: '/Khach/EditKhach',
+            data: '{Khach: ' + JSON.stringify(Khach) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
                     alert("Sửa thành công");
-                    window.location.href = "/NhanVien/QuanLynhanvien";
+                    window.location.href = "/Khach/QuanLyKhach";
                 } else if (data.Code == "NOT_EXISTS") {
-                    alert("Mã nhân viên không tồn tại");
+                    alert("Mã Khách không tồn tại");
 
                 }
 
@@ -101,9 +124,9 @@
 
     });
 
-    onClickDeleteNhanVien = (id) => {
+    onClickDeleteKhachHang = (id) => {
         Swal.fire({
-            title: 'Bạn có chắc chắn muốn nhân viên này?',
+            title: 'Bạn có chắc chắn muốn xóa khách hàng này?',
             text: "Không thể khôi phục sau khi xóa!",
             icon: 'warning',
             showCancelButton: true,
@@ -114,7 +137,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "POST",
-                    url: '/NhanVien/DeleteNhanVien',
+                    url: '/Khach/DeleteKhach',
                     data: '{id: ' + JSON.stringify(id) + '}',
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
@@ -125,7 +148,7 @@
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            window.location.href = "/NhanVien/QuanLyNhanVien";
+                            window.location.href = "/Khach/QuanLyKhach";
                         }
 
                     },
@@ -141,23 +164,25 @@
         })
     };
 
-    onGetInfoNhanVien = (id) => {
+    onGetInfoKhachHang = (id) => {
 
         $.ajax({
             type: "POST",
-            url: '/NhanVien/GetNhanVien',
+            url: '/Khach/GetKhach',
             data: '{id: ' + JSON.stringify(id) + '}',
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    $("#sua-ma-khach-hang").val(data.manv);
-                    $("#sua-ten-khach-hang").val(data.tennv);
+                    $("#sua-ma-khach-hang").val(data.makh);
+                    $("#sua-ten-khach-hang").val(data.tenkh);
                     $("#sua-dia-chi-khach-hang").val(data.diachi);
+                    $("#sua-so-dien-thoai-khach-hang").val(data.sdt);
+                    $("#sua-cmnd-khach-hang").val(data.cmnd);
                     if (data.gioitinh == "Nam") {
-                        $("#Nam").prop("checked", true);
+                        $("#NamEdit").prop("checked", true);
                     } else {
-                        $("#Nu").prop("checked", true);
+                        $("#NuEdit").prop("checked", true);
                     }
 
                 }

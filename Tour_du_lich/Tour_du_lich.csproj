@@ -140,6 +140,7 @@
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Dao\GiaDao.cs" />
+    <Compile Include="Dao\KhachDao.cs" />
     <Compile Include="Dao\NhanVienDao.cs" />
     <Compile Include="Dao\LoaiTourDao.cs" />
     <Compile Include="Global.asax.cs">
@@ -191,6 +192,7 @@
     <Compile Include="Models\nhanvien.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\KhachModel.cs" />
     <Compile Include="Models\NhanVienModel.cs" />
     <Compile Include="Models\LoaiTourModel.cs" />
     <Compile Include="Models\LoginModel.cs" />

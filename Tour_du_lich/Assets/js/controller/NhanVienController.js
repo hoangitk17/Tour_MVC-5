@@ -102,7 +102,7 @@
 
     onClickDeleteNhanVien = (id) => {
         Swal.fire({
-            title: 'Bạn có chắc chắn muốn nhân viên này?',
+            title: 'Bạn có chắc chắn muốn xóa nhân viên này?',
             text: "Không thể khôi phục sau khi xóa!",
             icon: 'warning',
             showCancelButton: true,
