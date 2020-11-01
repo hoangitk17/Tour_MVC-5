@@ -136,13 +136,14 @@
     <Compile Include="Controllers\KhachController.cs" />
     <Compile Include="Controllers\LoaiTourController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Dao\DiaDiemDAO.cs" />
+    <Compile Include="Dao\DiaDiemDao.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\TourController.cs" />
     <Compile Include="Dao\GiaDao.cs" />
     <Compile Include="Dao\KhachDao.cs" />
     <Compile Include="Dao\NhanVienDao.cs" />
     <Compile Include="Dao\LoaiTourDao.cs" />
+    <Compile Include="Dao\TourDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +181,7 @@
     <Compile Include="Models\gia.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GiaModel.cs" />
     <Compile Include="Models\khachhang.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

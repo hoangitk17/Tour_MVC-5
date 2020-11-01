@@ -2,8 +2,7 @@
     ViewBag.Title = "QuanLyTour";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@model List<Tour_du_lich.Models.tour>
+@using Tour_du_lich.Models
 
 <main>
     <div class="container-fluid">
@@ -109,9 +108,9 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            </div>
                                         </div>
-                                    
+                                    </div>
+
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
@@ -259,7 +258,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (TourDataModel item in ViewBag.tours)
                             {
                                 <tr>
                                     <td>@item.matour</td>
@@ -282,6 +281,9 @@
         </div>
     </div>
 </main>
+
+
+
 
 
 

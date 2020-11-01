@@ -1,7 +1,5 @@
 ﻿$(function () {
 
-    
-
     $("#btnAddLoaiTour").click(function (e) {
         e.preventDefault();
         var loaitour = {};
@@ -93,70 +91,69 @@
     });
 
 
+    onDeleteLoaiTour = (id) => {
+        Swal.fire({
+            title: 'Bạn có chắc chắn muốn xóa loại tour này?',
+            text: "Không thể khôi phục sau khi xóa!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "POST",
+                    url: '/LoaiTour/DeleteTour',
+                    data: '{id: ' + JSON.stringify(id) + '}',
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        if (data.Code == "SUCCESS") {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                            window.location.href = "/LoaiTour/QuanLyLoaiTour";
+                        }
 
+                    },
+                    error: function (data) {
+                        alert(id)
+                        console.log(data);
+                        alert("Error while inserting data");
+                        alert(data.Message);
+                    }
+                });
+
+            }
+        })
+    };
+
+    onGetInfoLoaiTour = (id) => {
+
+        $.ajax({
+            type: "POST",
+            url: '/LoaiTour/GetLoaiTour',
+            data: '{id: ' + JSON.stringify(id) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.Code == "SUCCESS") {
+                    $("#sua-ma-loai-tour").val(data.maloai);
+                    $("#sua-ten-loai-tour").val(data.tenloai);
+
+                }
+
+            },
+            error: function (data) {
+                alert(id)
+                console.log(data);
+                alert("Error while inserting data");
+                alert(data.Message);
+            }
+        });
+    };
 });
 
-onClickDeleteTour = (id) => {
-    Swal.fire({
-        title: 'Bạn có chắc chắn muốn xóa loại tour này?',
-        text: "Không thể khôi phục sau khi xóa!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                type: "POST",
-                url: '/LoaiTour/DeleteTour',
-                data: '{id: ' + JSON.stringify(id) + '}',
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if (data.Code == "SUCCESS") {
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                        window.location.href = "/LoaiTour/QuanLyLoaiTour";
-                    } 
-
-                },
-                error: function (data) {
-                    alert(id)
-                    console.log(data);
-                    alert("Error while inserting data");
-                    alert(data.Message);
-                }
-            });
-           
-        }
-    })
-};
-
-onGetInfoTour = (id) => {
-    
-            $.ajax({
-                type: "POST",
-                url: '/LoaiTour/GetLoaiTour',
-                data: '{id: ' + JSON.stringify(id) + '}',
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if (data.Code == "SUCCESS") {
-                        $("#sua-ma-loai-tour").val(data.maloai);
-                        $("#sua-ten-loai-tour").val(data.tenloai);
-                       
-                    }
-
-                },
-                error: function (data) {
-                    alert(id)
-                    console.log(data);
-                    alert("Error while inserting data");
-                    alert(data.Message);
-                }
-            });
-};
