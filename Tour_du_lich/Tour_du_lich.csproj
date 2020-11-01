@@ -157,6 +157,7 @@
     <Compile Include="Models\chiphi.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiTietTourModel.cs" />
     <Compile Include="Models\ctdoan.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -238,6 +239,7 @@
     <Content Include="Assets\js\controller\ChiPhiController.js" />
     <Content Include="Assets\js\controller\PhanCongController.js" />
     <Content Include="Assets\js\controller\NhanVienController.js" />
+    <Content Include="Assets\js\controller\TourController.js" />
     <Content Include="Assets\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
