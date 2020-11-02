@@ -7,8 +7,14 @@
         gia.tgbd = $("#tgbd-them").val();
         gia.tgkt = $("#tgkt-them").val();
         gia.giatien = $("#gia-tien-them").val();
+        var date_start = new Date($('#tgbd-them').val());
+        var date_end = new Date($('#tgkt-them').val());
         var flag = true;
         var result = "";
+        if (date_start.getTime() > date_end.getTime()) {
+            result += "Thời gian không hợp lệ<br/>";
+            flag = false;
+        }
         if (gia.magia == "") {
             result += "Mã giá không được để trống<br/>";
             flag = false;

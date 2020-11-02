@@ -15,18 +15,18 @@
 
 </head>
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="justify-content:space-between">
         <a class="navbar-brand" href="/Home">Travelling</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        @*<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Tìm Kiếm..." aria-label="Search" aria-describedby="basic-addon2" />
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
                 </div>
             </div>
-        </form>
+        </form>*@
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto ml-md-0">
             <li class="nav-item dropdown">
@@ -70,13 +70,13 @@
     <script src="~/Assets/assets/demo/datatables-demo.js"></script>
     <script src="~/Assets/js/controller/LoaiTourController.js?version=101" type="text/javascript" crossorigin="anonymous"></script>
     <script src="~/Assets/js/controller/DiaDiemController.js?version=100"></script>
-    <script src="~/Assets/js/controller/GiaController.js?version=100"></script>
+    <script src="~/Assets/js/controller/GiaController.js?version=102"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="~/Assets/js/controller/NhanVienController.js?version=101"></script>
-    <script src="~/Assets/js/controller/TourController.js?version=100"></script>
+    <script src="~/Assets/js/controller/TourController.js?version=102"></script>
     <script src="~/Assets/js/controller/KhachHangController.js?version=100"></script>
     <script src="~/Assets/js/controller/LoaiChiPhiController.js?version=101"></script>
-    <script src="~/Assets/js/controller/DoanController.js?version=100"></script>
+    <script src="~/Assets/js/controller/DoanController.js?version=102"></script>
     <script src="~/Assets/js/controller/PhanCongController.js?version=101"></script>
     <script src="~/Assets/js/controller/ChiPhiController.js?version=100"></script>
     @RenderSection("ClientScript", false)

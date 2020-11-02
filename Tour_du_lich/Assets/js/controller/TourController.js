@@ -201,6 +201,14 @@
             Swal.fire("Dữ liệu chưa nhập đủ");
             return false;
         }
+        if (tour.diadiems.length == 0) {
+            Swal.fire(
+                'Lỗi!',
+                'Địa điểm không được để trống',
+                'error'
+            )
+            return false;
+        }
         $.ajax({
             type: "POST",
             url: '/Tour/EditTour',
@@ -240,7 +248,8 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Đồng Ý',
+            cancelButtonText: 'Hủy'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
