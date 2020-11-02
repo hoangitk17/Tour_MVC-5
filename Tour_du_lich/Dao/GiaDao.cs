@@ -27,6 +27,8 @@ namespace Tour_du_lich.Dao
             {
                 var gia = DB.gias.Find(g.magia);
                 gia.giatien = g.giatien;
+                gia.tgbd = g.tgbd;
+                gia.tgkt = g.tgkt;
                 DB.SaveChanges();
                 return true;
             }

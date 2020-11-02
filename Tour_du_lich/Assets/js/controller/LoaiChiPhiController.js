@@ -6,19 +6,23 @@
         LoaiChiPhi.maloaichiphi = $("#them-ma-loai-chi-phi").val();
         LoaiChiPhi.tenloaichiphi = $("#them-ten-loai-chi-phi").val();
         var flag = true;
+        var result = "";
         if (LoaiChiPhi.maloaichiphi == "") {
-            alert("Mã loại chi phí không được rỗng");
+            result += "Mã loại chi phí không được rỗng<br/>";
             flag = false;
         }
         if (LoaiChiPhi.tenloaichiphi == "") {
-            alert("Tên loại chi phí không được rỗng");
+            result += "Tên loại chi phí không được rỗng<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
             return false;
         }
-        console.log(LoaiChiPhi);
         $.ajax({
             type: "POST",
             url: '/LoaiChiPhi/QuanLyLoaiChiPhi',
@@ -26,19 +30,24 @@
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                if (data.Code == "SUCCESS") {
-                    alert("Thêm loại chi phí thành công");
-                    window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
+                if (data.Code == "SUCCESS") {             
+                    Swal.fire(
+                        'Thông Báo',
+                        'Thêm thành công!',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
+                    });
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã loại chi phí đã tồn tại");
+                    Swal.fire("Mã loại chi phí đã tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -51,19 +60,23 @@
         LoaiChiPhi.maloaichiphi = $("#sua-ma-loai-chi-phi").val();
         LoaiChiPhi.tenloaichiphi = $("#sua-ten-loai-chi-phi").val();
         var flag = true;
+        var result = "";
         if (LoaiChiPhi.maloaichiphi == "") {
-            alert("Mã loại chi phí không được rỗng");
+            result += "Mã loại chi phí không được rỗng<br/>";
             flag = false;
         }
         if (LoaiChiPhi.tenloaichiphi == "") {
-            alert("Tên loại chi phí không được rỗng");
+            result += "Tên loại chi phí không được rỗng<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
             return false;
         }
-        console.log(LoaiChiPhi);
         $.ajax({
             type: "POST",
             url: '/LoaiChiPhi/EditLoaiChiPhi',
@@ -72,18 +85,23 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Sửa thành công");
-                    window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
+                    Swal.fire(
+                        'Thông Báo',
+                        'Sửa thành công!',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
+                    });
                 } else if (data.Code == "NOT_EXISTS") {
-                    alert("Mã loại chi phí không tồn tại");
+                    Swal.fire("Mã loại chi phí không tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -98,7 +116,8 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Đồng ý',
+            cancelButtonText: 'Hủy'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -110,19 +129,20 @@
                     success: function (data) {
                         if (data.Code == "SUCCESS") {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Thông Báo',
+                                'Xóa thành công!',
                                 'success'
-                            )
-                            window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
+                            ).then((value) => {
+                                window.location.href = "/LoaiChiPhi/QuanLyLoaiChiPhi";
+                            });
                         }
 
                     },
                     error: function (data) {
-                        alert(id)
+                        Swal.fire(id)
                         console.log(data);
-                        alert("Error while inserting data");
-                        alert(data.Message);
+                        Swal.fire("Error while inserting data<br/>");
+                        Swal.fire(data.Message);
                     }
                 });
 
@@ -147,10 +167,10 @@
 
             },
             error: function (data) {
-                alert(id)
+                Swal.fire(id)
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
     };

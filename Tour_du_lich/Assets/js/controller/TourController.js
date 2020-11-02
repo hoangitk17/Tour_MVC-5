@@ -2,7 +2,7 @@
     $('#btn-add-them').click(function (e) {
         var selectedOpts = $('#list-add-1 option:selected');
         if (selectedOpts.length == 0) {
-            alert("Nothing to add.");
+            Swal.fire("Nothing to add.");
             e.preventDefault();
         } else {
             $('#list-add-2').append($(selectedOpts).clone());
@@ -14,7 +14,7 @@
     $('#btn-remove-them').click(function (e) {
         var selectedOpts = $('#list-add-2 option:selected');
         if (selectedOpts.length == 0) {
-            alert("Nothing to move.");
+            Swal.fire("Nothing to move.");
             e.preventDefault();
         } else {
             $(selectedOpts).remove();
@@ -27,7 +27,7 @@
     $('#btn-up-them').click(function (e) {
         var selectedOpts = $('#list-add-2 option:selected');
         if (selectedOpts.length == 0) {
-            alert("Nothing to move.");
+            Swal.fire("Nothing to move.");
             e.preventDefault();
         } else {
             $('#list-add-2 option:selected').each(function () {
@@ -40,7 +40,7 @@
     $('#btn-down-them').click(function (e) {
         var selectedOpts = $('#list-add-2 option:selected');
         if (selectedOpts.length == 0) {
-            alert("Nothing to move.");
+            Swal.fire("Nothing to move.");
             e.preventDefault();
         } else {
             $('#list-add-2 option:selected').each(function () {
@@ -54,7 +54,7 @@
     $('#btn-add-sua').click(function (e) {
         var selectedOpts = $('#list-edit-1 option:selected');
         if (selectedOpts.length == 0) {
-            alert("Nothing to add.");
+            Swal.fire("Nothing to add.");
             e.preventDefault();
         } else {
             $('#list-edit-2').append($(selectedOpts).clone());
@@ -66,7 +66,7 @@
     $('#btn-remove-sua').click(function (e) {
         var selectedOpts = $('#list-edit-2 option:selected');
         if (selectedOpts.length == 0) {
-            alert("Nothing to move.");
+            Swal.fire("Nothing to move.");
             e.preventDefault();
         } else {
             $(selectedOpts).remove();
@@ -79,7 +79,7 @@
     $('#btn-up-sua').click(function (e) {
         var selectedOpts = $('#list-edit-2 option:selected');
         if (selectedOpts.length == 0) {
-            alert("Nothing to move.");
+            Swal.fire("Nothing to move.");
             e.preventDefault();
         } else {
             $('#list-edit-2 option:selected').each(function () {
@@ -92,7 +92,7 @@
     $('#btn-down-sua').click(function (e) {
         var selectedOpts = $('#list-edit-2 option:selected');
         if (selectedOpts.length == 0) {
-            alert("Nothing to move.");
+            Swal.fire("Nothing to move.");
             e.preventDefault();
         } else {
             $('#list-edit-2 option:selected').each(function () {
@@ -129,7 +129,7 @@
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire("Dữ liệu chưa nhập đủ");
             return false;
         }
         if (tour.diadiems.length == 0) {
@@ -166,7 +166,7 @@
 
             },
             error: function () {
-                alert("Error while inserting data");
+                Swal.fire("Error while inserting data");
             }
         });
         return false;
@@ -198,7 +198,7 @@
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire("Dữ liệu chưa nhập đủ");
             return false;
         }
         $.ajax({
@@ -218,13 +218,13 @@
                     });
                    
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã tour đã tồn tại");
+                    Swal.fire("Mã tour đã tồn tại");
 
                 }
 
             },
             error: function () {
-                alert("Error while inserting data");
+                Swal.fire("Error while inserting data");
             }
         });
         return false;
@@ -270,10 +270,10 @@
 
                     },
                     error: function (data) {
-                        alert(id)
+                        Swal.fire(id)
                         console.log(data);
-                        alert("Error while inserting data");
-                        alert(data.Message);
+                        Swal.fire("Error while inserting data");
+                        Swal.fire(data.Message);
                     }
                 });
 
@@ -308,10 +308,10 @@
 
             },
             error: function (data) {
-                alert(id)
+                Swal.fire(id)
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data");
+                Swal.fire(data.Message);
             }
         });
     };

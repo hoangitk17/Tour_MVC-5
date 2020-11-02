@@ -11,31 +11,35 @@
         Khach.cmnd = $("#them-cmnd-khach-hang").val();
         
         var flag = true;
+        var result = "";
         if (Khach.makh == "") {
-            alert("Mã khách hàng không được rỗng");
+            result += "Mã khách hàng không được rỗng<br/>";
             flag = false;
         }
         if (Khach.tenkh == "") {
-            alert("Tên khách hàng không được rỗng");
+            result += "Tên khách hàng không được rỗng<br/>";
             flag = false;
         }
         if (Khach.diachi == "") {
-            alert("Địa chỉ không được rỗng");
+            result += "Địa chỉ không được rỗng<br/>";
             flag = false;
         }
         if (Khach.sdt == "") {
-            alert("Số điện thoại không được rỗng");
+            result += "Số điện thoại không được rỗng<br/>";
             flag = false;
         }
         if (Khach.cmnd == "") {
-            alert("Chứng minh nhân dân không được rỗng");
+            result += "Chứng minh nhân dân không được rỗng<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
             return false;
         }
-        console.log(Khach);
         $.ajax({
             type: "POST",
             url: '/Khach/QuanLyKhach',
@@ -43,19 +47,24 @@
             dataType: "json",
             contentType: "application/json; charset=utf-8",
             success: function (data) {
-                if (data.Code == "SUCCESS") {
-                    alert("Thêm khách hàng thành công");
-                    window.location.href = "/Khach/QuanLyKhach";
+                if (data.Code == "SUCCESS") {   
+                    Swal.fire(
+                        'Thông Báo',
+                        'Thêm thành công!',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/Khach/QuanLyKhach";
+                    });
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã khách hàng đã tồn tại");
+                    Swal.fire("Mã khách hàng đã tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -73,28 +82,33 @@
         Khach.cmnd = $("#sua-cmnd-khach-hang").val();
 
         var flag = true;
+        var result = "";
         if (Khach.makh == "") {
-            alert("Mã khách hàng không được rỗng");
+            result += "Mã khách hàng không được rỗng<br/>";
             flag = false;
         }
         if (Khach.tenkh == "") {
-            alert("Tên khách hàng không được rỗng");
+            result += "Tên khách hàng không được rỗng<br/>";
             flag = false;
         }
         if (Khach.diachi == "") {
-            alert("Địa chỉ không được rỗng");
+            result += "Địa chỉ không được rỗng<br/>";
             flag = false;
         }
         if (Khach.sdt == "") {
-            alert("Số điện thoại không được rỗng");
+            result += "Số điện thoại không được rỗng<br/>";
             flag = false;
         }
         if (Khach.cmnd == "") {
-            alert("Chứng minh nhân dân không được rỗng");
+            result += "Chứng minh nhân dân không được rỗng<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
             return false;
         }
         console.log(Khach);
@@ -106,18 +120,23 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Sửa thành công");
-                    window.location.href = "/Khach/QuanLyKhach";
+                    Swal.fire(
+                        'Thông Báo',
+                        'Sửa thành công!',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/Khach/QuanLyKhach";
+                    });
                 } else if (data.Code == "NOT_EXISTS") {
-                    alert("Mã Khách không tồn tại");
+                    Swal.fire("Mã Khách không tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -132,7 +151,8 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Đồng ý',
+            cancelButtonText: 'Hủy'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -144,19 +164,20 @@
                     success: function (data) {
                         if (data.Code == "SUCCESS") {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Thông Báo',
+                                'Xóa thành công!',
                                 'success'
-                            )
-                            window.location.href = "/Khach/QuanLyKhach";
+                            ).then((value) => {
+                                window.location.href = "/Khach/QuanLyKhach";
+                            });
                         }
 
                     },
                     error: function (data) {
-                        alert(id)
+                        Swal.fire(id)
                         console.log(data);
-                        alert("Error while inserting data");
-                        alert(data.Message);
+                        Swal.fire("Error while inserting data<br/>");
+                        Swal.fire(data.Message);
                     }
                 });
 
@@ -189,10 +210,10 @@
 
             },
             error: function (data) {
-                alert(id)
+                Swal.fire(id)
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
     };

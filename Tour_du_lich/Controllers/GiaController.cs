@@ -27,29 +27,35 @@ namespace Tour_du_lich.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Edit(gia gia)
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditGia(gia gia)
         {
-            if(ModelState.IsValid)
+            try
             {
-                
-                var result = gDao.Update(gia);
-                if (result)
+                string code;
+                if (gDao.ExistId(gia.magia) == false)
                 {
-                    return RedirectToAction("QuanLyGia","Gia");
-                }else
-                {
-                    ModelState.AddModelError("", "Cập nhật giá thành công");
+                    code = Constants.NOT_EXISTS;
                 }
+                else
+                {
+                    gDao.Update(gia);
+                    code = Constants.SUCCESS;
+                }
+
+                return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }
-            return View("QuanLyGia");
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
         }
 
         // POST: Create a dia diem
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult QuanLyGia(GiaModel gia)
         {
-
 
             try
             {
@@ -72,12 +78,6 @@ namespace Tour_du_lich.Controllers
                 string message = "FAIL";
                 return Json(new { Message = message, JsonRequestBehavior.AllowGet });
             }
-        }
-
-        [HttpGet]
-        public ActionResult Edit()
-        {
-            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

@@ -83,7 +83,7 @@ namespace Tour_du_lich.Dao
             if (d != null)
             {
                 d.tennv = nhanvienupdate.tennv;
-                d.diachi = nhanvienupdate.manv;
+                d.diachi = nhanvienupdate.diachi;
             }
             DB.SaveChanges();
         }
