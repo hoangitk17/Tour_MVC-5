@@ -70,6 +70,15 @@ namespace Tour_du_lich.Dao
         public DoanModel GetDoan(string id)
         {
             doan temp = DB.doans.SingleOrDefault(d => d.madoan == id);
+            List<KhachModel> khachs = (from ct in DB.ctdoans
+                                           join kh in DB.khachhangs
+                                           on ct.makh equals kh.makh
+                                       where ct.madoan == id
+                                       select new KhachModel()
+                                           {
+                                               makh = ct.makh,
+                                               tenkh = kh.tenkh
+                                           }).ToList();
             DoanModel g = new DoanModel();
             if (temp != null)
             {
@@ -77,6 +86,7 @@ namespace Tour_du_lich.Dao
                 g.matour = temp.matour;
                 g.ngaybatdau = temp.ngaybatdau;
                 g.ngayketthuc = temp.ngayketthuc;
+                g.khachs = khachs;
             }
 
             return g;
@@ -121,10 +131,24 @@ namespace Tour_du_lich.Dao
 
                 DB.doans.Add(data);
                 DB.SaveChanges();
+                if (Doan.khachs != null)
+                {
+                    foreach (KhachModel khach in Doan.khachs)
+                    {
+                        ctdoan ct = new ctdoan();
+                        ct.makh = khach.makh;
+                        ct.madoan = Doan.madoan;
+
+                        DB.ctdoans.Add(ct);
+                        DB.SaveChanges();
+
+                    }
+                }
+               
             }
             catch (Exception e)
             {
-
+                
             }
         }
     }
