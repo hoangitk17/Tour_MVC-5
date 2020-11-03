@@ -1,6 +1,5 @@
 ﻿$(function () {
     $("#btnAddGia").click(function (e) {
-        alert("here");
         e.preventDefault();
         var gia = {};
         gia.magia = $("#ma-gia-them").val();
@@ -8,29 +7,38 @@
         gia.tgbd = $("#tgbd-them").val();
         gia.tgkt = $("#tgkt-them").val();
         gia.giatien = $("#gia-tien-them").val();
+        var date_start = new Date($('#tgbd-them').val());
+        var date_end = new Date($('#tgkt-them').val());
         var flag = true;
+        var result = "";
+        if (date_start.getTime() > date_end.getTime()) {
+            result += "Thời gian không hợp lệ<br/>";
+            flag = false;
+        }
         if (gia.magia == "") {
-            alert("mã giá không được để trống");
+            result += "Mã giá không được để trống<br/>";
             flag = false;
         }
         if (gia.tgbd == "") {
-            alert("thời gian bắt đầu là bắt buộc");
+            result += "Thời gian bắt đầu là bắt buộc<br/>";
             flag = false;
         }
         if (gia.tgkt == "") {
-            alert("thời gian kết thúc là bắt buộc");
+            result += "Thời gian kết thúc là bắt buộc<br/>";
             flag = false;
         }
         if (gia.giatien == "") {
-            alert("giá tiền không được để trống");
+            result += "Giá tiền không được để trống<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            );
             return false;
         }
-        alert("Data ok");
-        console.log({ gia });
         $.ajax({
             type: "POST",
             url: '/Gia/QuanLyGia',
@@ -39,17 +47,21 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Thêm giá tour thành công");
-                    window.location.href = "/Gia/QuanLyGia";
-                    $('#close-them-dia-diem').click();
+                    Swal.fire(
+                        'Thông Báo',
+                        'Thêm thành công!',
+                        'success',
+                    ).then((value) => {
+                        window.location.href = "/Gia/QuanLyGia";
+                    });
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã địa điểm đã tồn tại");
+                    Swal.fire("Mã địa điểm đã tồn tại<br/>");
 
                 }
 
             },
             error: function () {
-                alert("Error while inserting data");
+                Swal.fire("Error while inserting data<br/>");
             }
         });
         return false;
@@ -63,29 +75,38 @@
         gia.tgbd = $("#tgbd-sua").val();
         gia.tgkt = $("#tgkt-sua").val();
         gia.giatien = $("#gia-tien-sua").val();
+        var date_start = new Date($('#tgbd-sua').val());
+        var date_end = new Date($('#tgkt-sua').val());
         var flag = true;
+        var result = "";
+        if (date_start.getTime() > date_end.getTime()) {
+            result += "Thời gian không hợp lệ<br/>";
+            flag = false;
+        }
         if (gia.magia == "") {
-            alert("mã giá không được để trống");
+            result += "Mã giá không được để trống<br/>";
             flag = false;
         }
         if (gia.tgbd == "") {
-            alert("thời gian bắt đầu là bắt buộc");
+            result += "Thời gian bắt đầu là bắt buộc<br/>";
             flag = false;
         }
         if (gia.tgkt == "") {
-            alert("thời gian kết thúc là bắt buộc");
+            result += "Thời gian kết thúc là bắt buộc<br/>";
             flag = false;
         }
         if (gia.giatien == "") {
-            alert("giá tiền không được để trống");
+            result += "Giá tiền không được để trống<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            );
             return false;
         }
-        alert("Data ok");
-        console.log({ gia });
         $.ajax({
             type: "POST",
             url: '/Gia/EditGia',
@@ -94,18 +115,23 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Sửa thành công");
-                    window.location.href = "/Gia/QuanLyGia";
+                    Swal.fire(
+                        'Thông Báo',
+                        'Sửa thành công!',
+                        'success',
+                    ).then((value) => {
+                        window.location.href = "/Gia/QuanLyGia";
+                    });
                 } else if (data.Code == "NOT_EXISTS") {
-                    alert("Mã loại tour không tồn tại");
+                    Swal.fire("Mã giá không tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -120,7 +146,8 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Đồng ý',
+            cancelButtonText: 'Hủy'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -132,19 +159,20 @@
                     success: function (data) {
                         if (data.Code == "SUCCESS") {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
-                            window.location.href = "/Gia/QuanLyGia";
+                                'Thông Báo',
+                                'Xóa thành công!',
+                                'success',
+                            ).then((value) => {
+                                window.location.href = "/Gia/QuanLyGia";
+                            });
                         }
 
                     },
                     error: function (data) {
-                        alert(id)
+                        Swal.fire(id)
                         console.log(data);
-                        alert("Error while inserting data");
-                        alert(data.Message);
+                        Swal.fire("Error while inserting data<br/>");
+                        Swal.fire(data.Message);
                     }
                 });
 
@@ -173,10 +201,10 @@
                 }
             },
             error: function (data) {
-                alert(id)
+                Swal.fire(id)
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
     };

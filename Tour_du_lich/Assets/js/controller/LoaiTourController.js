@@ -6,19 +6,23 @@
         loaitour.maloai = $("#them-ma-loai-tour").val();
         loaitour.tenloai = $("#them-ten-loai-tour").val();
         var flag = true;
+        var result = "";
         if (loaitour.maloai == "") {
-            alert("Mã loại tour không được rỗng");
+            result += "Mã loại tour không được rỗng<br/>";
             flag = false;
         }
         if (loaitour.tenloai == "") {
-            alert("Tên loại tour không được rỗng");
+            result += "Tên loại tour không được rỗng<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
             return false;
         }
-        console.log(loaitour);
         $.ajax({
             type: "POST",
             url: '/LoaiTour/QuanLyLoaiTour',
@@ -27,18 +31,23 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Thêm loại tour thành công");
-                    window.location.href = "/LoaiTour/QuanLyLoaiTour";         
+                    Swal.fire(
+                        'Thông Báo',
+                        'Thêm thành công!',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/LoaiTour/QuanLyLoaiTour";
+                    });
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã loại tour đã tồn tại");
+                    Swal.fire("Mã loại tour đã tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -51,19 +60,23 @@
         loaitour.maloai = $("#sua-ma-loai-tour").val();
         loaitour.tenloai = $("#sua-ten-loai-tour").val();
         var flag = true;
+        var result = "";
         if (loaitour.maloai == "") {
-            alert("Mã loại tour không được rỗng");
+            result += "Mã loại tour không được rỗng<br/>";
             flag = false;
         }
         if (loaitour.tenloai == "") {
-            alert("Tên loại tour không được rỗng");
+            result += "Tên loại tour không được rỗng<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
             return false;
         }
-        console.log(loaitour);
         $.ajax({
             type: "POST",
             url: '/LoaiTour/EditLoaiTour',
@@ -72,18 +85,23 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Sửa thành công");
-                    window.location.href = "/LoaiTour/QuanLyLoaiTour";
+                    Swal.fire(
+                        'Thông Báo',
+                        'Sửa thành công!',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/LoaiTour/QuanLyLoaiTour";
+                    });
                 } else if (data.Code == "NOT_EXISTS") {
-                    alert("Mã loại tour không tồn tại");
+                    Swal.fire("Mã loại tour không tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -99,7 +117,8 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Đồng Ý',
+            cancelButtonText: 'Hủy'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -111,19 +130,20 @@
                     success: function (data) {
                         if (data.Code == "SUCCESS") {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Thông Báo',
+                                'Xóa thành công!',
                                 'success'
-                            )
-                            window.location.href = "/LoaiTour/QuanLyLoaiTour";
+                            ).then((value) => {
+                                window.location.href = "/LoaiTour/QuanLyLoaiTour";
+                            });
                         }
 
                     },
                     error: function (data) {
-                        alert(id)
+                        Swal.fire(id)
                         console.log(data);
-                        alert("Error while inserting data");
-                        alert(data.Message);
+                        Swal.fire("Error while inserting data<br/>");
+                        Swal.fire(data.Message);
                     }
                 });
 
@@ -148,10 +168,10 @@
 
             },
             error: function (data) {
-                alert(id)
+                Swal.fire(id)
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
     };

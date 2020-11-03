@@ -129,7 +129,7 @@
                                                         Mã Giá Tour
                                                     </div>
                                                     <div>
-                                                        <input id="ma-gia-sua"/>
+                                                        <input id="ma-gia-sua" disabled/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -181,7 +181,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button type="button" class="btn btn-success" id="btnEditGia">Sửa</button>
+                                        <button class="btn btn-success" id="btnEditGia">Sửa</button>
                                     </div>
 
                                 </div>
@@ -248,12 +248,6 @@
                                         Xóa
                                     </button>
                                 </td>
-                                @*@Ajax.ActionLink("Xóa", "Delete", new { @id = item.magia }, new AjaxOptions
-                                {
-                                    Confirm="Bạn có muốn xóa bản ghi này?",
-                                    OnComplete = "$('#row_"+@item.magia+"').remove()",
-                                    HttpMethod = "Delete"
-                                })*@
                             </tr>
                             }
                         </tbody>

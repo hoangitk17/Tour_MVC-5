@@ -12,10 +12,14 @@ namespace Tour_du_lich.Controllers
         public ActionResult Index()
         {
             DBTOUREntities DBTour = new DBTOUREntities();
-            List<tour> tourList = DBTour.tours.ToList();
+            ViewBag.tours = DBTour.tours.ToList();
+            ViewBag.tourLength = DBTour.tours.ToList().Count;
+            ViewBag.doanLength = DBTour.doans.ToList().Count;
+            ViewBag.khachLength = DBTour.khachhangs.ToList().Count;
+            ViewBag.giaLength = DBTour.gias.ToList().Count;
             if (Session["login"] != null)
             {
-                return View(tourList);
+                return View();
             }
             else
             {

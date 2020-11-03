@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model List<Tour_du_lich.Models.tour>
+@using Tour_du_lich.Models
 
     <main>
         <div class="container-fluid" style="padding-left: 1.72rem">
@@ -17,7 +17,7 @@
                     <div class="card bg-primary text-white mb-4">
                         <div class="row" style="font-size: 20px">
                             <div class="card-body col-md-9">Tổng Số Tour:</div>
-                            <div class="card-body col-md-3">20</div>
+                            <div class="card-body col-md-3">@ViewBag.tourLength</div>
                         </div>
                         
                         <div class="card-footer d-flex align-items-center justify-content-between">
@@ -30,7 +30,7 @@
                     <div class="card bg-warning text-white mb-4">
                         <div class="row" style="font-size: 20px">
                             <div class="card-body col-md-9">Tổng Số Đoàn:</div>
-                            <div class="card-body col-md-3">20</div>
+                            <div class="card-body col-md-3">@ViewBag.doanLength</div>
                         </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
                             <a class="small text-white stretched-link" href="/Doan/QuanLyDoan">Xem Chi Tiết</a>
@@ -42,7 +42,7 @@
                     <div class="card bg-success text-white mb-4">
                         <div class="row" style="font-size: 20px">
                             <div class="card-body col-md-9">Tổng Số Khách hàng:</div>
-                            <div class="card-body col-md-3">30</div>
+                            <div class="card-body col-md-3">@ViewBag.khachLength</div>
                         </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
                             <a class="small text-white stretched-link" href="/Khach/QuanLyKhach">Xem Chi Tiết</a>
@@ -51,13 +51,13 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
-                    <div class="card bg-danger text-white mb-4">
+                    <div class="card bg-secondary text-white mb-4">
                         <div class="row" style="font-size: 20px">
-                            <div class="card-body col-md-9">Tổng Số Tour Bị Hủy:</div>
-                            <div class="card-body col-md-3">2</div>
+                            <div class="card-body col-md-9">Tổng Số Giá Tour:</div>
+                            <div class="card-body col-md-3">@ViewBag.giaLength</div>
                         </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
-                            <a class="small text-white stretched-link" href="#">Xem Chi Tiết</a>
+                            <a class="small text-white stretched-link" href="/Gia/QuanLyGia">Xem Chi Tiết</a>
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model)
+                                @foreach (var item in ViewBag.tours)
                                 {
                                     <tr>
                                         <td>@item.matour</td>

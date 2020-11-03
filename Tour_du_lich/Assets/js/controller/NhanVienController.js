@@ -7,23 +7,27 @@
         nhanvien.tennv = $("#them-ten-nhan-vien").val();
         nhanvien.diachi = $("#them-dia-chi-nhan-vien").val();
         var flag = true;
+        var result = "";
         if (nhanvien.manv == "") {
-            alert("Mã nhân viên không được rỗng");
+            result += "Mã nhân viên không được rỗng<br/>";
             flag = false;
         }
         if (nhanvien.tennv == "") {
-            alert("Tên nhân viên không được rỗng");
+            result += "Tên nhân viên không được rỗng<br/>";
             flag = false;
         }
         if (nhanvien.diachi == "") {
-            alert("Địa chỉ không được rỗng");
+            result += "Địa chỉ không được rỗng<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
             return false;
         }
-        console.log(nhanvien);
         $.ajax({
             type: "POST",
             url: '/NhanVien/QuanLyNhanVien',
@@ -32,18 +36,23 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Thêm nhân viên thành công");
-                    window.location.href = "/NhanVien/QuanLyNhanVien";
+                    Swal.fire(
+                        'Thông Báo',
+                        'Thêm thành công!',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/NhanVien/QuanLyNhanVien";
+                    });
                 } else if (data.Code == "EXISTS") {
-                    alert("Mã nhân viên đã tồn tại");
+                    Swal.fire("Mã nhân viên đã tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -57,23 +66,27 @@
         nhanvien.tennv = $("#sua-ten-nhan-vien").val();
         nhanvien.diachi = $("#sua-dia-chi-nhan-vien").val();
         var flag = true;
+        var result = "";
         if (nhanvien.manv == "") {
-            alert("Mã nhân viên không được rỗng");
+            result += "Mã nhân viên không được rỗng<br/>";
             flag = false;
         }
         if (nhanvien.tennv == "") {
-            alert("Tên nhân viên không được rỗng");
+            result += "Tên nhân viên không được rỗng<br/>";
             flag = false;
         }
         if (nhanvien.diachi == "") {
-            alert("Địa chỉ không được rỗng");
+            result += "Địa chỉ không được rỗng<br/>";
             flag = false;
         }
         if (flag == false) {
-            alert("Dữ liệu chưa nhập đủ");
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
             return false;
         }
-        console.log(nhanvien);
         $.ajax({
             type: "POST",
             url: '/NhanVien/EditNhanVien',
@@ -82,18 +95,23 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    alert("Sửa thành công");
-                    window.location.href = "/NhanVien/QuanLynhanvien";
+                    Swal.fire(
+                        'Thông Báo',
+                        'Sửa thành công!',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/NhanVien/QuanLyNhanVien";
+                    });
                 } else if (data.Code == "NOT_EXISTS") {
-                    alert("Mã nhân viên không tồn tại");
+                    Swal.fire("Mã nhân viên không tồn tại<br/>");
 
                 }
 
             },
             error: function (data) {
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
         return false;
@@ -108,7 +126,8 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Đồng ý',
+            cancelButtonText: 'Hủy'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -120,19 +139,20 @@
                     success: function (data) {
                         if (data.Code == "SUCCESS") {
                             Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
+                                'Thông Báo',
+                                'Xóa thành công!',
                                 'success'
-                            )
-                            window.location.href = "/NhanVien/QuanLyNhanVien";
+                            ).then((value) => {
+                                window.location.href = "/NhanVien/QuanLyNhanVien";
+                            });
                         }
 
                     },
                     error: function (data) {
-                        alert(id)
+                        Swal.fire(id)
                         console.log(data);
-                        alert("Error while inserting data");
-                        alert(data.Message);
+                        Swal.fire("Error while inserting data<br/>");
+                        Swal.fire(data.Message);
                     }
                 });
 
@@ -158,10 +178,10 @@
 
             },
             error: function (data) {
-                alert(id)
+                Swal.fire(id)
                 console.log(data);
-                alert("Error while inserting data");
-                alert(data.Message);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
             }
         });
     };
