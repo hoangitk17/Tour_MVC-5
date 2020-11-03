@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "DoanhThuDoan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Tour_du_lich.Models
+
+    <div class="container-fluid">
+        <h1 class="mt-4">Thống Kê Doanh Thu Đoàn</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
+            <li class="breadcrumb-item active">Thống Kê</li>
+            <li class="breadcrumb-item active">Doanh Thu Đoàn</li>
+        </ol>
+        <div style="margin-left: 20px">
+            <div style="margin-top:20px" class="row">
+                <div class="col-md-3">
+                    <div>
+                        Mã Đoàn Cần Thống Kê
+                    </div>
+                    <div>
+                        <select id="ma-doan" style="color: black">
+                            @foreach (DoanModel item in ViewBag.doans)
+                            {
+                                <option value="@item.madoan">@item.madoan</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        Thời gian Bắt Đầu
+                    </div>
+                    <div>
+                        <input type="date" id="thoi-gian-bat-dau" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div>
+                        Thời gian kết Thúc
+                    </div>
+                    <div>
+                        <input type="date" id="thoi-gian-ket-thuc" />
+                    </div>
+                </div>
+                <div class="col-md-3"><button id="btnRun" onclick="DoanhThuDoan();">Thực hiện</button></div>
+            </div>
+        </div>
+        @if (ViewBag.doanhthudoans != null)
+        {
+            <div class="card-body" style="border: 1px solid black; margin: 20px 0px">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="15%">Mã Đoàn</th>
+                                <th width="15%">Mã Tour</th>
+                                <th width="15%">Mã Khách hàng</th>
+                                <th width="15%">Giá Tour</th>
+                                <th width="20%">Ngày Bắt Đầu</th>
+                                <th width="20%">Ngày Kết Thúc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DoanhThuDoanModel item in ViewBag.doanhthudoans)
+                            {
+                                <tr>
+                                    <td>@item.madoan</td>
+                                    <td>@item.matour</td>
+                                    <td>@item.makh</td>
+                                    <td>@String.Format("{0:0,0 vnđ}", item.gia)</td>
+                                    <td>@item.ngaybatdau</td>
+                                    <td>@item.ngayketthuc</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; font-size: 24px; font-weight: 700">
+                <div>Tổng Doanh Thu:&nbsp;</div>
+                <div>@String.Format("{0:0,0 vnđ}", 35000000)</div>
+            </div>
+        }
+
+
+
+        @*<div class="card mb-4">
+            <div class="card-body">
+                <p class="mb-0">
+                    This page is an example of using static navigation. By removing the
+                    <code>.sb-nav-fixed</code>
+                    class from the
+                    <code>body</code>
+                    , the top navigation and side navigation will become static on scroll. Scroll down this page to see an example.
+                </p>
+            </div>
+        </div>
+        <div style="height: 100vh;"></div>
+        <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>*@
+    </div>
+
