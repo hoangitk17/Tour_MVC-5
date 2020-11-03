@@ -109,7 +109,7 @@
             success: function (data) {
                 if (data.Code == "SUCCESS") {
                     Swal.fire(
-                        'Thành Công!',
+                        'Thông Báo',
                         'Thêm thành công',
                         'success'
                     ).then((value) => {
@@ -176,7 +176,7 @@
             success: function (data) {
                 if (data.Code == "SUCCESS") {
                     Swal.fire(
-                        'Thành Công!',
+                        'Thông Báo',
                         'Sửa thành công',
                         'success'
                     ).then((value) => {
@@ -219,7 +219,7 @@
                     success: function (data) {
                         if (data.Code == "SUCCESS") {
                             Swal.fire(
-                                'Thành Công!',
+                                'Thông Báo',
                                 'Xóa thành công',
                                 'success'
                             ).then((value) => {
@@ -251,7 +251,6 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    console.log(data);
                     $("#sua-ma-doan").val(data.madoan);
                     $("#sua-ma-tour").val(data.matour);
                     $("#sua-ngay-bat-dau").val(data.ngaybatdau);
@@ -261,6 +260,35 @@
                             value: khach.makh,
                             text: khach.tenkh
                         }));
+                    });
+                }
+            },
+            error: function (data) {
+                Swal.fire(id)
+                console.log(data);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
+            }
+        });
+    };
+
+    DoanhThuDoan = () => {
+        var id_doan = $("#ma-doan").val();
+        $.ajax({
+            type: "POST",
+            url: '/DoanhThuDoan/DoanhThuDoan',
+            data: '{id_doan: ' + JSON.stringify(id_doan) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.Code == "SUCCESS") {
+                    Swal.fire(
+                        'Thông Báo',
+                        'Thực hiện thành công',
+                        'success'
+                    ).then((value) => {
+                        $("#ma-doan").val(data.madoan);
+                        window.location.href = "/DoanhThuDoan/DoanhThuDoan";
                     });
                 }
             },

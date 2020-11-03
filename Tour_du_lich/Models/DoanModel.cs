@@ -23,6 +23,7 @@ namespace Tour_du_lich.Models
         {
             this.madoan = madoan;
             this.matour = matour;
+            this.matour = matour;
             this.ngaybatdau = ngaybatdau;
             this.ngayketthuc = ngayketthuc;
         }
