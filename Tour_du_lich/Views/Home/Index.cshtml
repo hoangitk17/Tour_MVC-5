@@ -111,7 +111,17 @@
                                         <td>@item.tentour</td>
                                         <td>@item.maloai</td>
                                         <td>@item.dacdiem</td>
-                                        <td>@String.Format("{0:0,0 vnđ}", @item.giamacdinh)</td>
+                                        <td>
+                                           
+                                            @if (@item.giamacdinh != null)
+                                            {
+                                                @String.Format("{0:0,0 vnđ}", @item.giamacdinh)
+                                            }
+                                            else
+                                            {
+                                                @:""
+                                            }
+                                        </td>
                                     </tr>
                                 }
                             </tbody>

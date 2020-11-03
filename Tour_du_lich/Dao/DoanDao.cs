@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using Tour_du_lich.Models;
@@ -101,26 +102,43 @@ namespace Tour_du_lich.Dao
                 data.ngayketthuc = Doan.ngayketthuc;
 
                 DB.doans.Add(data);
+         
                 DB.SaveChanges();
-                if (Doan.khachs != null)
+                addKhachChoDoan(Doan.khachs, Doan.madoan);
+
+                
+
+            }
+            catch (Exception e)
+            {
+                
+            }
+        }
+
+        public void addKhachChoDoan(List<KhachModel> arrayKhachs, string madoan)
+        {
+            try
+            {
+                if (arrayKhachs != null)
                 {
-                    foreach (KhachModel khach in Doan.khachs)
+                    foreach (KhachModel k in arrayKhachs)
                     {
                         ctdoan ct = new ctdoan();
-                        ct.makh = khach.makh;
-                        ct.madoan = Doan.madoan;
+                        ct.makh = k.makh;
+                        ct.madoan = madoan;
 
                         DB.ctdoans.Add(ct);
                         DB.SaveChanges();
 
                     }
                 }
-               
+
             }
             catch (Exception e)
             {
-                
+
             }
+
         }
     }
 }
