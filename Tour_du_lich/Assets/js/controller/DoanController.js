@@ -1,4 +1,57 @@
 ﻿$(function () {
+
+    $('#btn-add-them-nv').click(function (e) {
+        var selectedOpts = $('#list-nv-add-1 option:selected');
+        if (selectedOpts.length == 0) {
+            alert("Nothing to add.");
+            e.preventDefault();
+        } else {
+            $('#list-nv-add-2').append($(selectedOpts).clone());
+            e.preventDefault();
+        }
+
+
+    });
+    $('#btn-remove-them-nv').click(function (e) {
+        var selectedOpts = $('#list-nv-add-2 option:selected');
+        if (selectedOpts.length == 0) {
+            alert("Nothing to move.");
+            e.preventDefault();
+        } else {
+            $(selectedOpts).remove();
+            e.preventDefault();
+        }
+
+
+    });
+
+    $('#btn-up-them-nv').click(function (e) {
+        var selectedOpts = $('#list-nv-add-2 option:selected');
+        if (selectedOpts.length == 0) {
+            alert("Nothing to move.");
+            e.preventDefault();
+        } else {
+            $('#list-nv-add-2 option:selected').each(function () {
+                $(this).insertBefore($(this).prev());
+            });
+            e.preventDefault();
+        }
+
+    });
+    $('#btn-down-them-nv').click(function (e) {
+        var selectedOpts = $('#list-nv-add-2 option:selected');
+        if (selectedOpts.length == 0) {
+            alert("Nothing to move.");
+            e.preventDefault();
+        } else {
+            $('#list-nv-add-2 option:selected').each(function () {
+                $(this).insertAfter($(this).next());
+            });
+            e.preventDefault();
+        }
+
+    });
+    //////////////////////////////////////
     $("#btnAddDoan").click(function (e) {
         e.preventDefault();
         var Doan = {};
@@ -6,6 +59,15 @@
         Doan.matour = $("#them-ma-tour").val();
         Doan.ngaybatdau = $("#them-ngay-bat-dau").val();
         Doan.ngayketthuc = $("#them-ngay-ket-thuc").val();
+        Doan.khachs = [];
+        $('#list-nv-add-2 option').each(function () {
+            $(this).insertAfter($(this).next());
+            var khach = {
+                makh: $(this).val(),
+                tenkh: $(this).text(),
+            }
+            Doan.khachs.push(khach);
+        });
         var flag = true;
         if (Doan.madoan == "") {
             alert("mã đoàn không được để trống");
@@ -23,6 +85,7 @@
             alert("Dữ liệu chưa nhập đủ");
             return false;
         }
+        console.log(Doan);
         $.ajax({
             type: "POST",
             url: '/Doan/QuanLyDoan',
@@ -152,7 +215,12 @@
                     $("#sua-ma-tour").val(data.matour);
                     $("#sua-ngay-bat-dau").val(data.ngaybatdau);
                     $("#sua-ngay-ket-thuc").val(data.ngayketthuc);
-
+                    $.each(data.khachs, function (i, khach) {
+                        $('#list-nv-edit-2').append($('<option>', {
+                            value: khach.makh,
+                            text: khach.tenkh
+                        }));
+                    });
                 }
             },
             error: function (data) {

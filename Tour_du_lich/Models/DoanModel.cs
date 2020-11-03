@@ -11,6 +11,7 @@ namespace Tour_du_lich.Models
         public String matour { get; set; }
         public Nullable<System.DateTime> ngaybatdau { get; set; }
         public Nullable<System.DateTime> ngayketthuc { get; set; }
+        public List<KhachModel> khachs { get; set; }
 
 
         public DoanModel()
@@ -24,6 +25,15 @@ namespace Tour_du_lich.Models
             this.matour = matour;
             this.ngaybatdau = ngaybatdau;
             this.ngayketthuc = ngayketthuc;
+        }
+
+        public DoanModel(String madoan, String matour, Nullable<System.DateTime> ngaybatdau, Nullable<System.DateTime> ngayketthuc, List<KhachModel> khachs)
+        {
+            this.madoan = madoan;
+            this.matour = matour;
+            this.ngaybatdau = ngaybatdau;
+            this.ngayketthuc = ngayketthuc;
+            this.khachs = khachs;
         }
         public DoanModel(DoanModel Doan)
         {
