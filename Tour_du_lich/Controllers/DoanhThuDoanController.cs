@@ -19,6 +19,14 @@ namespace Tour_du_lich.Controllers
         public ActionResult DoanhThuDoan()
         {
             ViewBag.doans = doan.GetAllDoan();
+            if (TempData["doanhthudoans"] != null)
+            {
+                ViewBag.doanhthudoans = (List<DoanhThuDoanModel>)TempData["doanhthudoans"];
+                ViewBag.madoan = TempData["ma-doan"];
+                ViewBag.quantity = TempData["quantity"];
+                ViewBag.thoigianbatdau = TempData["thoigianbatdau"];
+                ViewBag.thoigianketthuc = TempData["thoigianketthuc"];
+            }
             if (Session["login"] != null)
             {
                 return View();
@@ -30,15 +38,19 @@ namespace Tour_du_lich.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult DoanhThuDoan(String id_doan)
+        public ActionResult DoanhThuDoan(String id_doan, DateTime thoigianbatdau, DateTime thoigianketthuc)
         {
             try
             {
                 string code;
-                List<DoanhThuDoanModel> res = doan.GetDoanhThuDoan(id_doan);
-                ViewBag.doanhthudoans = doan.GetDoanhThuDoan(id_doan);
+                List<DoanhThuDoanModel> res = doan.GetDoanhThuDoan(id_doan, thoigianbatdau, thoigianketthuc);
+                ViewBag.doanhthudoans = res;
+                TempData["quantity"] = res.Count;
+                TempData["doanhthudoans"] = res;
+                TempData["thoigianbatdau"] = thoigianbatdau;
+                TempData["thoigianketthuc"] = thoigianketthuc;
+                TempData["ma-doan"] = id_doan;
                 code = Constants.SUCCESS;
-                
                 return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }
             catch (Exception ex)
