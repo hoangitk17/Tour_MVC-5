@@ -22,32 +22,25 @@ namespace Tour_du_lich.Dao
             return result;
         }
 
-        public List<DoanhThuDoanModel> GetDoanhThuDoan(String madoan)
+        public List<DoanhThuDoanModel> GetDoanhThuDoan(String id_doan, DateTime thoigianbatdau, DateTime thoigianketthuc)
         {
             DB.Configuration.ProxyCreationEnabled = false;
-            List<DoanhThuDoanModel> result = new List<DoanhThuDoanModel>();
-            var quantity_khach_hang = (from ct in DB.ctdoans where ct.madoan == madoan
-                                       select madoan).Count();
-                List<DoanhThuDoanModel> doanhthudoan = (from ct in DB.ctdoans
-                                               join d in DB.doans
-                                               on ct.madoan equals d.madoan
-                                               join t in DB.tours
-                                               on d.matour equals t.matour
-                                               where d.madoan == madoan
-                                               orderby d.madoan ascending
-                                               select new DoanhThuDoanModel()
-                                               {
-                                                   madoan = ct.madoan,
-                                                   matour = t.matour,
-                                                   makh = ct.makh,
-                                                   gia = t.giamacdinh,
-                                                   ngaybatdau = d.ngaybatdau,
-                                                   ngayketthuc = d.ngayketthuc,
-                                               }).ToList();
-
-                //DoanhThuDoanModel DoanhThuDoan = new DoanhThuDoanModel(temp.madoan, temp.tenchiphi, temp.gia, temp.ngaybatdau, temp.ngayketthuc);
-                //result.Add(doanhthudoan);
-                //return result;
+            List<DoanhThuDoanModel> doanhthudoan = (from ct in DB.ctdoans
+                                            join d in DB.doans
+                                            on ct.madoan equals d.madoan
+                                            join t in DB.tours
+                                            on d.matour equals t.matour
+                                            where d.madoan == id_doan && d.ngaybatdau >= thoigianbatdau && d.ngayketthuc <= thoigianketthuc
+                                            orderby d.madoan ascending
+                                            select new DoanhThuDoanModel()
+                                            {
+                                                madoan = d.madoan,
+                                                matour = t.matour,
+                                                makh = ct.makh,
+                                                gia = t.giamacdinh,
+                                                ngaybatdau = d.ngaybatdau,
+                                                ngayketthuc = d.ngayketthuc,
+                                            }).ToList();
             return doanhthudoan;
         }
         public bool Update(DoanModel g)
