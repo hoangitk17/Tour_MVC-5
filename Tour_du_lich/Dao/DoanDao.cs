@@ -133,9 +133,15 @@ namespace Tour_du_lich.Dao
                 DB.doans.Add(data);
          
                 DB.SaveChanges();
-                addKhachChoDoan(Doan.khachs, Doan.madoan);
+                //ctdoan ct = new ctdoan();
+                //ct.makh = "KH003";
+                //ct.madoan = "MD054";
 
-                
+                //DB.ctdoans.Add(ct);
+                //DB.SaveChanges();
+               
+
+
 
             }
             catch (Exception e)
@@ -148,19 +154,21 @@ namespace Tour_du_lich.Dao
         {
             try
             {
+                var doanForInsert = DB.doans.SingleOrDefault(x => x.madoan == madoan);
                 if (arrayKhachs != null)
                 {
                     foreach (KhachModel k in arrayKhachs)
                     {
                         ctdoan ct = new ctdoan();
-                        ct.makh = k.makh;
-                        ct.madoan = madoan;
+                        ct.makh = k.makh.ToString();
+                        ct.madoan = madoan.ToString();
 
-                        DB.ctdoans.Add(ct);
-                        DB.SaveChanges();
+                        DB.ctdoans.AddOrUpdate(ct);
+                        
 
                     }
                 }
+                DB.SaveChanges();
 
             }
             catch (Exception e)

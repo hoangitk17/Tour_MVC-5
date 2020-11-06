@@ -255,7 +255,9 @@
                     $("#sua-ma-tour").val(data.matour);
                     $("#sua-ngay-bat-dau").val(data.ngaybatdau);
                     $("#sua-ngay-ket-thuc").val(data.ngayketthuc);
+                    $('#list-nv-edit-2').find('option').remove().end();
                     $.each(data.khachs, function (i, khach) {
+                        
                         $('#list-nv-edit-2').append($('<option>', {
                             value: khach.makh,
                             text: khach.tenkh

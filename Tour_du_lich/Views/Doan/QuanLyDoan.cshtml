@@ -93,9 +93,9 @@
                                                 <div>
                                                     <select multiple="multiple" size="10" name="duallistbox_nhanvien_1" id="list-nv-add-1" title="duallistbox_demo2">
 
-                                                        @foreach (NhanVienModel item in ViewBag.nhanviens)
+                                                        @foreach (KhachModel item in ViewBag.khachs)
                                                         {
-                                                            <option value="@item.manv">@item.tennv</option>
+                                                            <option value="@item.makh">@item.tenkh</option>
 
                                                         }
                                                     </select>
@@ -192,9 +192,9 @@
                                                 <div>
                                                     <select multiple="multiple" size="10" name="duallistbox_nhanvien_1" id="list-nv-edit-1" title="duallistbox_demo2">
 
-                                                        @foreach (NhanVienModel item in ViewBag.nhanviens)
+                                                        @foreach (KhachModel item in ViewBag.khachs)
                                                         {
-                                                            <option value="@item.manv">@item.tennv</option>
+                                                            <option value="@item.makh">@item.tenkh</option>
 
                                                         }
                                                     </select>

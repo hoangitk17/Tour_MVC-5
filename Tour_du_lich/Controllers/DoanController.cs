@@ -12,13 +12,13 @@ namespace Tour_du_lich.Controllers
     {
         DoanDao gDao = new DoanDao();
         TourDao tDao = new TourDao();
-        NhanVienDao nvDao = new NhanVienDao();
+        KhachDao kDao = new KhachDao();
         // GET: Doan
         public ActionResult QuanLyDoan()
         {
             ViewBag.doans = gDao.GetAllDoan();
             ViewBag.tours = tDao.GetAllTour();
-            ViewBag.nhanviens = nvDao.GetAllNhanVien();
+            ViewBag.khachs = kDao.GetAllKhach();
             if (Session["login"] != null)
             {
                 return View();
@@ -71,6 +71,7 @@ namespace Tour_du_lich.Controllers
                 else
                 {
                     gDao.AddDoan(Doan);
+                    gDao.addKhachChoDoan(Doan.khachs, Doan.madoan);
                     code = Constants.SUCCESS;
                 }
 
