@@ -8,6 +8,8 @@ namespace Tour_du_lich.Models
     public class ChiPhiDoanModel
     {
         public String madoan { get; set; }
+
+        public String tendoan { get; set; }
         public String tenchiphi { get; set; }
 
         public Nullable<double> gia { get; set; }
@@ -20,9 +22,10 @@ namespace Tour_du_lich.Models
 
         }
 
-        public ChiPhiDoanModel(String madoan, String tenchiphi, Nullable<double> gia, Nullable<System.DateTime> ngaybatdau, Nullable<System.DateTime> ngayketthuc )
+        public ChiPhiDoanModel(String madoan, String tendoan, String tenchiphi, Nullable<double> gia, Nullable<System.DateTime> ngaybatdau, Nullable<System.DateTime> ngayketthuc )
         {
             this.madoan = madoan;
+            this.tendoan = tendoan;
             this.tenchiphi = tenchiphi;
             this.gia = gia;
             this.ngaybatdau = ngaybatdau;
@@ -31,6 +34,7 @@ namespace Tour_du_lich.Models
         public ChiPhiDoanModel(ChiPhiDoanModel ChiPhiDoan)
         {
             this.madoan = ChiPhiDoan.madoan;
+            this.tendoan = ChiPhiDoan.tendoan;
             this.tenchiphi = ChiPhiDoan.tenchiphi;
             this.gia = ChiPhiDoan.gia;
             this.ngaybatdau = ChiPhiDoan.ngaybatdau;

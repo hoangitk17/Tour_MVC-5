@@ -170,5 +170,37 @@ namespace Tour_du_lich.Dao
             }
 
         }
+
+        public List<ChiPhiDoanModel> GetChiPhiDoan(String id_doan, DateTime thoigianbatdau, DateTime thoigianketthuc)
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            List<ChiPhiDoanModel> chiphidoan = (from cp in DB.chiphis
+                                                    join d in DB.doans
+                                                    on cp.madoan equals d.madoan
+                                                    join lcp in DB.loaichiphis
+                                                    on cp.maloaichiphi equals lcp.maloaichiphi
+                                                    where d.madoan == id_doan && d.ngaybatdau >= thoigianbatdau && d.ngayketthuc <= thoigianketthuc
+                                                    orderby d.madoan ascending
+                                                    select new ChiPhiDoanModel()
+                                                    {
+                                                        madoan = d.madoan,
+                                                        tendoan = d.matour,
+                                                        tenchiphi = lcp.tenloaichiphi,
+                                                        gia = cp.giathanh,
+                                                        ngaybatdau = d.ngaybatdau,
+                                                        ngayketthuc = d.ngayketthuc,
+                                                    }).ToList();
+            return chiphidoan;
+        }
+
+        public double totalChiPhiDoan(List<ChiPhiDoanModel> chiphi)
+        {
+            double result = 0;
+            foreach (ChiPhiDoanModel item in chiphi)
+            {
+                result = Convert.ToDouble(result) + Convert.ToDouble(item.gia);
+            }
+            return result;
+        }
     }
 }
