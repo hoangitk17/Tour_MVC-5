@@ -52,6 +52,19 @@ namespace Tour_du_lich.Dao
                 Doan.matour = g.matour;
                 Doan.ngaybatdau = g.ngaybatdau;
                 Doan.ngayketthuc = g.ngayketthuc;
+
+                DB.ctdoans.RemoveRange(DB.ctdoans.Where(x => x.madoan == Doan.madoan));
+                foreach (KhachModel k in g.khachs)
+                {
+                    ctdoan ct = new ctdoan()
+                    {
+                        madoan = Doan.madoan,
+                        makh = k.makh,
+                    };
+                    DB.ctdoans.Add(ct);
+      
+
+                }
                 DB.SaveChanges();
                 return true;
             }
@@ -84,6 +97,21 @@ namespace Tour_du_lich.Dao
             }
 
             return g;
+        }
+
+        public List<KhachModel> GetCustomer(string id)
+        {
+            List<KhachModel> khachs = (from ct in DB.ctdoans
+                                       join kh in DB.khachhangs
+                                       on ct.makh equals kh.makh
+                                       where ct.madoan == id
+                                       select new KhachModel()
+                                       {
+                                           makh = ct.makh,
+                                           tenkh = kh.tenkh
+                                       }).ToList();
+           
+            return khachs;
         }
 
         public bool Delete(string id)
@@ -126,16 +154,6 @@ namespace Tour_du_lich.Dao
                 DB.doans.Add(data);
          
                 DB.SaveChanges();
-                //ctdoan ct = new ctdoan();
-                //ct.makh = "KH003";
-                //ct.madoan = "MD054";
-
-                //DB.ctdoans.Add(ct);
-                //DB.SaveChanges();
-               
-
-
-
             }
             catch (Exception e)
             {

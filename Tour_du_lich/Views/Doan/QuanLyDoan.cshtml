@@ -225,6 +225,45 @@
                         </div>
                     }
                     <!-- The Modal -->
+                    <!-- The Modal -->
+
+                        <div class="modal fade" id="myModalCustomer">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="width: 620px">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header" style="background-color: #343a40; color: white">
+                                        <h4 class="modal-title">Danh sách khách của đoàn</h4>
+                                        <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <table class="table table-bordered" id="doan-table-customer" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th width="200px">Mã Khách</th>
+                                                    <th width="200px">Tên khách</th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Ok</button>
+                                       
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                   
+                    <!-- The Modal -->
                     @using (Html.BeginForm("DeleteDoan", "Doan", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalDelete">
@@ -279,6 +318,7 @@
                                     <button type="button" class="btn btn-danger" onclick="onClickDeleteDoan('@item.madoan')">
                                         Xóa
                                     </button>
+                                    <button data-toggle="modal" data-target="#myModalCustomer" type="button" class="btn btn-success" onclick="onGetCustomerOfDoan('@item.madoan')">Xem Danh Sách Khách</button>
                                 </td>
                             </tr>
                             }

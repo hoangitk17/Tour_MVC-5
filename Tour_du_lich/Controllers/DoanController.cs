@@ -127,5 +127,26 @@ namespace Tour_du_lich.Controllers
                 return Json(new { Message = message, JsonRequestBehavior.AllowGet });
             }
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult GetCustomer(string id)
+        {
+            try
+            {
+                List<KhachModel> khachs = gDao.GetCustomer(id);
+                string code = Constants.SUCCESS;
+                return Json(new
+                {
+                    Code = code,
+                    khachs = khachs,
+                    JsonRequestBehavior.AllowGet
+                });
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
     }
 }

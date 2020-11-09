@@ -52,6 +52,58 @@
 
     });
     //////////////////////////////////////
+    $('#btn-add-sua-nv').click(function (e) {
+        var selectedOpts = $('#list-nv-edit-1 option:selected');
+        if (selectedOpts.length == 0) {
+            Swal.fire("Nothing to add.<br/>");
+            e.preventDefault();
+        } else {
+            $('#list-nv-edit-2').append($(selectedOpts).clone());
+            e.preventDefault();
+        }
+
+
+    });
+    $('#btn-remove-sua-nv').click(function (e) {
+        var selectedOpts = $('#list-nv-edit-2 option:selected');
+        if (selectedOpts.length == 0) {
+            Swal.fire("Nothing to move.<br/>");
+            e.preventDefault();
+        } else {
+            $(selectedOpts).remove();
+            e.preventDefault();
+        }
+
+
+    });
+
+    $('#btn-up-sua-nv').click(function (e) {
+        var selectedOpts = $('#list-nv-edit-2 option:selected');
+        if (selectedOpts.length == 0) {
+            Swal.fire("Nothing to move.<br/>");
+            e.preventDefault();
+        } else {
+            $('#list-nv-edit-2 option:selected').each(function () {
+                $(this).insertBefore($(this).prev());
+            });
+            e.preventDefault();
+        }
+
+    });
+    $('#btn-down-sua-nv').click(function (e) {
+        var selectedOpts = $('#list-nv-edit-2 option:selected');
+        if (selectedOpts.length == 0) {
+            Swal.fire("Nothing to move.<br/>");
+            e.preventDefault();
+        } else {
+            $('#list-nv-edit-2 option:selected').each(function () {
+                $(this).insertAfter($(this).next());
+            });
+            e.preventDefault();
+        }
+
+    });
+    //////////////////////////////////////
     $("#btnAddDoan").click(function (e) {
         e.preventDefault();
         var Doan = {};
@@ -135,6 +187,15 @@
         Doan.matour = $("#sua-ma-tour").val();
         Doan.ngaybatdau = $("#sua-ngay-bat-dau").val();
         Doan.ngayketthuc = $("#sua-ngay-ket-thuc").val();
+        Doan.khachs = [];
+        $('#list-nv-edit-2 option').each(function () {
+            $(this).insertAfter($(this).next());
+            var khach = {
+                makh: $(this).val(),
+                tenkh: $(this).text(),
+            }
+            Doan.khachs.push(khach);
+        });
         var date_start = new Date($('#sua-ngay-bat-dau').val());
         var date_end = new Date($('#sua-ngay-ket-thuc').val());
         var flag = true;
@@ -153,6 +214,11 @@
         }
         if (Doan.ngayketthuc == "") {
             result += "thời gian kết thúc là bắt buộc<br/>";
+            flag = false;
+        }
+
+        if (Doan.khachs.length == 0) {
+            result += "Khách không được để trống<br/>";
             flag = false;
         }
         //if (Doan.khachs.length == 0) {
@@ -273,6 +339,40 @@
             }
         });
     };
+    ////////////////////////
+
+
+    onGetCustomerOfDoan = (id) => {
+
+        $.ajax({
+            type: "POST",
+            url: '/Doan/GetCustomer',
+            data: '{id: ' + JSON.stringify(id) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.Code == "SUCCESS") {
+                    var { khachs } = data;
+                    var str = "";
+                    for (var i = 0; i < khachs.length; i++) {
+                        str += "<tr>";
+                        str += "<td>" + khachs[i].makh + "</td>";
+                        str += "<td>" + khachs[i].tenkh + "</td>";
+                        str += "</tr>";
+                    }
+                    $('#doan-table-customer tbody').html(str)
+                }
+            },
+            error: function (data) {
+                Swal.fire(id)
+                console.log(data);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
+            }
+        });
+    };
+
+    //////////////
 
     DoanhThuDoan = () => {
         var id_doan = $("#ma-doan").val();
