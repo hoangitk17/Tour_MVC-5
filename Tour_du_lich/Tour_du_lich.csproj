@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DiaDiemController.cs" />
     <Compile Include="Controllers\DoanController.cs" />
+    <Compile Include="Controllers\ChiPhiDoanController.cs" />
     <Compile Include="Controllers\DoanhThuDoanController.cs" />
     <Compile Include="Controllers\GiaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -187,7 +188,7 @@
     <Compile Include="Models\doan.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChiPhiDoan.cs" />
+    <Compile Include="Models\ChiPhiDoanModel.cs" />
     <Compile Include="Models\DoanhThuDoanModel.cs" />
     <Compile Include="Models\gia.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -310,6 +311,7 @@
     <Content Include="Views\PhanCong\QuanLyPhanCong.cshtml" />
     <Content Include="Views\ChiPhi\QuanLyChiPhi.cshtml" />
     <Content Include="Views\DoanhThuDoan\DoanhThuDoan.cshtml" />
+    <Content Include="Views\ChiPhiDoan\ChiPhiDoan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
