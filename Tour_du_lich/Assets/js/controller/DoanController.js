@@ -15,7 +15,7 @@
     $('#btn-remove-them-nv').click(function (e) {
         var selectedOpts = $('#list-nv-add-2 option:selected');
         if (selectedOpts.length == 0) {
-            Swal.fire("Nothing to move.<br/>");
+            Swal.fire("Nothing to remove.<br/>");
             e.preventDefault();
         } else {
             $(selectedOpts).remove();

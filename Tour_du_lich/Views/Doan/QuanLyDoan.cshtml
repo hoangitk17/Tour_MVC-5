@@ -314,11 +314,11 @@
                                 <td>@item.ngaybatdau</td>
                                 <td>@item.ngayketthuc</td>
                                 <td>
-                                    <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoDoan('@item.madoan')">Sửa</button>
+                                    <button style="color:white" data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoDoan('@item.madoan')"><i class="fas fa-pen"></i></button>
                                     <button type="button" class="btn btn-danger" onclick="onClickDeleteDoan('@item.madoan')">
-                                        Xóa
+                                        <i class="fas fa-trash"></i>
                                     </button>
-                                    <button data-toggle="modal" data-target="#myModalCustomer" type="button" class="btn btn-success" onclick="onGetCustomerOfDoan('@item.madoan')">Xem Danh Sách Khách</button>
+                                    <button data-toggle="modal" data-target="#myModalCustomer" type="button" class="btn btn-success" onclick="onGetCustomerOfDoan('@item.madoan')"><i class="fas fa-list-ul"></i></button>
                                 </td>
                             </tr>
                             }

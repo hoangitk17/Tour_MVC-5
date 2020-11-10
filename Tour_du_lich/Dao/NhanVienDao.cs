@@ -87,5 +87,27 @@ namespace Tour_du_lich.Dao
             }
             DB.SaveChanges();
         }
+
+        public List<SoLanDiTourCuaNVModel> SoLanDiTourCuaNV(String id_nhanvien, DateTime thoigianbatdau, DateTime thoigianketthuc)
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            List<SoLanDiTourCuaNVModel> arr = (from pc in DB.phancongs
+                                                join d in DB.doans
+                                                on pc.madoan equals d.madoan
+                                                join nv in DB.nhanviens
+                                                on pc.manv equals nv.manv
+                                                where pc.manv == id_nhanvien && d.ngaybatdau >= thoigianbatdau && d.ngayketthuc <= thoigianketthuc
+                                                orderby d.madoan ascending
+                                                select new SoLanDiTourCuaNVModel()
+                                                {
+                                                    madoan = pc.madoan,
+                                                    matour = d.matour,
+                                                    tennv = nv.tennv,
+                                                    nhiemvu = pc.nhiemvu,
+                                                    ngaybatdau = d.ngaybatdau,
+                                                    ngayketthuc = d.ngayketthuc,
+                                                }).ToList();
+            return arr;
+        }
     }
 }

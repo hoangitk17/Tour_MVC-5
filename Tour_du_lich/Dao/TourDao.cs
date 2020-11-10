@@ -201,5 +201,27 @@ namespace Tour_du_lich.Dao
                                                     }).ToList();
             return doanhthutour;
         }
+
+        public List<ChiPhiTourModel> GetChiPhiTour(String id_tour, DateTime thoigianbatdau, DateTime thoigianketthuc)
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            List<ChiPhiTourModel> chiphitour = (from t in DB.tours
+                                                join d in DB.doans
+                                                on t.matour equals d.matour
+                                                join cp in DB.chiphis
+                                                on d.madoan equals cp.madoan
+                                                where t.matour == id_tour && d.ngaybatdau >= thoigianbatdau && d.ngayketthuc <= thoigianketthuc
+                                                    orderby t.matour ascending
+                                                    select new ChiPhiTourModel()
+                                                    {
+                                                        madoan = d.madoan,
+                                                        matour = t.matour,
+                                                        machiphi = cp.maloaichiphi,
+                                                        gia = t.giamacdinh,
+                                                        ngaybatdau = d.ngaybatdau,
+                                                        ngayketthuc = d.ngayketthuc,
+                                                    }).ToList();
+            return chiphitour;
+        }
     }
 }
