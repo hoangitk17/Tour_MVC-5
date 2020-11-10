@@ -324,6 +324,64 @@
             }
         });
     };
+
+    DoanhThuTour = () => {
+        var id_tour = $("#ma-tour").val();
+        var thoigianbatdau = $("#thoi-gian-bat-dau").val();
+        var thoigianketthuc = $("#thoi-gian-ket-thuc").val();
+        var date_start = new Date($('#thoi-gian-bat-dau').val());
+        var date_end = new Date($('#thoi-gian-ket-thuc').val());
+        var result = "";
+        var flag_tour = true;
+        if (date_start.getTime() > date_end.getTime()) {
+            result += "Thời gian không hợp lệ<br/>";
+            flag_tour = false;
+        }
+        if (thoigianbatdau == "") {
+            result += "Thời gian bắt đầu là bắt buộc<br/>";
+            flag_tour = false;
+        }
+        if (thoigianketthuc == "") {
+            result += "Thời gian kết thúc là bắt buộc<br/>";
+            flag_tour = false;
+        }
+        if (flag_tour == false) {
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: '/DoanhThuTour/DoanhThuTour',
+            data: '{id_tour: ' + JSON.stringify(id_tour) + ',thoigianbatdau: ' + JSON.stringify(thoigianbatdau) + ',thoigianketthuc: ' + JSON.stringify(thoigianketthuc) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.Code == "SUCCESS") {
+                    console.log("success")
+                    Swal.fire(
+                        'Thông Báo',
+                        'Thực hiện thành công',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/DoanhThuTour/DoanhThuTour";
+                    });
+                }
+                console.log(data);
+                console.log("success nhung fail")
+            },
+            error: function (data) {
+                console.log(data);
+                console.log("Fail luon")
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
+            }
+        });
+    };
+
 });
 
 

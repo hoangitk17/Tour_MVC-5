@@ -163,5 +163,43 @@ namespace Tour_du_lich.Dao
                 return false;
             }
         }
+
+        public int CountQuantityCustomer(String id_doan)
+        {
+            int count = (from x in DB.ctdoans where x.madoan == id_doan select x).Count();
+            return count;
+        }
+
+        public double TotalTour(List<DoanhThuTourModel> arr)
+        {
+            double result = 0;
+            foreach (DoanhThuTourModel d in arr)
+            {
+                result = result + Convert.ToDouble(d.gia * d.slkhach);
+            }
+            return result;
+
+        }
+
+        public List<DoanhThuTourModel> GetDoanhThuTour(String id_tour, DateTime thoigianbatdau, DateTime thoigianketthuc)
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            List<DoanhThuTourModel> doanhthutour = (from d in DB.doans
+                                                    join t in DB.tours
+                                                    on d.matour equals t.matour
+                                                    where t.matour == id_tour && d.ngaybatdau >= thoigianbatdau && d.ngayketthuc <= thoigianketthuc
+                                                    orderby t.matour ascending
+                                                    select new DoanhThuTourModel()
+                                                    {
+                                                        madoan = d.madoan,
+                                                        matour = t.matour,
+                                                        tentour = t.tentour,
+                                                        slkhach = CountQuantityCustomer(d.madoan),
+                                                        gia = t.giamacdinh,
+                                                        ngaybatdau = d.ngaybatdau,
+                                                        ngayketthuc = d.ngayketthuc,
+                                                    }).ToList();
+            return doanhthutour;
+        }
     }
 }
