@@ -88,7 +88,7 @@
                             <th width="13%">Mã Tour</th>
                             <th width="13%">Tên Tour</th>
                             <th width="15%">Mã Đoàn</th>
-                            <th width="14%">SL Khách</th>
+                            <th width="14%">Mã Khách</th>
                             <th width="15%">Giá Tour</th>
                             <th width="15%">Ngày Bắt Đầu</th>
                             <th width="15%">Ngày Kết Thúc</th>
@@ -101,7 +101,7 @@
                                 <td>@item.matour</td>
                                 <td>@item.tentour</td>
                                 <td>@item.madoan</td>
-                                <td>@item.slkhach</td>
+                                <td>@item.makhach</td>
                                 <td>@String.Format("{0:0,0 vnđ}", item.gia)</td>
                                 <td>@item.ngaybatdau</td>
                                 <td>@item.ngayketthuc</td>
@@ -119,7 +119,7 @@
 
         <div style="display:flex; justify-content:flex-end; font-size: 24px; font-weight: 700">
             <div>Tổng Doanh Thu Của Tour:&nbsp;</div>
-            <div>@String.Format("{0:0,0 vnđ}", ViewBag.total)</div>
+            <div>@String.Format("{0:0,0 vnđ}", ViewBag.quantity * ViewBag.doanhthutours[0].gia)</div>
         </div>
     }
     else

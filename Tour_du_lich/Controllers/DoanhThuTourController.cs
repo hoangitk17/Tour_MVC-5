@@ -27,7 +27,6 @@ namespace Tour_du_lich.Controllers
                 ViewBag.thoigianbatdau = TempData["thoigianbatdau"];
                 ViewBag.thoigianketthuc = TempData["thoigianketthuc"];
                 ViewBag.quantity = TempData["quantity"];
-                ViewBag.total = TempData["total"];
             }
             if (Session["login"] != null)
             {
@@ -45,6 +44,7 @@ namespace Tour_du_lich.Controllers
             try
             {
                 string code;
+
                 List<DoanhThuTourModel> res = tour.GetDoanhThuTour(id_tour, thoigianbatdau, thoigianketthuc);
                 ViewBag.doanhthutours = res;
                 TempData["quantity"] = res.Count;
@@ -52,7 +52,6 @@ namespace Tour_du_lich.Controllers
                 TempData["thoigianbatdau"] = thoigianbatdau;
                 TempData["thoigianketthuc"] = thoigianketthuc;
                 TempData["ma-tour"] = id_tour;
-                TempData["total"] = tour.TotalTour(res);
                 code = Constants.SUCCESS;
                 return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }

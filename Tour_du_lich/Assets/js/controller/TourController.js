@@ -361,7 +361,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
-                    console.log("success")
+                    console.log(data);
                     Swal.fire(
                         'Thông Báo',
                         'Thực hiện thành công',
