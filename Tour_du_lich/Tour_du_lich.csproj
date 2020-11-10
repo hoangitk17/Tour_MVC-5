@@ -132,6 +132,8 @@
     <Compile Include="Controllers\DiaDiemController.cs" />
     <Compile Include="Controllers\DoanController.cs" />
     <Compile Include="Controllers\ChiPhiDoanController.cs" />
+    <Compile Include="Controllers\ChiPhiTourController.cs" />
+    <Compile Include="Controllers\SoLanDiTourCuaNVController.cs" />
     <Compile Include="Controllers\DoanhThuTourController.cs" />
     <Compile Include="Controllers\DoanhThuDoanController.cs" />
     <Compile Include="Controllers\GiaController.cs" />
@@ -190,6 +192,8 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiPhiDoanModel.cs" />
+    <Compile Include="Models\ChiPhiTourModel.cs" />
+    <Compile Include="Models\SoLanDiTourCuaNVModel.cs" />
     <Compile Include="Models\DoanhThuTourModel.cs" />
     <Compile Include="Models\DoanhThuDoanModel.cs" />
     <Compile Include="Models\gia.cs">
@@ -315,6 +319,8 @@
     <Content Include="Views\DoanhThuDoan\DoanhThuDoan.cshtml" />
     <Content Include="Views\ChiPhiDoan\ChiPhiDoan.cshtml" />
     <Content Include="Views\DoanhThuTour\DoanhThuTour.cshtml" />
+    <Content Include="Views\SoLanDiTourCuaNV\SoLanDiTourCuaNV.cshtml" />
+    <Content Include="Views\ChiPhiTour\ChiPhiTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

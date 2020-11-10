@@ -186,5 +186,58 @@
         });
     };
 
+    SoLanDiTourCuaNV = () => {
+        var id_nhanvien = $("#ma-nhanvien").val();
+        var thoigianbatdau = $("#thoi-gian-bat-dau").val();
+        var thoigianketthuc = $("#thoi-gian-ket-thuc").val();
+        var date_start = new Date($('#thoi-gian-bat-dau').val());
+        var date_end = new Date($('#thoi-gian-ket-thuc').val());
+        var result = "";
+        var flag = true;
+        if (date_start.getTime() > date_end.getTime()) {
+            result += "Thời gian không hợp lệ<br/>";
+            flag = false;
+        }
+        if (thoigianbatdau == "") {
+            result += "Thời gian bắt đầu là bắt buộc<br/>";
+            flag = false;
+        }
+        if (thoigianketthuc == "") {
+            result += "Thời gian kết thúc là bắt buộc<br/>";
+            flag = false;
+        }
+        if (flag == false) {
+            Swal.fire(
+                'Thông Báo',
+                result,
+                'info'
+            )
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: '/SoLanDiTourCuaNV/SoLanDiTourCuaNV',
+            data: '{id_nhanvien: ' + JSON.stringify(id_nhanvien) + ',thoigianbatdau: ' + JSON.stringify(thoigianbatdau) + ',thoigianketthuc: ' + JSON.stringify(thoigianketthuc) + '}',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data.Code == "SUCCESS") {
+                    Swal.fire(
+                        'Thông Báo',
+                        'Thực hiện thành công',
+                        'success'
+                    ).then((value) => {
+                        window.location.href = "/SoLanDiTourCuaNV/SoLanDiTourCuaNV";
+                    });
+                }
+            },
+            error: function (data) {
+                console.log(data);
+                Swal.fire("Error while inserting data<br/>");
+                Swal.fire(data.Message);
+            }
+        });
+    };
+
 });
 
