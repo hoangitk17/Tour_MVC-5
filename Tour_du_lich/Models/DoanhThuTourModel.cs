@@ -10,7 +10,7 @@ namespace Tour_du_lich.Models
         public String matour { get; set; }
         public String tentour { get; set; }
         public String madoan { get; set; }
-        public Nullable<int> slkhach { get; set; }
+        public String makhach { get; set; }
 
         public Nullable<double> gia { get; set; }
         public Nullable<System.DateTime> ngaybatdau { get; set; }
@@ -22,12 +22,12 @@ namespace Tour_du_lich.Models
 
         }
 
-        public DoanhThuTourModel(String matour, String tentour, String madoan, Nullable<int> slkhach, Nullable<double> gia, Nullable<System.DateTime> ngaybatdau, Nullable<System.DateTime> ngayketthuc )
+        public DoanhThuTourModel(String matour, String tentour, String madoan, String makhach, Nullable<double> gia, Nullable<System.DateTime> ngaybatdau, Nullable<System.DateTime> ngayketthuc )
         {
             this.madoan = madoan;
             this.matour = matour;
             this.tentour = tentour;
-            this.slkhach = slkhach;
+            this.makhach = makhach;
             this.gia = gia;
             this.ngaybatdau = ngaybatdau;
             this.ngayketthuc = ngayketthuc;
@@ -37,7 +37,7 @@ namespace Tour_du_lich.Models
             this.madoan = DoanhThuTour.madoan;
             this.matour = DoanhThuTour.matour;
             this.tentour = DoanhThuTour.tentour;
-            this.slkhach = DoanhThuTour.slkhach;
+            this.makhach = DoanhThuTour.makhach;
             this.gia = DoanhThuTour.gia;
             this.ngaybatdau = DoanhThuTour.ngaybatdau;
             this.ngayketthuc = DoanhThuTour.ngayketthuc;
