@@ -6,7 +6,7 @@
         ChiPhi.ghichu = $("#them-ghi-chu").val();
         ChiPhi.madoan = $("#them-ma-doan").val();
         ChiPhi.maloaichiphi = $("#them-ma-loai-chi-phi").val();
-        ChiPhi.giathanh = $("#them-gia-thanh").val();
+        ChiPhi.giathanh = $("#them-gia-thanh").val().replace(/\D/g, '');
         ChiPhi.machiphi = "";
         var flag = true;
         var result = "";
@@ -73,7 +73,7 @@
         ChiPhi.ghichu = $("#sua-ghi-chu").val();
         ChiPhi.madoan = $("#sua-ma-doan").val();
         ChiPhi.maloaichiphi = $("#sua-ma-loai-chi-phi").val();
-        ChiPhi.giathanh = $("#sua-gia-thanh").val();
+        ChiPhi.giathanh = $("#sua-gia-thanh").val().replace(/\D/g, '');
         ChiPhi.machiphi = "";
         var flag = true;
         var result = "";
@@ -187,7 +187,7 @@
                 if (data.Code == "SUCCESS") {
                     $("#sua-ghi-chu").val(data.ghichu);
                     $("#sua-ma-loai-chi-phi").val(data.maloaichiphi);
-                    $("#sua-gia-thanh").val(data.giathanh);
+                    $("#sua-gia-thanh").val(data.giathanh.toLocaleString());
                     $("#sua-ma-doan").val(data.madoan);
 
                 }

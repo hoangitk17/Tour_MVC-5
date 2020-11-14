@@ -1,7 +1,21 @@
-﻿changeCurrency = (input) => {
-    let x = input.value;
-    xCultureInfo cul = CultureInfo.GetCultureInfo("vi-VN");   // try with "en-US"
-    let a = double.Parse(x).ToString("#,###", cul.NumberFormat);
-    console.log(a);
-    input.value = a;
+﻿var delay = (function () {
+    var timer = 0;
+    return function (callback, ms) {
+        clearTimeout(timer);
+        timer = setTimeout(callback, ms);
+    };
+})();
+
+
+changeCurrency = (input) => {
+    delay(function () {
+        var num = input.value.replace(/\D/g, '');
+        let x = parseFloat(num);
+        if (isNaN(x)) {
+            x = 0;
+        }
+        let a =  x.toLocaleString();
+        console.log(a);
+        input.value = a;
+    }, 800);
 }

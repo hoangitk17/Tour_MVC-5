@@ -6,7 +6,7 @@
         gia.matour = $("#ma-tour-them").val();
         gia.tgbd = $("#tgbd-them").val();
         gia.tgkt = $("#tgkt-them").val();
-        gia.giatien = $("#gia-tien-them").val();
+        gia.giatien = $("#gia-tien-them").val().replace(/\D/g, '');
         var date_start = new Date($('#tgbd-them').val());
         var date_end = new Date($('#tgkt-them').val());
         var flag = true;
@@ -39,6 +39,7 @@
             );
             return false;
         }
+
         $.ajax({
             type: "POST",
             url: '/Gia/QuanLyGia',
@@ -74,7 +75,7 @@
         gia.matour = $("#ma-tour-sua").val();
         gia.tgbd = $("#tgbd-sua").val();
         gia.tgkt = $("#tgkt-sua").val();
-        gia.giatien = $("#gia-tien-sua").val();
+        gia.giatien = $("#gia-tien-sua").val().replace(/\D/g, '');
         var date_start = new Date($('#tgbd-sua').val());
         var date_end = new Date($('#tgkt-sua').val());
         var flag = true;
@@ -196,7 +197,7 @@
                     $("#ma-tour-sua").val(data.matour);
                     $("#tgbd-sua").val(data.tgbd);
                     $("#tgkt-sua").val(data.tgkt);
-                    $("#gia-tien-sua").val(data.giatien);
+                    $("#gia-tien-sua").val(data.giatien.toLocaleString());
 
                 }
             },
