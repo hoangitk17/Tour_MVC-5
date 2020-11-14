@@ -81,5 +81,22 @@ namespace Tour_du_lich.Controllers
                 return Json(new { Message = message, JsonRequestBehavior.AllowGet });
             }
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult LoiNhuan6Thang()
+        {
+            try
+            {
+                string code;
+                ArrayList res = tour.LoiNhuan6Thang();
+                code = Constants.SUCCESS;
+                return Json(new { Code = code, data = res, arr = res, JsonRequestBehavior.AllowGet });
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                return Json(new { Message = message, JsonRequestBehavior.AllowGet });
+            }
+        }
     }
 }

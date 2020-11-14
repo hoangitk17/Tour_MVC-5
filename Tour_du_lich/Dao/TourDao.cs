@@ -275,6 +275,151 @@ namespace Tour_du_lich.Dao
             return arr;
         }
 
+        public ArrayList LoiNhuan6Thang()
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            List<DoanhThuTourModel> doanhthutour = (from d in DB.doans
+                                                    join t in DB.tours
+                                                    on d.matour equals t.matour
+                                                    join ct in DB.ctdoans
+                                                    on d.madoan equals ct.madoan
+                                                    select new DoanhThuTourModel()
+                                                    {
+                                                        madoan = d.madoan,
+                                                        matour = t.matour,
+                                                        tentour = t.tentour,
+                                                        makhach = ct.makh,
+                                                        gia = t.giamacdinh,
+                                                        ngaybatdau = d.ngaybatdau,
+                                                        ngayketthuc = d.ngayketthuc,
+                                                    }).ToList();
+            List<ChiPhiTourModel> chiphitour = (from t in DB.tours
+                                                join d in DB.doans
+                                                on t.matour equals d.matour
+                                                join cp in DB.chiphis
+                                                on d.madoan equals cp.madoan
+                                                select new ChiPhiTourModel()
+                                                {
+                                                    madoan = d.madoan,
+                                                    matour = t.matour,
+                                                    machiphi = cp.maloaichiphi,
+                                                    gia = t.giamacdinh,
+                                                    ngaybatdau = d.ngaybatdau,
+                                                    ngayketthuc = d.ngayketthuc,
+                                                }).ToList();
+            ArrayList arr = new ArrayList();
+            double result = 0;
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 1, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 1, 31).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            foreach (ChiPhiTourModel item in chiphitour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 1, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 1, 31).Month)
+                {
+                    result -= Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0;
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 2, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 2, 29).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            foreach (ChiPhiTourModel item in chiphitour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 2, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 2, 29).Month)
+                {
+                    result -= Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0;
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 3, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 3, 31).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            foreach (ChiPhiTourModel item in chiphitour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 3, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 3, 31).Month)
+                {
+                    result -= Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0;
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 4, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 4, 30).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            foreach (ChiPhiTourModel item in chiphitour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 4, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 4, 30).Month)
+                {
+                    result -= Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0;
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 5, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 5, 31).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            foreach (ChiPhiTourModel item in chiphitour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 5, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 5, 31).Month)
+                {
+                    result -= Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0;
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 6, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 6, 30).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            foreach (ChiPhiTourModel item in chiphitour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 6, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 6, 30).Month)
+                {
+                    result -= Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0;
+            double max = 0;
+            foreach (double a in arr)
+            {
+                if (a > max)
+                {
+                    max = a;
+                }
+            }
+            arr.Add(max);
+            return arr;
+        }
+
+        public double totalChiPhiTour(List<ChiPhiTourModel> arr)
+        {
+            double result = 0;
+            foreach(ChiPhiTourModel item in arr)
+            {
+                result += Convert.ToDouble(item.gia);
+            }
+            return result;
+        }
         public List<ChiPhiTourModel> GetChiPhiTour(String id_tour, DateTime thoigianbatdau, DateTime thoigianketthuc)
         {
             DB.Configuration.ProxyCreationEnabled = false;

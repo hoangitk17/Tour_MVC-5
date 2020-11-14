@@ -6,121 +6,151 @@
 
 @using Tour_du_lich.Models
 
-<div class="container-fluid">
-    <h1 class="mt-4">Thống Kê Chi Phí Đoàn</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
-        <li class="breadcrumb-item active">Thống Kê</li>
-        <li class="breadcrumb-item active">Chi Phí Đoàn</li>
-    </ol>
-    <div style="margin-left: 20px">
-        <div style="margin-top:20px" class="row">
-            <div class="col-md-3">
-                <div>
-                    Mã Đoàn Cần Thống Kê
-                </div>
-                <div>
-                    <select id="ma-doan" style="color: black">
-                        @foreach (DoanModel item in ViewBag.doans)
-                        {
-                            if (ViewBag.madoan != null)
-                            {
-                                if (item.madoan == ViewBag.madoan)
+    <div class="container-fluid">
+        <h1 class="mt-4">Thống Kê Chi Phí Đoàn</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
+            <li class="breadcrumb-item active">Thống Kê</li>
+            <li class="breadcrumb-item active">Chi Phí Đoàn</li>
+        </ol>
+        <div class="card mb-4" style="border: 1px solid black;">
+            <div class="card-body">
+                <div style="margin-left: 20px">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div>
+                                Mã Đoàn Cần Thống Kê
+                            </div>
+                            <div>
+                                <select id="ma-doan" style="color: black">
+                                    @foreach (DoanModel item in ViewBag.doans)
+                                    {
+                                        if (ViewBag.madoan != null)
+                                        {
+                                            if (item.madoan == ViewBag.madoan)
+                                            {
+                                                <option value="@item.madoan" selected>@item.madoan</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.madoan">@item.madoan</option>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.madoan">@item.madoan</option>
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                Thời gian Bắt Đầu
+                            </div>
+                            <div>
+                                @if (ViewBag.thoigianbatdau != null)
                                 {
-                                    <option value="@item.madoan" selected>@item.madoan</option>
+                                    <input type="date" id="thoi-gian-bat-dau" value="@ViewBag.thoigianbatdau.Date.ToString("yyyy-MM-dd")" />
                                 }
                                 else
                                 {
-                                    <option value="@item.madoan">@item.madoan</option>
+                                    <input type="date" id="thoi-gian-bat-dau" />
                                 }
-                            }
-                            else
-                            {
-                                <option value="@item.madoan">@item.madoan</option>
-                            }
 
-                        }
-                    </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                Thời gian kết Thúc
+                            </div>
+                            <div>
+                                @if (ViewBag.thoigianketthuc != null)
+                                {
+                                    <input type="date" id="thoi-gian-ket-thuc" value="@ViewBag.thoigianketthuc.Date.ToString("yyyy-MM-dd")" />
+                                }
+                                else
+                                {
+                                    <input type="date" id="thoi-gian-ket-thuc" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="margin-top: 20px"><button id="btnRun" onclick="ChiPhiDoan();">Thực hiện</button></div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div>
-                    Thời gian Bắt Đầu
-                </div>
-                <div>
-                    @if (ViewBag.thoigianbatdau != null)
-                    {
-                        <input type="date" id="thoi-gian-bat-dau" value="@ViewBag.thoigianbatdau.Date.ToString("yyyy-MM-dd")" />
-                    }
-                    else
-                    {
-                        <input type="date" id="thoi-gian-bat-dau" />
-                    }
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div>
-                    Thời gian kết Thúc
-                </div>
-                <div>
-                    @if (ViewBag.thoigianketthuc != null)
-                    {
-                        <input type="date" id="thoi-gian-ket-thuc" value="@ViewBag.thoigianketthuc.Date.ToString("yyyy-MM-dd")" />
-                    }
-                    else
-                    {
-                        <input type="date" id="thoi-gian-ket-thuc" />
-                    }
-                </div>
-            </div>
-            <div class="col-md-3" style="margin-top: 20px"><button id="btnRun" onclick="ChiPhiDoan();">Thực hiện</button></div>
         </div>
-    </div>
 
-    @if (ViewBag.chiphidoans != null && ViewBag.chiphidoans.Count > 0)
-    {
-        <div class="card-body" style="border: 1px solid black; margin: 20px 0px">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th width="15%">Mã Đoàn</th>
-                            <th width="15%">Tên Đoàn</th>
-                            <th width="15%">Tên Chi Phí</th>
-                            <th width="15%">Giá Chi Phí</th>
-                            <th width="20%">Ngày Bắt Đầu</th>
-                            <th width="20%">Ngày Kết Thúc</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (ChiPhiDoanModel item in ViewBag.chiphidoans)
-                        {
+        @if (ViewBag.chiphidoans != null && ViewBag.chiphidoans.Count > 0)
+        {
+            <div class="card-body" style="border: 1px solid black; margin: 20px 0px">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
                             <tr>
-                                <td>@item.madoan</td>
-                                <td>@item.tendoan</td>
-                                <td>@item.tenchiphi</td>
-                                <td>@String.Format("{0:0,0 vnđ}", item.gia)</td>
-                                <td>@item.ngaybatdau</td>
-                                <td>@item.ngayketthuc</td>
+                                <th width="15%">Mã Đoàn</th>
+                                <th width="15%">Tên Đoàn</th>
+                                <th width="15%">Tên Chi Phí</th>
+                                <th width="15%">Giá Chi Phí</th>
+                                <th width="20%">Ngày Bắt Đầu</th>
+                                <th width="20%">Ngày Kết Thúc</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (ChiPhiDoanModel item in ViewBag.chiphidoans)
+                            {
+                                <tr>
+                                    <td>@item.madoan</td>
+                                    <td>@item.tendoan</td>
+                                    <td>@item.tenchiphi</td>
+                                    <td>@String.Format("{0:0,0 vnđ}", item.gia)</td>
+                                    <td>@item.ngaybatdau</td>
+                                    <td>@item.ngayketthuc</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+            <div class="card mb-4" style="border: 1px solid black;">
+                <div class="card-body">
+                    <div class="row" style="display:flex; justify-content:flex-start; font-size: 22px; font-weight: 500">
+                        <div class="col-md-6">Tổng Chi Phí Của Đoàn @ViewBag.madoan:&nbsp;</div>
+                        <div class="col-md-6">@String.Format("{0:0,0 vnđ}", ViewBag.chiphi)</div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="card-body" style="border: 1px solid black; margin: 20px 0px">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="15%">Mã Đoàn</th>
+                                <th width="15%">Tên Đoàn</th>
+                                <th width="15%">Tên Chi Phí</th>
+                                <th width="15%">Giá Chi Phí</th>
+                                <th width="20%">Ngày Bắt Đầu</th>
+                                <th width="20%">Ngày Kết Thúc</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="card mb-4" style="border: 1px solid black;">
+                <div class="card-body">
+                    <div class="row" style="display:flex; justify-content:flex-end; font-size: 22px; font-weight: 500">
+                        <div class="col-md-6">Tổng Chi Phí Của Đoàn:&nbsp;</div>
+                        <div class="col-md-6">0 VNĐ</div>
+                    </div>
+                </div>
+            </div>
+        }
 
-        <div style="display:flex; justify-content:flex-end; font-size: 24px; font-weight: 700">
-            <div>Tổng Chi Phí Của Đoàn:&nbsp;</div>
-            <div>@String.Format("{0:0,0 vnđ}", ViewBag.chiphi)</div>
-        </div>
-    }
-    else
-    {
-        <h1 style="display: flex;justify-content: center;margin-top: 100px;">Chưa có dữ liệu ...</h1>
-    }
-
-</div>
+    </div>
 
 
 
