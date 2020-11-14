@@ -27,7 +27,7 @@ namespace Tour_du_lich.Controllers
                 ViewBag.thoigianbatdau = TempData["thoigianbatdau"];
                 ViewBag.thoigianketthuc = TempData["thoigianketthuc"];
                 ViewBag.quantity = TempData["quantity"];
-                ViewBag.total = TempData["allchiphi"];
+                ViewBag.total = TempData["totalchiphitour"];
             }
             if (Session["login"] != null)
             {
@@ -47,12 +47,12 @@ namespace Tour_du_lich.Controllers
                 string code;
                 List<ChiPhiTourModel> res = tour.GetChiPhiTour(id_tour, thoigianbatdau, thoigianketthuc);
                 ViewBag.ChiPhiTours = res;
+                TempData["totalchiphitour"] = tour.totalChiPhiTour(res);
                 TempData["quantity"] = res.Count;
                 TempData["ChiPhiTours"] = res;
                 TempData["thoigianbatdau"] = thoigianbatdau;
                 TempData["thoigianketthuc"] = thoigianketthuc;
                 TempData["ma-tour"] = id_tour;
-                TempData["allchiphi"] = tour.TongChiphi(res);
                 code = Constants.SUCCESS;
                 return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }

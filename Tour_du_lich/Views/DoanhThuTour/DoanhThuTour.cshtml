@@ -13,10 +13,10 @@
             <li class="breadcrumb-item active">Thống Kê</li>
             <li class="breadcrumb-item active">Doanh Thu Tour</li>
         </ol>
-        <div class="card mb-4">
+        <div class="card mb-4" style="border: 1px solid black;">
             <div class="card-body">
                 <div style="margin-left: 20px">
-                    <div style="margin-top:20px" class="row">
+                    <div class="row">
                         <div class="col-md-3">
                             <div>
                                 Mã Tour Cần Thống Kê
@@ -116,21 +116,21 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4" style="border: 1px solid black;">
                 <div class="card-body">
-                    <div style="display:flex; justify-content:flex-start; font-size: 24px; font-weight: 500">
-                        <div>Tổng Số Lượng Đoàn Đi Tour @ViewBag.matour:&nbsp;</div>
-                        <div>@ViewBag.quantity</div>
+                    <div style="display:flex; justify-content:flex-end; font-size: 22px; font-weight: 500" class="row">
+                        <div class="col-md-6">Tổng Số Lượng Đoàn Đi Tour @ViewBag.matour:&nbsp;</div>
+                        <div class="col-md-6">@ViewBag.quantity</div>
                     </div>
 
-                    <div style="display:flex; justify-content:flex-start; font-size: 24px; font-weight: 500">
-                        <div>Tổng Số Lượng Khách Của Các Đoàn đi Tour @ViewBag.matour:&nbsp;</div>
-                        <div>@ViewBag.quantitykhach</div>
+                    <div style="display:flex; justify-content:flex-end; font-size: 22px; font-weight: 500" class="row">
+                        <div class="col-md-6">Tổng Số Lượng Khách Của Các Đoàn đi Tour @ViewBag.matour:&nbsp;</div>
+                        <div class="col-md-6">@ViewBag.quantitykhach</div>
                     </div>
 
-                    <div style="display:flex; justify-content:flex-start; font-size: 24px; font-weight: 500">
-                        <div>Tổng Doanh Thu Của Tour @ViewBag.matour:&nbsp;</div>
-                        <div>@String.Format("{0:0,0 vnđ}", ViewBag.quantitykhach * ViewBag.doanhthutours[0].gia)</div>
+                    <div style="display:flex; justify-content:flex-end; font-size: 24px; font-weight: 500" class="row">
+                        <div class="col-md-6">Tổng Doanh Thu Của Tour @ViewBag.matour:&nbsp;</div>
+                        <div class="col-md-6">@String.Format("{0:0,0 vnđ}", ViewBag.quantitykhach * ViewBag.doanhthutours[0].gia)</div>
                     </div>
                 </div>
             </div>
@@ -156,29 +156,29 @@
                 </div>
             </div>
 
-            <div class="card mb-4">
+            <div class="card mb-4" style="border: 1px solid black;">
                 <div class="card-body">
 
-                    <div style="display:flex; justify-content:flex-start; font-size: 24px; font-weight: 500">
-                        <div>Tổng Số Lượng Đoàn Đi Tour @ViewBag.matour:&nbsp;</div>
-                        <div>0</div>
+                    <div style="display:flex; justify-content:flex-end; font-size: 24px; font-weight: 500" class="row">
+                        <div class="col-md-6">Tổng Số Lượng Đoàn Đi Tour @ViewBag.matour:&nbsp;</div>
+                        <div class="col-md-6">0</div>
                     </div>
 
-                    <div style="display:flex; justify-content:flex-start; font-size: 24px; font-weight: 500">
-                        <div>Tổng Số Lượng Khách Của Các Đoàn đi Tour @ViewBag.matour:&nbsp;</div>
-                        <div>0</div>
+                    <div style="display:flex; justify-content:flex-end; font-size: 24px; font-weight: 500" class="row">
+                        <div class="col-md-6">Tổng Số Lượng Khách Của Các Đoàn đi Tour @ViewBag.matour:&nbsp;</div>
+                        <div class="col-md-6">0</div>
                     </div>
 
-                    <div style="display:flex; justify-content:flex-start; font-size: 24px; font-weight: 500">
-                        <div>Tổng Doanh Thu Của Tour @ViewBag.matour:&nbsp;</div>
-                        <div>0&nbsp;VNĐ</div>
+                    <div style="display:flex; justify-content:flex-end; font-size: 24px; font-weight: 500" class="row">
+                        <div class="col-md-6">Tổng Doanh Thu Của Tour @ViewBag.matour:&nbsp;</div>
+                        <div class="col-md-6">0&nbsp;VNĐ</div>
                     </div>
 
                 </div>
             </div>
                     }
 
-                </div>
+       </div>
 
 
 

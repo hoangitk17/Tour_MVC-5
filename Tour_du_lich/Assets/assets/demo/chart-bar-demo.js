@@ -25,7 +25,7 @@ $(window).on('load', function () {
                     myLineChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ["January", "February", "March", "April", "May", "June"],
+                        labels: ["T1", "T2", "T3", "T4", "T5", "T6"],
                         datasets: [{
                             label: "Revenue",
                             backgroundColor: "rgba(2,117,216,1)",
@@ -49,7 +49,84 @@ $(window).on('load', function () {
                             yAxes: [{
                                 ticks: {
                                     min: 0,
-                                    max: data.data[6] + 5000,
+                                    max: data.data[6] + 10000000,
+                                    maxTicksLimit: 5
+                                },
+                                gridLines: {
+                                    display: true
+                                }
+                            }],
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                });
+
+
+                return true;
+            }
+            console.log("tours 111" + data.data);
+            console.log("tours" + data.arr);
+            console.log("success nhung fail")
+        },
+        error: function (data) {
+            console.log(data);
+            console.log("Fail luon")
+            Swal.fire("Error while inserting data<br/>");
+            Swal.fire(data.Message);
+        }
+    });
+    console.log("error")
+});
+
+$(window).on('load', function () {
+    var ctx_LN;
+    var myLineChart_LN;
+    $.ajax({
+        type: "POST",
+        url: '/DoanhThuTour/LoiNhuan6Thang',
+        data: {},
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            if (data.Code == "SUCCESS") {
+                console.log("tours 2" + data.data[0]);
+                console.log("tours 1" + data);
+                console.log("tours" + data.data);
+                console.log("tours 111" + data.arr);
+                console.log("tours 222" + data.data.length);
+
+                // Bar Chart Example
+                ctx_LN = document.getElementById("myBarChart_LoiNhuan");
+                myLineChart_LN = new Chart(ctx_LN, {
+                    type: 'bar',
+                    data: {
+                        labels: ["T1", "T2", "T3", "T4", "T5", "T6"],
+                        datasets: [{
+                            label: "Revenue",
+                            backgroundColor: "rgba(2,117,216,1)",
+                            borderColor: "rgba(2,117,216,1)",
+                            data: [data.data[0], data.data[1], data.data[2], data.data[3], data.data[4], data.data[5]],
+                        }],
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [{
+                                time: {
+                                    unit: 'month'
+                                },
+                                gridLines: {
+                                    display: false
+                                },
+                                ticks: {
+                                    maxTicksLimit: 6
+                                }
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                    max: data.data[6] + 10000000,
                                     maxTicksLimit: 5
                                 },
                                 gridLines: {
