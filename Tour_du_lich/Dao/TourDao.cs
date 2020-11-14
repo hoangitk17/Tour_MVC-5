@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,21 +12,21 @@ namespace Tour_du_lich.Dao
         DBTOUREntities DB = new DBTOUREntities();
 
         public List<TourDataModel> GetAllTour()
-        { 
+        {
             DB.Configuration.ProxyCreationEnabled = false;
             List<TourDataModel> result = new List<TourDataModel>();
             foreach (tour temp in DB.tours)
             {
                 List<DiaDiemModel> diadiems = (from ct in DB.cttours
-                                              join d in DB.diadiems
-                                              on ct.madiadiem equals d.madiadiem
-                                              where ct.matour == temp.matour
-                                              orderby ct.thutu ascending
-                                              select new DiaDiemModel()
-                                              {
-                                                  madiadiem = ct.madiadiem,
-                                                  tendiadiem = d.tendiadiem,
-                                              }).ToList();
+                                               join d in DB.diadiems
+                                               on ct.madiadiem equals d.madiadiem
+                                               where ct.matour == temp.matour
+                                               orderby ct.thutu ascending
+                                               select new DiaDiemModel()
+                                               {
+                                                   madiadiem = ct.madiadiem,
+                                                   tendiadiem = d.tendiadiem,
+                                               }).ToList();
 
                 TourDataModel tourdata = new TourDataModel(temp.matour, temp.tentour, temp.maloai, temp.dacdiem, temp.giamacdinh, diadiems);
                 result.Add(tourdata);
@@ -59,6 +60,7 @@ namespace Tour_du_lich.Dao
 
             return tour;
         }
+
         public void AddTour(TourDataModel insertTour)
         {
             try
@@ -70,7 +72,7 @@ namespace Tour_du_lich.Dao
                 data.tentour = insertTour.tentour;
                 DB.tours.Add(data);
                 int thutu = 1;
-                foreach(DiaDiemModel dd in insertTour.diadiems)
+                foreach (DiaDiemModel dd in insertTour.diadiems)
                 {
                     cttour ct = new cttour()
                     {
@@ -82,7 +84,7 @@ namespace Tour_du_lich.Dao
                     thutu++;
 
                 }
-                
+
                 DB.SaveChanges();
             }
             catch (Exception e)
@@ -91,13 +93,13 @@ namespace Tour_du_lich.Dao
             }
         }
 
-       
+
         public void Delete(string id)
         {
             List<cttour> ct = DB.cttours.Where(c => c.matour == id).ToList();
-            if(ct != null)
+            if (ct != null)
             {
-                foreach(cttour temp in ct)
+                foreach (cttour temp in ct)
                 {
                     DB.cttours.Remove(temp);
                 }
@@ -149,7 +151,6 @@ namespace Tour_du_lich.Dao
                 return true;
             }
         }
-
         public bool ExistIdInAnotherTable(string id)
         {
             var gia = DB.gias.SingleOrDefault(x => x.matour == id);
@@ -162,6 +163,13 @@ namespace Tour_du_lich.Dao
             {
                 return false;
             }
+        }
+
+        public int SLDoanOfTour(List<DoanhThuTourModel> arr)
+        {
+            int result = 0;
+            result = arr.Select(x => x.madoan).Distinct().Count();
+            return result;
         }
 
         public List<DoanhThuTourModel> GetDoanhThuTour(String id_tour, DateTime thoigianbatdau, DateTime thoigianketthuc)
@@ -185,6 +193,86 @@ namespace Tour_du_lich.Dao
                                                         ngayketthuc = d.ngayketthuc,
                                                     }).ToList();
             return doanhthutour;
+        }
+
+        public ArrayList DoanhThuTour6Thang()
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            List<DoanhThuTourModel> doanhthutour = (from d in DB.doans
+                                                    join t in DB.tours
+                                                    on d.matour equals t.matour
+                                                    join ct in DB.ctdoans
+                                                    on d.madoan equals ct.madoan
+                                                    select new DoanhThuTourModel()
+                                                    {
+                                                        madoan = d.madoan,
+                                                        matour = t.matour,
+                                                        tentour = t.tentour,
+                                                        makhach = ct.makh,
+                                                        gia = t.giamacdinh,
+                                                        ngaybatdau = d.ngaybatdau,
+                                                        ngayketthuc = d.ngayketthuc,
+                                                    }).ToList();
+            ArrayList arr = new ArrayList();
+            double result = 0;
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 1, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 1, 31).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0; 
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 2, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 2, 29).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0; 
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 3, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 3, 31).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0; 
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 4, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 4, 30).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0; 
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 5, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 5, 31).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0; 
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                if (item.ngaybatdau.Value.Month == new DateTime(2020, 6, 1).Month && item.ngayketthuc.Value.Month == new DateTime(2020, 6, 30).Month)
+                {
+                    result += Convert.ToDouble(item.gia);
+                }
+            }
+            arr.Add(result); result = 0; 
+            double max = 0;
+            foreach(double a in arr)
+            {
+                if(a > max)
+                {
+                    max = a;
+                }
+            }
+            arr.Add(max);
+            return arr;
         }
 
         public List<ChiPhiTourModel> GetChiPhiTour(String id_tour, DateTime thoigianbatdau, DateTime thoigianketthuc)
