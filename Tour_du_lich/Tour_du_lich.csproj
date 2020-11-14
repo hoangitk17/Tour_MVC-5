@@ -239,6 +239,7 @@
     <Content Include="Assets\assets\demo\datatables-demo.js" />
     <Content Include="Assets\assets\img\error-404-monochrome.svg" />
     <Content Include="Assets\css\diadiem.css" />
+    <Content Include="Assets\css\general.css" />
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\js\common.js" />
     <Content Include="Assets\js\controller\DiaDiemController.js" />
@@ -274,7 +275,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Assets\css\StyleSheet1.scss" />
     <EntityDeploy Include="Models\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
