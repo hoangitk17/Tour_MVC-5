@@ -84,11 +84,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th width="13%">Mã Tour</th>
-                            <th width="13%">Tên Tour</th>
+                            <th width="15%">Mã Tour</th>
                             <th width="15%">Mã Đoàn</th>
-                            <th width="14%">SL Khách</th>
-                            <th width="15%">Giá Tour</th>
+                            <th width="15%">Mã Chi Phí</th>
+                            <th width="15%">Giá Chi Phí</th>
                             <th width="15%">Ngày Bắt Đầu</th>
                             <th width="15%">Ngày Kết Thúc</th>
                         </tr>
@@ -112,7 +111,7 @@
 
         <div style="display:flex; justify-content:flex-end; font-size: 24px; font-weight: 700">
             <div>Tổng Chi Phí Của Tour:&nbsp;</div>
-            <div>@String.Format("{0:0,0 vnđ}", 100000)</div>
+            <div>@String.Format("{0:0,0 vnđ}", ViewBag.total)</div>
         </div>
     }
     else

@@ -208,5 +208,16 @@ namespace Tour_du_lich.Dao
                                                     }).ToList();
             return chiphitour;
         }
+
+        public double TongChiphi(List<ChiPhiTourModel> arr)
+        {
+            double result = 0;
+            foreach(ChiPhiTourModel item in arr)
+            {
+                result += Convert.ToDouble(item.gia);
+            }
+            return result;
+
+        }
     }
 }

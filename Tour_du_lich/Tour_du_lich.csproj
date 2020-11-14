@@ -240,6 +240,7 @@
     <Content Include="Assets\assets\img\error-404-monochrome.svg" />
     <Content Include="Assets\css\diadiem.css" />
     <Content Include="Assets\css\styles.css" />
+    <Content Include="Assets\js\common.js" />
     <Content Include="Assets\js\controller\DiaDiemController.js" />
     <Content Include="Assets\js\controller\DoanController.js" />
     <Content Include="Assets\js\controller\GiaController.js" />
