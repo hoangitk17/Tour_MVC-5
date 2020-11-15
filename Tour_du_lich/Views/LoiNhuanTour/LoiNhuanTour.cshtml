@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "LoiNhuanTour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Tour_du_lich.Models
+
+    <div class="container-fluid">
+        <h1 class="mt-4">Thống Kê Lợi Nhuận Của Tất Cả Các Tour</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
+            <li class="breadcrumb-item active">Lợi Nhuận Tour</li>
+        </ol>
+        <div class="card mb-4" style="border: 1px solid black;">
+            <div class="card-body">
+                <div style="margin-left: 20px">
+                    <div class="row" style="display: flex; justify-content: center">
+                        <div class="col-md-4">
+                            <div>
+                                Thời gian Bắt Đầu
+                            </div>
+                            <div>
+                                @if (ViewBag.thoigianbatdau != null)
+                                {
+                                    <input type="date" id="thoi-gian-bat-dau" value="@ViewBag.thoigianbatdau.Date.ToString("yyyy-MM-dd")" />
+                                }
+                                else
+                                {
+                                    <input type="date" id="thoi-gian-bat-dau" />
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                Thời gian kết Thúc
+                            </div>
+                            <div>
+                                @if (ViewBag.thoigianketthuc != null)
+                                {
+                                    <input type="date" id="thoi-gian-ket-thuc" value="@ViewBag.thoigianketthuc.Date.ToString("yyyy-MM-dd")" />
+                                }
+                                else
+                                {
+                                    <input type="date" id="thoi-gian-ket-thuc" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-top: 20px"><button onclick="LoiNhuanTour();">Thực hiện</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*@if (ViewBag.loinhuantours != null && ViewBag.loinhuantours.Count > 0 || ViewBag.total != null)
+        {*@
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-area mr-1"></i>
+                            Lợi Nhuận Của Các Tour Du Lịch
+                        </div>
+                        <div id="reset-area-chart" class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" style="border: 1px solid black;">
+                <div class="card-body">
+                    <div class="row" style="display:flex; justify-content:flex-start; font-size: 22px; font-weight: 500">
+                        <div class="col-md-4">Tổng Lợi Nhuận Của Doanh Nghiệp:&nbsp;</div>
+                        <div id="total" class="col-md-8">@*@String.Format("{0:0,0 vnđ}", ViewBag.total)*@0 VNĐ</div>
+                    </div>
+                </div>
+            </div>
+        @*}
+        else
+        {
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-area mr-1"></i>
+                            Lợi Nhuận Của Các Tour Du Lịch
+                        </div>
+                        <div class="card-body"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4" style="border: 1px solid black;">
+                <div class="card-body">
+                    <div class="row" style="display:flex; justify-content:flex-start; font-size: 22px; font-weight: 500">
+                        <div class="col-md-4">Tổng Lợi Nhuận Của Doanh Nghiệp:&nbsp;</div>
+                        <div class="col-md-8">0 VNĐ</div>
+                    </div>
+                </div>
+            </div>
+        }*@
+
+
+    </div>
+
+
+
+
+
