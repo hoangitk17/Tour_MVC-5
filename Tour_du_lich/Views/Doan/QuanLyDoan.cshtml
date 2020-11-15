@@ -31,7 +31,7 @@
                     {
                         <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 620px">
+                                <div class="modal-content" style="min-width: 700px">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
@@ -41,11 +41,11 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
-                                            <div style="margin-top:50px" class="row">
+                                        <div style="">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Đoàn
+                                                        <label for="them-ma-doan" class="form-label"> Mã Đoàn</label>
                                                     </div>
                                                     <div>
                                                         <input id="them-ma-doan" />
@@ -53,9 +53,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Tour
+                                                        <label for="them-ma-tour" class="form-label"> Mã Tour</label>
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="them-ma-tour" style="color: black">
                                                             @foreach (TourDataModel item in ViewBag.tours)
                                                             {
@@ -66,10 +66,10 @@
                                                 </div>
                                             </div>
 
-                                            <div style="margin-top:50px" class="row">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Bắt Đầu
+                                                        <label for="them-ngay-bat-dau" class="form-label"> Ngày Bắt Đầu</label>
                                                     </div>
                                                     <div>
                                                         <input type="date" id="them-ngay-bat-dau" />
@@ -77,7 +77,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Kết Thúc
+                                                        <label for="them-ngay-ket-thuc" class="form-label"> Ngày Kết Thúc</label>
                                                     </div>
                                                     <div>
                                                         <input type="date" id="them-ngay-ket-thuc" />
@@ -85,30 +85,32 @@
                                                 </div>
                                             </div>
 
-                                            <div style="margin-top:50px" class="row">
-                                                Chọn khách cho đoàn
-                                            </div>
-                                            <div style="margin-top:50px;display:flex;justify-content:space-evenly;" class="row">
-                                                <!-- Demo -->
-                                                <div>
-                                                    <select multiple="multiple" size="10" name="duallistbox_nhanvien_1" id="list-nv-add-1" title="duallistbox_demo2">
-
-                                                        @foreach (KhachModel item in ViewBag.khachs)
-                                                        {
-                                                            <option value="@item.makh">@item.tenkh</option>
-
-                                                        }
-                                                    </select>
+                                            <div class="row">
+                                                <div style="" class="col-md-12">
+                                                    <label for="list-nv-add-1" class="form-label"> Chọn khách cho đoàn</label>
                                                 </div>
-                                                <div style="display: flex; flex-direction: column">
-                                                    <button id="btn-add-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Add</button>
-                                                    <button id="btn-remove-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Remove</button>
-                                                    <button id="btn-up-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Up</button>
-                                                    <button id="btn-down-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Down</button>
-                                                </div>
-                                                <div>
-                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="list-nv-add-2" title="duallistbox_demo2">
-                                                    </select>
+                                                <div id="select-edit" style="display:flex;justify-content:space-between;" class="col-md-12">
+                                                    <!-- Demo -->
+                                                    <div>
+                                                        <select multiple="multiple" size="5" name="duallistbox_nhanvien_1" id="list-nv-add-1" title="duallistbox_demo2">
+
+                                                            @foreach (KhachModel item in ViewBag.khachs)
+                                                            {
+                                                                <option value="@item.makh">@item.tenkh</option>
+
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div style="display: flex; flex-direction: column">
+                                                        <button id="btn-add-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Add</button>
+                                                        <button id="btn-remove-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Remove</button>
+                                                        <button id="btn-up-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Up</button>
+                                                        <button id="btn-down-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Down</button>
+                                                    </div>
+                                                    <div>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-nv-add-2" title="duallistbox_demo2">
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -130,7 +132,7 @@
                     {
                         <div class="modal fade" id="myModalEdit">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 620px">
+                                <div class="modal-content" style="min-width: 700px">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
@@ -140,11 +142,11 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
-                                            <div style="margin-top:50px" class="row">
+                                        <div style="">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Đoàn
+                                                        <label for="sua-ma-doan" class="form-label"> Mã Đoàn</label>
                                                     </div>
                                                     <div>
                                                         <input id="sua-ma-doan" disabled />
@@ -152,9 +154,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Tour
+                                                        <label for="sua-ma-tour" class="form-label"> Mã Tour</label>
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="sua-ma-tour" style="color: black">
                                                             @foreach (TourDataModel item in ViewBag.tours)
                                                             {
@@ -165,10 +167,10 @@
                                                 </div>
                                             </div>
 
-                                            <div style="margin-top:50px" class="row">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Bắt Đầu
+                                                        <label for="sua-ngay-bat-dau" class="form-label">Ngày Bắt Đầu</label>
                                                     </div>
                                                     <div>
                                                         <input type="date" id="sua-ngay-bat-dau" />
@@ -176,7 +178,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Kết Thúc
+                                                        <label for="sua-ngay-ket-thuc" class="form-label">Ngày Kết Thúc</label>
                                                     </div>
                                                     <div>
                                                         <input type="date" id="sua-ngay-ket-thuc" />
@@ -184,30 +186,32 @@
                                                 </div>
                                             </div>
 
-                                            <div style="margin-top:50px" class="row">
-                                                Chọn khách cho đoàn
-                                            </div>
-                                            <div style="margin-top:50px;display:flex;justify-content:space-evenly;" class="row">
-                                                <!-- Demo -->
-                                                <div>
-                                                    <select multiple="multiple" size="10" name="duallistbox_nhanvien_1" id="list-nv-edit-1" title="duallistbox_demo2">
-
-                                                        @foreach (KhachModel item in ViewBag.khachs)
-                                                        {
-                                                            <option value="@item.makh">@item.tenkh</option>
-
-                                                        }
-                                                    </select>
+                                            <div class="row">
+                                                <div style="" class="col-md-12">
+                                                    <label for="list-nv-edit-1" class="form-label"> Chọn khách cho đoàn</label>
                                                 </div>
-                                                <div style="display: flex; flex-direction: column">
-                                                    <button id="btn-add-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Add</button>
-                                                    <button id="btn-remove-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Remove</button>
-                                                    <button id="btn-up-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Up</button>
-                                                    <button id="btn-down-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Down</button>
-                                                </div>
-                                                <div>
-                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="list-nv-edit-2" title="duallistbox_demo2">
-                                                    </select>
+                                                <div id="select-edit" style="display:flex;justify-content:space-between;" class="col-md-12">
+                                                    <!-- Demo -->
+                                                    <div>
+                                                        <select multiple="multiple" size="5" name="duallistbox_nhanvien_1" id="list-nv-edit-1" title="duallistbox_demo2">
+
+                                                            @foreach (KhachModel item in ViewBag.khachs)
+                                                            {
+                                                                <option value="@item.makh">@item.tenkh</option>
+
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div style="display: flex; flex-direction: column">
+                                                        <button id="btn-add-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Add</button>
+                                                        <button id="btn-remove-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Remove</button>
+                                                        <button id="btn-up-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Up</button>
+                                                        <button id="btn-down-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Down</button>
+                                                    </div>
+                                                    <div>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-nv-edit-2" title="duallistbox_demo2">
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
 

@@ -33,7 +33,7 @@
                     {
                         <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 620px">
+                                <div class="modal-content" style="min-width: 600px">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
@@ -43,19 +43,25 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
+                                        <div style="">
                                             <div style="margin-top:50px" class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 select-no-edit" >
                                                     <div>
-                                                        Nhiệm Vụ
+                                                        <label for="them-ma-nhan-vien" class="form-label"> Mã Nhân Viên</label>
                                                     </div>
                                                     <div>
-                                                        <textarea id="them-nhiem-vu"></textarea>
+                                                        <select id="them-ma-nhan-vien" style="color: black">
+                                                            @foreach (NhanVienModel item in ViewBag.nhanviens)
+                                                            {
+                                                                <option value="@item.manv">@item.manv</option>
+                                                            }
+                                                        </select>
                                                     </div>
+                                                    
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 select-no-edit">
                                                     <div>
-                                                        Mã Đoàn
+                                                        <label for="them-ma-doan" class="form-label"> Mã Đoàn</label>
                                                     </div>
                                                     <div>
                                                         <select id="them-ma-doan" style="color: black">
@@ -70,15 +76,10 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-12">
                                                     <div>
-                                                        Mã Nhân Viên
+                                                        <label for="them-nhiem-vu" class="form-label">Nhiệm Vụ</label>
                                                     </div>
                                                     <div>
-                                                        <select id="them-ma-nhan-vien" style="color: black">
-                                                            @foreach (NhanVienModel item in ViewBag.nhanviens)
-                                                            {
-                                                                <option value="@item.manv">@item.manv</option>
-                                                            }
-                                                        </select>
+                                                        <textarea id="them-nhiem-vu"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -100,7 +101,7 @@
                     {
                         <div class="modal fade" id="myModalEdit">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 620px">
+                                <div class="modal-content" style="min-width: 600px">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
@@ -110,19 +111,25 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
+                                        <div style="">
                                             <div style="margin-top:50px" class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 select-no-edit">
                                                     <div>
-                                                        Nhiệm Vụ
+                                                        <label for="sua-ma-nhan-vien" class="form-label"> Mã Nhân Viên</label>
                                                     </div>
                                                     <div>
-                                                        <textarea id="sua-nhiem-vu"></textarea>
+                                                        <select id="sua-ma-nhan-vien" style="color: black" disabled>
+                                                            @foreach (NhanVienModel item in ViewBag.nhanviens)
+                                                            {
+                                                                <option value="@item.manv">@item.manv</option>
+                                                            }
+                                                        </select>
                                                     </div>
+                                                    
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 select-no-edit">
                                                     <div>
-                                                        Mã Đoàn
+                                                        <label for="sua-ma-doan" class="form-label"> Mã Đoàn</label>
                                                     </div>
                                                     <div>
                                                         <select id="sua-ma-doan" style="color: black" disabled>
@@ -137,15 +144,10 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-12">
                                                     <div>
-                                                        Mã Nhân Viên
+                                                        <label for="sua-nhiem-vu" class="form-label">  Nhiệm Vụ</label>
                                                     </div>
                                                     <div>
-                                                        <select id="sua-ma-nhan-vien" style="color: black" disabled>
-                                                            @foreach (NhanVienModel item in ViewBag.nhanviens)
-                                                            {
-                                                                <option value="@item.manv">@item.manv</option>
-                                                            }
-                                                        </select>
+                                                        <textarea id="sua-nhiem-vu"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

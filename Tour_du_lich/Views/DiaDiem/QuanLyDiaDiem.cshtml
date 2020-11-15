@@ -32,7 +32,7 @@
                         <!-- The Modal -->
                         <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 620px">
+                                <div class="modal-content" style="min-width: 600px">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
@@ -42,21 +42,24 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
-                                            <div style="margin-top:20px">
-
-                                                <div class="form-group">
-                                                    <label for="madiadiem">Mã Địa Điểm:</label>
-                                                    <input type="text" class="form-control" id="ma-dia-diem-them" placeholder="Nhập Mã Địa Điểm" name="madiadiem">
+                                        <div style="">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="ma-dia-diem-them" class="form-label"> Mã Địa Điểm</label>
                                                 </div>
-                                                <div id="show-err-ma"></div>
-                                                <div class="form-group">
-                                                    <label for="tendiadiem">Tên Địa Điểm:</label>
-                                                    <input type="text" class="form-control" id="ten-dia-diem-them" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="ma-dia-diem-them" placeholder="Nhập Mã Địa Điểm" name="madiadiem">
                                                 </div>
-                                                <div id="show-err-name"></div>
-
                                             </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="ten-dia-diem-them" class="form-label"> Tên Địa Điểm</label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <input type="text"  id="ten-dia-diem-them" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                     </div>
 
@@ -87,21 +90,24 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
-                                            <div style="margin-top:20px">
-
-                                                <div class="form-group">
-                                                    <label for="madiadiem">Mã Địa Điểm:</label>
-                                                    <input type="text" class="form-control" id="sua-ma-dia-diem" placeholder="Nhập Mã Địa Điểm" name="madiadiem" disabled>
+                                        <div style="">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="sua-ma-dia-diem" class="form-label"> Mã Địa Điểm</label>
                                                 </div>
-                                                <div id="show-err-ma"></div>
-                                                <div class="form-group">
-                                                    <label for="tendiadiem">Tên Địa Điểm:</label>
-                                                    <input type="text" class="form-control" id="sua-ten-dia-diem" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
+                                                <div class="col-md-12">
+                                                    <input type="text" id="sua-ma-dia-diem" placeholder="Nhập Mã Địa Điểm" name="madiadiem" disabled>
                                                 </div>
-                                                <div id="show-err-name"></div>
-
                                             </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="sua-ten-dia-diem" class="form-label"> Tên Địa Điểm</label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <input type="text" id="sua-ten-dia-diem" placeholder="Nhập Tên Địa Điểm" name="tendiadiem">
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                     </div>
 

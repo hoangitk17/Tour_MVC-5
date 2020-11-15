@@ -32,7 +32,7 @@
                     {
                         <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 620px">
+                                <div class="modal-content" style="min-width: 600px">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
@@ -42,13 +42,13 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
-                                            <div style="margin-top:50px" class="row">
+                                        <div style="">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Loại Chi Phí
+                                                        <label for="them-ma-loai-chi-phi" class="form-label"> Mã Loại Chi Phí</label>
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="them-ma-loai-chi-phi" style="color: black">
                                                             @foreach (LoaiChiPhiModel item in ViewBag.loaichiphis)
                                                             {
@@ -59,9 +59,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Đoàn
+                                                        <label for="them-ma-doan" class="form-label">Mã Đoàn</label>
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="them-ma-doan" style="color: black">
                                                             @foreach (DoanModel item in ViewBag.doans)
                                                             {
@@ -74,7 +74,7 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Giá Thành
+                                                        <label for="them-gia-thanh" class="form-label">Giá Thành</label>
                                                     </div>
                                                     <div>
                                                         <input type="text" id="them-gia-thanh" onkeyup="changeCurrency(this);"/>
@@ -82,7 +82,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ghi Chú
+                                                        <label for="them-ghi-chu" class="form-label">Ghi Chú</label>
                                                     </div>
                                                     <div>
                                                         <textarea id="them-ghi-chu"></textarea>
@@ -107,7 +107,7 @@
                     {
                         <div class="modal fade" id="myModalEdit">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 620px">
+                                <div class="modal-content" style="min-width: 600px">
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
@@ -117,13 +117,13 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
+                                        <div style="">
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
-                                                    <div>
-                                                        Mã Loại Chi Phí
+                                                    <div >
+                                                        <label for="sua-ma-loai-chi-phi" class="form-label">Mã Loại Chi Phí</label>
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="sua-ma-loai-chi-phi" style="color: black" disabled>
                                                             @foreach (LoaiChiPhiModel item in ViewBag.loaichiphis)
                                                             {
@@ -134,9 +134,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Đoàn
+                                                        <label for="sua-ma-doan" class="form-label">Mã Đoàn</label>
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="sua-ma-doan" style="color: black" disabled>
                                                             @foreach (DoanModel item in ViewBag.doans)
                                                             {
@@ -149,7 +149,7 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Giá Thành
+                                                        <label for="sua-gia-thanh" class="form-label">Giá Thành</label>
                                                     </div>
                                                     <div>
                                                         <input type="text" id="sua-gia-thanh" onkeyup="changeCurrency(this);"/>
@@ -157,7 +157,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ghi Chú
+                                                        <label for="sua-ghi-chu" class="form-label">Ghi Chú</label>
                                                     </div>
                                                     <div>
                                                         <textarea id="sua-ghi-chu"></textarea>

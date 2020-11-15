@@ -45,7 +45,7 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Giá Tour
+                                                        <label for="ma-gia-them" class="form-label"> Mã Giá Tour</label>
                                                     </div>
                                                     <div>
                                                         <input id="ma-gia-them" />
@@ -53,9 +53,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Tour
+                                                        <label for="ma-tour-them" class="form-label"> Mã Tour</label>
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="ma-tour-them" style="color: black">
 
                                                             @foreach (TourDataModel item in ViewBag.tours)
@@ -71,7 +71,7 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Bắt Đầu
+                                                        <label for="tgbd-them" class="form-label"> Ngày Bắt Đầu</label>
                                                     </div>
                                                     <div>
                                                         <input type="date" id="tgbd-them" />
@@ -79,7 +79,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Kết Thúc
+                                                        <label for="tgkt-them" class="form-label">  Ngày Kết Thúc</label>
                                                     </div>
                                                     <div>
                                                         <input type="date" id="tgkt-them" />
@@ -89,7 +89,7 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-12">
                                                     <div>
-                                                        Giá Tour
+                                                        <label for="gia-tien-them" class="form-label"> Giá Tour</label>
                                                     </div>
                                                     <input type="text" id="gia-tien-them" onkeyup="changeCurrency(this);" />
                                                 </div>
@@ -126,7 +126,7 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Giá Tour
+                                                        <label for="ma-gia-sua" class="form-label"> Mã Giá Tour</label>
                                                     </div>
                                                     <div>
                                                         <input id="ma-gia-sua" disabled/>
@@ -134,9 +134,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Tour
+                                                        <label for="ma-tour-sua" class="form-label"> Mã Tour</label>
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="ma-tour-sua" style="color: black">
                                                             
                                                                 @foreach (TourDataModel item in ViewBag.tours)
@@ -152,7 +152,7 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Bắt Đầu
+                                                        <label for="tgbd-sua" class="form-label"> Ngày Bắt Đầu</label>
                                                     </div>
                                                     <div>
                                                         <input type="date" id="tgbd-sua"/>
@@ -160,7 +160,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Ngày Kết Thúc
+                                                        <label for="tgkt-sua" class="form-label"> Ngày Kết Thúc</label>
                                                     </div>
                                                     <div>
                                                         <input type="date" id="tgkt-sua"/>
@@ -170,7 +170,7 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-12">
                                                     <div>
-                                                        Giá Tour
+                                                        <label for="gia-tien-sua" class="form-label">  Giá Tour</label>
                                                     </div>
                                                     <input type="text" id="gia-tien-sua" onkeyup="changeCurrency(this);"/>
                                                 </div>

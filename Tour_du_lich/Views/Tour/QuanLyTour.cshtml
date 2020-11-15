@@ -19,7 +19,7 @@
                     Bảng Thông Tin Tour
                 </div>
                 <div>
-                    <button style="font-size:14px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModalAdd">
+                    <button style="font-size:14px" type="button" class="btn custom-btn-primary" data-toggle="modal" data-target="#myModalAdd">
                         <a style="color: white; text-decoration: none;" href="#" data-toggle="collapse">
                             Thêm Tour
                             <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
@@ -31,32 +31,32 @@
                     {
                         <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 650px">
+                                <div class="modal-content" style="min-width: 640px">
 
                                     <!-- Modal Header -->
-                                    <div class="modal-header" style="background-color: #343a40; color: white">
-                                        <h4 class="modal-title">Thêm Tour</h4>
+                                    <div class="modal-header bg-cl-primary" >
+                                        <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Thêm Tour</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
-                                            <div style="margin-top:50px" class="row">
+                                        <div style="">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Tour
+                                                        <label for="ma-tour-them" class="form-label"> Mã Tour</label>                                                        
                                                     </div>
                                                     <div>
-                                                        <input id="ma-tour-them"/>
+                                                        <input id="ma-tour-them" placeholder="Nhập mã tour" autocomplete="off"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Loại Tour
+                                                        <label for="ma-loai-tour-them" class="form-label"> Loại Tour</label>
                                                     </div>
-                                                    <div>
-                                                        <select id="ma-loai-tour-them" style="color: black">
+                                                    <div id="select-no-edit">
+                                                        <select id="ma-loai-tour-them" name="ma-loai-tour-them" title="Chọn mã loại tour">
                                                             @foreach (LoaiTourModel item in ViewBag.loaitours)
                                                             {
                                                                 <option value="@item.maloai">@item.tenloai</option>
@@ -66,10 +66,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="margin-top:50px" class="row">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Tên Tour
+                                                        <label for="ten-tour-them" class="form-label" autocomplete="off"> Tên Tour</label>
                                                     </div>
                                                     <div>
                                                         <input id="ten-tour-them" />
@@ -77,41 +77,42 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Đặc Điểm
+                                                        <label for="dac-diem-them" class="form-label"> Đặc Điểm</label>
                                                     </div>
                                                     <div>
-                                                        <input id="dac-diem-them" />
+                                                        <input id="dac-diem-them" autocomplete="off"/>
                                                     </div>
                                                 </div>
                                             </div>
 
 
 
-                                            <div style="margin-top:50px" class="row">
-                                                Chọn Địa Điểm
-                                            </div>
-                                            <div style="margin-top:50px;display:flex;justify-content:space-evenly;" class="row">
-                                                <!-- Demo -->
-                                                <div>
-                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="list-add-1" title="duallistbox_demo2">
+                                            <div class="row">
+                                                <div style="" class="col-md-12">
+                                                    <label for="list-add-1" class="form-label"> Chọn Địa Điểm</label>
+                                                </div>
+                                                <div id="select-edit" style="display:flex;justify-content:space-between;" class="col-md-12">
+                                                    <!-- Demo -->
+                                                    <div>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-add-1" title="duallistbox_demo2">
 
-                                                        @foreach (DiaDiemModel item in ViewBag.diadiems)
-                                                        {
-                                                            <option value="@item.madiadiem">@item.tendiadiem</option>
-                                                       
-                                                        }
-                                                    </select>
-                                                </div>
-                                                <div  style="display: flex; flex-direction: column">
-                                                    <button id="btn-add-them" type="button" class="btn btn-primary" style="margin-top: 15px">Add</button>
-                                                    <button id="btn-remove-them" type="button" class="btn btn-primary" style="margin-top: 15px">Remove</button>
-                                                    <button id="btn-up-them" type="button" class="btn btn-primary" style="margin-top: 15px">Up</button>
-                                                    <button id="btn-down-them" type="button" class="btn btn-primary" style="margin-top: 15px">Down</button>
-                                                </div>
-                                                <div>
-                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="list-add-2" title="duallistbox_demo2">
-                                                        
-                                                    </select>
+                                                            @foreach (DiaDiemModel item in ViewBag.diadiems)
+                                                            {
+                                                                <option value="@item.madiadiem">@item.tendiadiem</option>
+
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div style="display: flex; flex-direction: column">
+                                                        <button id="btn-add-them" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Add</button>
+                                                        <button id="btn-remove-them" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Remove</button>
+                                                        <button id="btn-up-them" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Up</button>
+                                                        <button id="btn-down-them" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Down</button>
+                                                    </div>
+                                                    <div>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-add-2" title="duallistbox_demo2">
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -120,8 +121,8 @@
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                        <button id="btnAddTour" type="button" class="btn btn-success">Thêm</button>
+                                        <button type="button" class="custom-btn btn-16" data-dismiss="modal">Đóng</button>
+                                        <button id="btnAddTour" type="button" class="custom-btn btn-12"><span>Add</span><span>Thêm</span></button>
                                     </div>
 
                                 </div>
@@ -133,21 +134,21 @@
                     {
                         <div class="modal fade" id="myModalEdit">
                             <div class="modal-dialog">
-                                <div class="modal-content" style="width: 700px">
+                                <div class="modal-content" style="min-width: 640px">
 
                                     <!-- Modal Header -->
-                                    <div class="modal-header" style="background-color: #343a40; color: white">
-                                        <h4 class="modal-title">Sửa Tour</h4>
+                                    <div class="modal-header bg-cl-primary" >
+                                        <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Sửa Tour</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div style="margin-left: 50px">
-                                            <div style="margin-top:50px" class="row">
+                                        <div style="">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Mã Tour
+                                                        <label for="ma-tour-sua" class="form-label"> Mã Tour</label>
                                                     </div>
                                                     <div>
                                                         <input id="ma-tour-sua" disabled="disabled"/>
@@ -155,9 +156,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Loại Tour
+                                                        <label for="ma-loai-tour-sua" class="form-label">  Loại Tour</label>
+                                                       
                                                     </div>
-                                                    <div>
+                                                    <div id="select-no-edit">
                                                         <select id="ma-loai-tour-sua" style="color: black">
                                                             @foreach (LoaiTourModel item in ViewBag.loaitours)
                                                             {
@@ -168,10 +170,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="margin-top:50px" class="row">
+                                            <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Tên Tour
+                                                        <label for="ten-tour-sua" class="form-label">  Tên Tour</label>
                                                     </div>
                                                     <div>
                                                         <input id="ten-tour-sua" />
@@ -179,37 +181,39 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        Đặc Điểm
+                                                        <label for="dac-diem-sua" class="form-label">  Đặc Điểm</label>
                                                     </div>
                                                     <div>
                                                         <input id="dac-diem-sua" />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="margin-top:50px" class="row">
-                                                Chọn Địa Điểm
-                                            </div>
-                                            <div style="margin-top:50px" class="row">
-                                                <!-- Demo -->
-                                                <div class="col-md-5">
-                                                    <select multiple="multiple" size="10" name="duallistbox_demo3" id="list-edit-1" title="duallistbox_demo2">
-
-                                                        @foreach (DiaDiemModel item in ViewBag.diadiems)
-                                                        {
-                                                            <option value="@item.madiadiem">@item.tendiadiem</option>
-
-                                                        }
-                                                    </select>
+                                            <div class="row">
+                                                <div style="" class="col-md-12">
+                                                    <label for="list-edit-1" class="form-label"> Chọn địa điểm</label>
                                                 </div>
-                                                <div style="display: flex; flex-direction: column">
-                                                    <button id="btn-add-sua" type="button" class="btn btn-primary" style="margin-top: 15px">Add</button>
-                                                    <button id="btn-remove-sua" type="button" class="btn btn-primary" style="margin-top: 15px">Remove</button>
-                                                    <button id="btn-up-sua" type="button" class="btn btn-primary" style="margin-top: 15px">Up</button>
-                                                    <button id="btn-down-sua" type="button" class="btn btn-primary" style="margin-top: 15px">Down</button>
-                                                </div>
-                                                <div>
-                                                    <select multiple="multiple" size="10" name="duallistbox_demo2" id="list-edit-2" title="duallistbox_demo2">
-                                                    </select>
+                                                <div style="display:flex;justify-content:space-between;" class="col-md-12" id="select-edit">
+                                                    <!-- Demo -->
+                                                    <div >
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo3" id="list-edit-1" title="duallistbox_demo2">
+
+                                                            @foreach (DiaDiemModel item in ViewBag.diadiems)
+                                                            {
+                                                                <option value="@item.madiadiem">@item.tendiadiem</option>
+
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div style="display: flex; flex-direction: column">
+                                                        <button id="btn-add-sua" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Add</button>
+                                                        <button id="btn-remove-sua" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Remove</button>
+                                                        <button id="btn-up-sua" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Up</button>
+                                                        <button id="btn-down-sua" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Down</button>
+                                                    </div>
+                                                    <div>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-edit-2" title="duallistbox_demo2">
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,8 +221,8 @@
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCloseEditTour">Đóng</button>
-                                        <button type="button" class="btn btn-success" id="btnEditTour">Sửa</button>
+                                        <button type="button" class="custom-btn btn-16" data-dismiss="modal" id="btnCloseEditTour">Đóng</button>
+                                        <button type="button" class="custom-btn btn-12" id="btnEditTour"><span>Edit</span><span>Sửa</span></button>
                                     </div>
 
                                 </div>
