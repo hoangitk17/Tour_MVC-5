@@ -35,6 +35,18 @@ namespace Tour_du_lich.Dao
             return result;
         }
 
+        public ArrayList GetAllMaTour()
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            ArrayList result = new ArrayList();
+            foreach (tour temp in DB.tours)
+            {
+                String matour = temp.matour;
+                result.Add(matour);
+            }
+            return result;
+        }
+
         public TourDataModel GetTour(string id)
         {
             tour temp = DB.tours.SingleOrDefault(t => t.matour == id);
@@ -451,6 +463,86 @@ namespace Tour_du_lich.Dao
             }
             return result;
 
+        }
+
+        public double MaxLoiNhuanTour(ArrayList arr)
+        {
+            double max = 0;
+            foreach (double a in arr)
+            {
+                if (a > max)
+                {
+                    max = a;
+                }
+            }
+            return max;
+        }
+
+        public double TotalLoiNhuan(ArrayList arr)
+        {
+            double result = 0;
+            foreach (double a in arr)
+            {
+                result += a;
+            }
+            return result;
+        }
+        public ArrayList LoiNhuanTour(DateTime thoigianbatdau, DateTime thoigianketthuc)
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            List<DoanhThuTourModel> doanhthutour = (from d in DB.doans
+                                                    join t in DB.tours
+                                                    on d.matour equals t.matour
+                                                    join ct in DB.ctdoans
+                                                    on d.madoan equals ct.madoan
+                                                    where d.ngaybatdau >= thoigianbatdau && d.ngayketthuc <= thoigianketthuc
+                                                    select new DoanhThuTourModel()
+                                                    {
+                                                        madoan = d.madoan,
+                                                        matour = t.matour,
+                                                        tentour = t.tentour,
+                                                        makhach = ct.makh,
+                                                        gia = t.giamacdinh,
+                                                        ngaybatdau = d.ngaybatdau,
+                                                        ngayketthuc = d.ngayketthuc,
+                                                    }).ToList();
+            List<ChiPhiTourModel> chiphitour = (from t in DB.tours
+                                                join d in DB.doans
+                                                on t.matour equals d.matour
+                                                join cp in DB.chiphis
+                                                on d.madoan equals cp.madoan
+                                                where d.ngaybatdau >= thoigianbatdau && d.ngayketthuc <= thoigianketthuc
+                                                select new ChiPhiTourModel()
+                                                {
+                                                    madoan = d.madoan,
+                                                    matour = t.matour,
+                                                    machiphi = cp.maloaichiphi,
+                                                    gia = t.giamacdinh,
+                                                    ngaybatdau = d.ngaybatdau,
+                                                    ngayketthuc = d.ngayketthuc,
+                                                }).ToList();
+            ArrayList arr = new ArrayList();
+            double result = 0;
+            foreach(tour item in DB.tours)
+            {
+                foreach (DoanhThuTourModel DT in doanhthutour)
+                {
+                    if (DT.matour == item.matour)
+                    {
+                        result += Convert.ToDouble(DT.gia);
+                    }
+                }
+                foreach (ChiPhiTourModel CP in chiphitour)
+                {
+                    if (CP.matour == item.matour)
+                    {
+                        result -= Convert.ToDouble(CP.gia);
+                    }
+                }
+                arr.Add(result); result = 0;
+            }
+           
+            return arr;
         }
     }
 }

@@ -133,6 +133,7 @@
     <Compile Include="Controllers\DoanController.cs" />
     <Compile Include="Controllers\ChiPhiDoanController.cs" />
     <Compile Include="Controllers\ChiPhiTourController.cs" />
+    <Compile Include="Controllers\LoiNhuanTourController.cs" />
     <Compile Include="Controllers\SoLanDiTourCuaNVController.cs" />
     <Compile Include="Controllers\DoanhThuTourController.cs" />
     <Compile Include="Controllers\DoanhThuDoanController.cs" />
@@ -322,6 +323,7 @@
     <Content Include="Views\DoanhThuTour\DoanhThuTour.cshtml" />
     <Content Include="Views\SoLanDiTourCuaNV\SoLanDiTourCuaNV.cshtml" />
     <Content Include="Views\ChiPhiTour\ChiPhiTour.cshtml" />
+    <Content Include="Views\LoiNhuanTour\LoiNhuanTour.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
