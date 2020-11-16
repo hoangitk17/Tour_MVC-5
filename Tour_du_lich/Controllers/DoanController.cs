@@ -125,6 +125,7 @@ namespace Tour_du_lich.Controllers
                 {
                     Code = code,
                     madoan = Doan.madoan,
+                    tendoan = Doan.tendoan,
                     matour = Doan.matour,
                     khachs = Doan.khachs,
                     ngaybatdau = ngaybatdau.ToString("yyyy-MM-dd"),
