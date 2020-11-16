@@ -56,7 +56,7 @@
                         window.location.href = "/Gia/QuanLyGia";
                     });
                 } else if (data.Code == "EXISTS") {
-                    Swal.fire("Mã địa điểm đã tồn tại<br/>");
+                    Swal.fire("Mã giá đã tồn tại<br/>");
 
                 }
 
@@ -141,7 +141,7 @@
 
     onDeleteGia = (id) => {
         Swal.fire({
-            title: 'Bạn có chắc chắn muốn xóa địa điểm này?',
+            title: 'Bạn có chắc chắn muốn xóa giá này?',
             text: "Không thể khôi phục sau khi xóa!",
             icon: 'warning',
             showCancelButton: true,
