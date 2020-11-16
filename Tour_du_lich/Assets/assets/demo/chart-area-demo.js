@@ -51,7 +51,6 @@ $(function () {
                     //    window.location.href = "/LoiNhuanTour/LoiNhuanTour";
                     // Area Chart Example
                     var res = data.total_price.toLocaleString() + " VNĐ";
-                    alert(res);
                     $("#total").text(res);
                     $("#reset-area-chart").html('<canvas id="myAreaChart" width="100%" height="40"></canvas>');
                     ctx = document.getElementById("myAreaChart");

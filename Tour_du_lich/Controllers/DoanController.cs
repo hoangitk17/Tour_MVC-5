@@ -89,9 +89,20 @@ namespace Tour_du_lich.Controllers
         {
             try
             {
-                gDao.Delete(id);
-                string code = Constants.SUCCESS;
+                DoanDao doanDao = new DoanDao();
+                string code = "";
+                var test = doanDao.ExistIdInAnotherTable(id);
+                if(doanDao.ExistIdInAnotherTable(id) == true)
+                {
+                    code = Constants.EXISTS_FOREIGN_KEY;
+                }
+                else
+                {
+                    doanDao.Delete(id);
+                    code = Constants.SUCCESS;
+                }
                 return Json(new { Code = code, JsonRequestBehavior.AllowGet });
+
             }
             catch (Exception ex)
             {

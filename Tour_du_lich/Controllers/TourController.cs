@@ -67,7 +67,6 @@ namespace Tour_du_lich.Controllers
             try
             {
                 string code;
-
                 if (tDao.ExistIdInAnotherTable(id))
                 {
                     code = Constants.EXISTS_FOREIGN_KEY;

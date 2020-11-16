@@ -67,6 +67,7 @@ namespace Tour_du_lich.Dao
                 tour.maloai = temp.maloai;
                 tour.dacdiem = temp.dacdiem;
                 tour.tentour = temp.tentour;
+                tour.giamacdinh = temp.giamacdinh;
                 tour.diadiems = diadiems;
             }
 
@@ -82,6 +83,7 @@ namespace Tour_du_lich.Dao
                 data.maloai = insertTour.maloai;
                 data.dacdiem = insertTour.dacdiem;
                 data.tentour = insertTour.tentour;
+                data.giamacdinh = insertTour.giamacdinh;
                 DB.tours.Add(data);
                 int thutu = 1;
                 foreach (DiaDiemModel dd in insertTour.diadiems)
@@ -108,20 +110,22 @@ namespace Tour_du_lich.Dao
 
         public void Delete(string id)
         {
-            List<cttour> ct = DB.cttours.Where(c => c.matour == id).ToList();
-            if (ct != null)
-            {
-                foreach (cttour temp in ct)
-                {
-                    DB.cttours.Remove(temp);
-                }
-            }
+            //List<cttour> ct = DB.cttours.Where(c => c.matour == id).ToList();
+            //if (ct != null)
+            //{
+            //    foreach (cttour temp in ct)
+            //    {
+            //        DB.cttours.Remove(temp);
+            //    }
+            //}
+
             tour d = DB.tours.SingleOrDefault(tour => tour.matour == id);
             if (d != null)
             {
                 DB.tours.Remove(d);
             }
             DB.SaveChanges();
+ 
         }
 
         public void EditTour(TourDataModel tourEdited)
@@ -167,7 +171,8 @@ namespace Tour_du_lich.Dao
         {
             var gia = DB.gias.SingleOrDefault(x => x.matour == id);
             var doan = DB.doans.SingleOrDefault(x => x.matour == id);
-            if (gia != null || doan != null)
+            var exists_ma_tour_ct = DB.cttours.SingleOrDefault(x => x.matour == id);
+            if (gia != null || doan != null || exists_ma_tour_ct != null)
             {
                 return true;
             }

@@ -110,6 +110,7 @@
         tour.tentour = $("#ten-tour-them").val();
         tour.maloai = $("#ma-loai-tour-them option:selected").val();
         tour.dacdiem = $("#dac-diem-them").val();
+        tour.giamacdinh = $("#gia-tour-them").val().replace(/\D/g, '');
         tour.diadiems = [];
         $('#list-add-2 option').each(function () {
             $(this).insertAfter($(this).next());
@@ -125,6 +126,10 @@
             flag = false;
         }
         if (tour.tentour == "") {
+
+            flag = false;
+        }
+        if (tour.giamacdinh == "") {
 
             flag = false;
         }
@@ -148,6 +153,7 @@
             contentType: "application/json; charset=utf-8",
             success: function (data) {
                 if (data.Code == "SUCCESS") {
+                    console.log("data add tour", data)
                     Swal.fire(
                         'Thành Công!',
                         'Thêm tour thành công',
@@ -179,6 +185,7 @@
         tour.tentour = $("#ten-tour-sua").val();
         tour.maloai = $("#ma-loai-tour-sua option:selected").val();
         tour.dacdiem = $("#dac-diem-sua").val();
+        tour.giamacdinh = $("#gia-tour-sua").val().replace(/\D/g, '');;
         tour.diadiems = [];
         $('#list-edit-2 option').each(function () {
             $(this).insertAfter($(this).next());
@@ -194,6 +201,10 @@
             flag = false;
         }
         if (tour.tentour == "") {
+
+            flag = false;
+        }
+        if (tour.giamacdinh == "") {
 
             flag = false;
         }
@@ -259,24 +270,22 @@
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        if (data.Code == "SUCCESS") {
-                            Swal.fire(
-                                'Xóa thành công!',
-                                'Xóa tour thành công',
-                                'success'
-                            ).then((value) => {
-                                window.location.href = "/Tour/QuanLyTour";
-                            });
-                          
-                        } else if (data.Code == "EXISTS_FOREIGN_KEY") {
-                            Swal.fire(
-                                'Xóa thất bại!',
-                                'Mã tour đã tồn tại trong bảng khác',
-                                'error'
-                            )
-                      
-                        }
+                            if (data.Code == "SUCCESS") {
+                                Swal.fire(
+                                    'Xóa thành công!',
+                                    'Xóa tour thành công',
+                                    'success'
+                                ).then((value) => {
+                                    window.location.href = "/Tour/QuanLyTour";
+                                });
 
+                            } else if (data.Code == "EXISTS_FOREIGN_KEY") {
+                                Swal.fire(
+                                    'Xóa thất bại!',
+                                    'Tour này đã tồn tại trong bảng khác',
+                                    'error'
+                                )
+                            }
                     },
                     error: function (data) {
                         Swal.fire(id)
@@ -305,7 +314,8 @@
                     $("#ten-tour-sua").val(data.tour.tentour);
                     $("#dac-diem-sua").val(data.tour.dacdiem);
                     $("#ma-loai-tour-sua").val(data.tour.maloai);
-                   
+                    $("#gia-tour-sua").val(data.tour.giamacdinh.toLocaleString());
+                    $('#list-edit-2').find('option').remove().end();
                     $.each(data.tour.diadiems, function (i, diadiem) {
                         $('#list-edit-2').append($('<option>', {
                             value: diadiem.madiadiem,

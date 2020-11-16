@@ -21,7 +21,7 @@
                             <div>
                                 Mã Đoàn Cần Thống Kê
                             </div>
-                            <div>
+                            <div id="select-no-edit">
                                 <select id="ma-doan" style="color: black">
                                     @foreach (DoanModel item in ViewBag.doans)
                                     {
@@ -76,7 +76,7 @@
                                 }
                             </div>
                         </div>
-                        <div class="col-md-3" style="margin-top: 20px"><button id="btnRun" onclick="ChiPhiDoan();">Thực hiện</button></div>
+                        <div class="col-md-3" style="margin-top: 20px"><button id="btnRun" class="btn custom-btn-primary" onclick="ChiPhiDoan();">Thực hiện</button></div>
                     </div>
                 </div>
             </div>

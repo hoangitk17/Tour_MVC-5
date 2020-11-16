@@ -20,7 +20,7 @@
                             <div>
                                 Mã Nhân Viên Cần Thống Kê
                             </div>
-                            <div>
+                            <div id="select-no-edit">
                                 <select id="ma-nhanvien" style="color: black">
                                     @foreach (NhanVienModel item in ViewBag.nhanviens)
                                     {
@@ -75,7 +75,7 @@
                                 }
                             </div>
                         </div>
-                        <div class="col-md-3" style="margin-top: 20px"><button id="btnRun" onclick="SoLanDiTourCuaNV();">Thực hiện</button></div>
+                        <div class="col-md-3" style="margin-top: 20px"><button id="btnRun" class="btn custom-btn-primary" onclick="SoLanDiTourCuaNV();">Thực hiện</button></div>
                     </div>
                 </div>
             </div>

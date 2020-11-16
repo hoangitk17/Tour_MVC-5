@@ -140,6 +140,13 @@
                             ).then((value) => {
                                 window.location.href = "/DiaDiem/QuanLyDiaDiem";
                             });
+
+                        } else if (data.Code == "EXISTS_FOREIGN_KEY") {
+                            Swal.fire(
+                                'Xóa thất bại!',
+                                'Địa Điểm này đã tồn tại trong bảng khác',
+                                'error'
+                            )
                         }
 
                     },

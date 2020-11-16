@@ -161,59 +161,47 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\chiphi.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>TourDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietTourModel.cs" />
     <Compile Include="Models\ctdoan.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>TourDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\cttour.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DBModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DBModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DBModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.edmx</DependentUpon>
+      <DependentUpon>TourDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\diadiem.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>TourDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DiaDiemModel.cs" />
-    <Compile Include="Models\doan.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ChiPhiDoanModel.cs" />
     <Compile Include="Models\ChiPhiTourModel.cs" />
+    <Compile Include="Models\doan.cs">
+      <DependentUpon>TourDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\gia.cs">
+      <DependentUpon>TourDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\khachhang.cs">
+      <DependentUpon>TourDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\loaichiphi.cs">
+      <DependentUpon>TourDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\loaitour.cs">
+      <DependentUpon>TourDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\nhanvien.cs">
+      <DependentUpon>TourDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\phancong.cs">
+      <DependentUpon>TourDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SoLanDiTourCuaNVModel.cs" />
     <Compile Include="Models\DoanhThuTourModel.cs" />
     <Compile Include="Models\DoanhThuDoanModel.cs" />
-    <Compile Include="Models\gia.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\GiaModel.cs" />
-    <Compile Include="Models\khachhang.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\DoanModel.cs" />
-    <Compile Include="Models\loaichiphi.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\loaitour.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\nhanvien.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\KhachModel.cs" />
     <Compile Include="Models\LoaiChiPhiModel.cs" />
     <Compile Include="Models\ChiPhiModel.cs" />
@@ -221,16 +209,28 @@
     <Compile Include="Models\NhanVienModel.cs" />
     <Compile Include="Models\LoaiTourModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\phancong.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>TourDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tour.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>TourDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TourDataModel.cs" />
+    <Compile Include="Models\TourDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TourDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TourDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TourDBModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -264,24 +264,24 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Compile Include="Models\Constants.cs" />
-    <Content Include="Models\DBModel.Context.tt">
+    <Content Include="Models\TourDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
+      <DependentUpon>TourDBModel.edmx</DependentUpon>
+      <LastGenOutput>TourDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DBModel.tt">
+    <Content Include="Models\TourDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.cs</LastGenOutput>
+      <DependentUpon>TourDBModel.edmx</DependentUpon>
+      <LastGenOutput>TourDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DBModel.edmx">
+    <EntityDeploy Include="Models\TourDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>TourDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
+    <Content Include="Models\TourDBModel.edmx.diagram">
+      <DependentUpon>TourDBModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

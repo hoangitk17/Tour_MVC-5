@@ -86,6 +86,17 @@
                                             </div>
 
                                             <div class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        <label for="them-ten-doan" class="form-label"> Tên Đoàn</label>
+                                                    </div>
+                                                    <div>
+                                                        <input id="them-ten-doan" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
                                                 <div style="" class="col-md-12">
                                                     <label for="list-nv-add-1" class="form-label"> Chọn khách cho đoàn</label>
                                                 </div>
@@ -108,14 +119,15 @@
                                                         <button id="btn-down-them-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Down</button>
                                                     </div>
                                                     <div>
-                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-nv-add-2" title="duallistbox_demo2">
-                                                        </select>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-nv-add-2" title="duallistbox_demo2"></select>
                                                     </div>
                                                 </div>
                                             </div>
 
+
+
                                         </div>
-                                    </div>
+                                        </div>
 
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
@@ -187,6 +199,17 @@
                                             </div>
 
                                             <div class="row">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        <label for="sua-ten-doan" class="form-label"> Tên Đoàn</label>
+                                                    </div>
+                                                    <div>
+                                                        <input id="sua-ten-doan" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
                                                 <div style="" class="col-md-12">
                                                     <label for="list-nv-edit-1" class="form-label"> Chọn khách cho đoàn</label>
                                                 </div>
@@ -209,11 +232,12 @@
                                                         <button id="btn-down-sua-nv" type="button" class="btn btn-primary" style="margin-top: 15px">Down</button>
                                                     </div>
                                                     <div>
-                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-nv-edit-2" title="duallistbox_demo2">
-                                                        </select>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-nv-edit-2" title="duallistbox_demo2"></select>
                                                     </div>
                                                 </div>
                                             </div>
+
+
 
                                         </div>
                                     </div>
@@ -302,10 +326,11 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th width="200px">Mã Đoàn</th>
-                                <th width="200px">Mã Tour</th>
-                                <th width="300px">Ngày Bắt Đầu</th>
-                                <th>Ngày Kết Thúc</th>
+                                <th width="15%">Mã Đoàn</th>
+                                <th width="20%">Tên Đoàn</th>
+                                <th width="15%">Mã Tour</th>
+                                <th width="18%">Ngày Bắt Đầu</th>
+                                <th width="18%">Ngày Kết Thúc</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -314,6 +339,7 @@
                             {
                             <tr>
                                 <td>@item.madoan</td>
+                                <td>@item.tendoan</td>
                                 <td>@item.matour</td>
                                 <td>@item.ngaybatdau</td>
                                 <td>@item.ngayketthuc</td>

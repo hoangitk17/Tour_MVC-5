@@ -45,7 +45,7 @@
                 if (data.Code == "SUCCESS") {
                     Swal.fire(
                         'Thành Công!',
-                        'Sửa thành công',
+                        'Thêm thành công',
                         'success'
                     ).then((value) => {
                         window.location.href = "/ChiPhi/QuanLyChiPhi";

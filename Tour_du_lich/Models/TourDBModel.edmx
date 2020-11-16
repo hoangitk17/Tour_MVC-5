@@ -49,6 +49,7 @@
           <Property Name="matour" Type="varchar" MaxLength="15" />
           <Property Name="ngaybatdau" Type="datetime" />
           <Property Name="ngayketthuc" Type="datetime" />
+          <Property Name="tendoan" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="gia">
           <Key>
@@ -369,6 +370,7 @@
           <Property Name="matour" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="ngaybatdau" Type="DateTime" Precision="3" />
           <Property Name="ngayketthuc" Type="DateTime" Precision="3" />
+          <Property Name="tendoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="chiphis" Relationship="Self.FK__chiphi__madoan__4AB81AF0" FromRole="doan" ToRole="chiphi" />
           <NavigationProperty Name="ctdoans" Relationship="Self.FK__ctdoan__madoan__5535A963" FromRole="doan" ToRole="ctdoan" />
           <NavigationProperty Name="tour" Relationship="Self.FK__doan__matour__44FF419A" FromRole="doan" ToRole="tour" />
@@ -589,7 +591,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBTOUREntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBTOUREntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="chiphis" EntityType="Self.chiphi" />
           <EntitySet Name="ctdoans" EntityType="Self.ctdoan" />
           <EntitySet Name="cttours" EntityType="Self.cttour" />
@@ -653,7 +655,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBTOURModelStoreContainer" CdmEntityContainer="DBTOUREntities2">
+        <EntityContainerMapping StorageEntityContainer="DBTOURModelStoreContainer" CdmEntityContainer="DBTOUREntities1">
           <EntitySetMapping Name="chiphis">
             <EntityTypeMapping TypeName="DBTOURModel.chiphi">
               <MappingFragment StoreEntitySet="chiphi">
@@ -698,6 +700,7 @@
                 <ScalarProperty Name="matour" ColumnName="matour" />
                 <ScalarProperty Name="ngaybatdau" ColumnName="ngaybatdau" />
                 <ScalarProperty Name="ngayketthuc" ColumnName="ngayketthuc" />
+                <ScalarProperty Name="tendoan" ColumnName="tendoan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

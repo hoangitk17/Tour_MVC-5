@@ -21,7 +21,7 @@
                             <div>
                                 Mã Tour Cần Thống Kê
                             </div>
-                            <div>
+                            <div id="select-no-edit">
                                 <select id="ma-tour" style="color: black">
                                     @foreach (TourDataModel item in ViewBag.tours)
                                     {
@@ -76,7 +76,7 @@
                                 }
                             </div>
                         </div>
-                        <div class="col-md-3" style="margin-top: 20px"><button id="btnRun" onclick="DoanhThuTour();">Thực hiện</button></div>
+                        <div class="col-md-3" style="margin-top: 20px"><button id="btnRun" class="btn custom-btn-primary" onclick="DoanhThuTour();">Thực hiện</button></div>
                     </div>
                 </div>
             </div>

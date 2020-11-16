@@ -1,14 +1,32 @@
 ﻿$(function () {
 
     $('#btn-add-them-nv').click(function (e) {
+        var flag_add = false;
+        var arr_option_selected_add = [];
         var selectedOpts = $('#list-nv-add-1 option:selected');
         if (selectedOpts.length == 0) {
             Swal.fire("Nothing to add.<br/>");
             e.preventDefault();
+            return;
+        } else {
+            selectedOpts.each(function () {
+                arr_option_selected_add.push($(this).text());
+            });
+        }
+        $('#list-nv-add-2 option').each(function () {
+            console.log($(this).text(), selectedOpts.text())
+            if (arr_option_selected_add.includes($(this).text())) {
+                flag_add = true;
+            }
+        });
+
+        if (flag_add == true) {
+            Swal.fire("Nhân Viên Được Chọn Đã Tồn Tại Trong Danh Sách.<br/>");
         } else {
             $('#list-nv-add-2').append($(selectedOpts).clone());
             e.preventDefault();
         }
+        
 
 
     });
@@ -53,14 +71,41 @@
     });
     //////////////////////////////////////
     $('#btn-add-sua-nv').click(function (e) {
+        //var selectedOpts = $('#list-nv-edit-1 option:selected');
+        //if (selectedOpts.length == 0) {
+        //    Swal.fire("Nothing to add.<br/>");
+        //    e.preventDefault();
+        //    return;
+        //} else {
+        //    $('#list-nv-edit-2').append($(selectedOpts).clone());
+        //    e.preventDefault();
+        //}
+
+        var flag_edit = false;
+        var arr_option_selected_edit = [];
         var selectedOpts = $('#list-nv-edit-1 option:selected');
         if (selectedOpts.length == 0) {
             Swal.fire("Nothing to add.<br/>");
             e.preventDefault();
+            return;
+        } else {
+            selectedOpts.each(function () {
+                arr_option_selected_edit.push($(this).text());
+            });
+        }
+        $('#list-nv-edit-2 option').each(function () {
+            if (arr_option_selected_edit.includes($(this).text())) {
+                flag_edit = true;
+            }
+        });
+
+        if (flag_edit == true) {
+            Swal.fire("Nhân Viên Được Chọn Đã Tồn Tại Trong Danh Sách.<br/>");
         } else {
             $('#list-nv-edit-2').append($(selectedOpts).clone());
             e.preventDefault();
         }
+
 
 
     });
@@ -109,6 +154,7 @@
         var Doan = {};
         Doan.madoan = $("#them-ma-doan").val();
         Doan.matour = $("#them-ma-tour").val();
+        Doan.tendoan = $("#them-ten-doan").val();
         Doan.ngaybatdau = $("#them-ngay-bat-dau").val();
         Doan.ngayketthuc = $("#them-ngay-ket-thuc").val();
         Doan.khachs = [];
@@ -129,15 +175,19 @@
             flag = false;
         }
         if (Doan.madoan == "") {
-            result += "mã đoàn không được để trống<br/>";
+            result += "Mã đoàn không được để trống<br/>";
+            flag = false;
+        }
+        if (Doan.tendoan == "") {
+            result += "Tên đoàn không được để trống<br/>";
             flag = false;
         }
         if (Doan.ngaybatdau == "") {
-            result += "thời gian bắt đầu là bắt buộc<br/>";
+            result += "Thời gian bắt đầu là bắt buộc<br/>";
             flag = false;
         }
         if (Doan.ngayketthuc == "") {
-            result += "thời gian kết thúc là bắt buộc<br/>";
+            result += "Thời gian kết thúc là bắt buộc<br/>";
             flag = false;
         }
         if (Doan.khachs.length == 0) {
@@ -185,6 +235,7 @@
         var Doan = {};
         Doan.madoan = $("#sua-ma-doan").val();
         Doan.matour = $("#sua-ma-tour").val();
+        Doan.tendoan = $("#sua-ten-doan").val();
         Doan.ngaybatdau = $("#sua-ngay-bat-dau").val();
         Doan.ngayketthuc = $("#sua-ngay-ket-thuc").val();
         Doan.khachs = [];
@@ -205,15 +256,19 @@
             flag = false;
         }
         if (Doan.madoan == "") {
-            result += "mã đoàn không được để trống<br/>";
+            result += "Mã đoàn không được để trống<br/>";
+            flag = false;
+        }
+        if (Doan.tendoan == "") {
+            result += "Tên đoàn không được để trống<br/>";
             flag = false;
         }
         if (Doan.ngaybatdau == "") {
-            result += "thời gian bắt đầu là bắt buộc<br/>";
+            result += "Thời gian bắt đầu là bắt buộc<br/>";
             flag = false;
         }
         if (Doan.ngayketthuc == "") {
-            result += "thời gian kết thúc là bắt buộc<br/>";
+            result += "Thời gian kết thúc là bắt buộc<br/>";
             flag = false;
         }
 
@@ -221,10 +276,7 @@
             result += "Khách không được để trống<br/>";
             flag = false;
         }
-        //if (Doan.khachs.length == 0) {
-        //    result += "Địa điểm không được để trống<br/>";
-        //    flag = false;
-        //}
+
         if (flag == false) {
             Swal.fire(
                 'Thông Báo',
@@ -291,6 +343,13 @@
                             ).then((value) => {
                                 window.location.href = "/Doan/QuanLyDoan";
                             });
+
+                        } else if (data.Code == "EXISTS_FOREIGN_KEY") {
+                            Swal.fire(
+                                'Xóa thất bại!',
+                                'Đoàn này đã tồn tại trong bảng khác',
+                                'error'
+                            )
                         }
 
                     },
@@ -318,6 +377,7 @@
             success: function (data) {
                 if (data.Code == "SUCCESS") {
                     $("#sua-ma-doan").val(data.madoan);
+                    $("#sua-ten-doan").val(data.tendoan);
                     $("#sua-ma-tour").val(data.matour);
                     $("#sua-ngay-bat-dau").val(data.ngaybatdau);
                     $("#sua-ngay-ket-thuc").val(data.ngayketthuc);

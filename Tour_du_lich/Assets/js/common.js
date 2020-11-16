@@ -17,5 +17,5 @@ changeCurrency = (input) => {
         let a =  x.toLocaleString();
         console.log(a);
         input.value = a;
-    }, 800);
+    }, 100);
 }

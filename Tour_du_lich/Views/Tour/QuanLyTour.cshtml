@@ -45,10 +45,10 @@
                                             <div style="" class="row">
                                                 <div class="col-md-6">
                                                     <div>
-                                                        <label for="ma-tour-them" class="form-label"> Mã Tour</label>                                                        
+                                                        <label for="ma-tour-them" class="form-label"> Mã Tour</label>
                                                     </div>
                                                     <div>
-                                                        <input id="ma-tour-them" placeholder="Nhập mã tour" autocomplete="off"/>
+                                                        <input id="ma-tour-them" placeholder="Nhập mã tour" autocomplete="off" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -72,18 +72,28 @@
                                                         <label for="ten-tour-them" class="form-label" autocomplete="off"> Tên Tour</label>
                                                     </div>
                                                     <div>
-                                                        <input id="ten-tour-them" />
+                                                        <input id="ten-tour-them" placeholder="Nhập tên tour"/>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
-                                                        <label for="dac-diem-them" class="form-label"> Đặc Điểm</label>
+                                                        <label for="gia-tour-them" class="form-label" autocomplete="off"> Giá Tour</label>
                                                     </div>
                                                     <div>
-                                                        <input id="dac-diem-them" autocomplete="off"/>
+                                                        <input id="gia-tour-them" autocomplete="off" placeholder="Nhập giá tour" onkeyup="changeCurrency(this);"/>
                                                     </div>
                                                 </div>
                                             </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div>
+                                                    <label for="dac-diem-them" class="form-label"> Đặc Điểm</label>
+                                                </div>
+                                                <div>
+                                                    <input id="dac-diem-them" autocomplete="off" placeholder="Nhập đặc điểm tour"/>
+                                                </div>
+                                            </div>
+                                        </div>
 
 
 
@@ -110,11 +120,11 @@
                                                         <button id="btn-down-them" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Down</button>
                                                     </div>
                                                     <div>
-                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-add-2" title="duallistbox_demo2">
-                                                        </select>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-add-2" title="duallistbox_demo2"></select>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
 
@@ -151,13 +161,13 @@
                                                         <label for="ma-tour-sua" class="form-label"> Mã Tour</label>
                                                     </div>
                                                     <div>
-                                                        <input id="ma-tour-sua" disabled="disabled"/>
+                                                        <input id="ma-tour-sua" disabled="disabled" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
                                                         <label for="ma-loai-tour-sua" class="form-label">  Loại Tour</label>
-                                                       
+
                                                     </div>
                                                     <div id="select-no-edit">
                                                         <select id="ma-loai-tour-sua" style="color: black">
@@ -181,6 +191,17 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div>
+                                                        <label for="gia-tour-sua" class="form-label" autocomplete="off"> Giá Tour</label>
+                                                    </div>
+                                                    <div>
+                                                        <input id="gia-tour-sua" autocomplete="off" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div>
                                                         <label for="dac-diem-sua" class="form-label">  Đặc Điểm</label>
                                                     </div>
                                                     <div>
@@ -188,13 +209,14 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="row">
                                                 <div style="" class="col-md-12">
                                                     <label for="list-edit-1" class="form-label"> Chọn địa điểm</label>
                                                 </div>
                                                 <div style="display:flex;justify-content:space-between;" class="col-md-12" id="select-edit">
                                                     <!-- Demo -->
-                                                    <div >
+                                                    <div>
                                                         <select multiple="multiple" size="5" name="duallistbox_demo3" id="list-edit-1" title="duallistbox_demo2">
 
                                                             @foreach (DiaDiemModel item in ViewBag.diadiems)
@@ -211,11 +233,12 @@
                                                         <button id="btn-down-sua" type="button" class="btn custom-btn-primary" style="margin-top: 15px">Down</button>
                                                     </div>
                                                     <div>
-                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-edit-2" title="duallistbox_demo2">
-                                                        </select>
+                                                        <select multiple="multiple" size="5" name="duallistbox_demo2" id="list-edit-2" title="duallistbox_demo2"></select>
                                                     </div>
                                                 </div>
                                             </div>
+                                            
+
                                         </div>
                                     </div>
 
@@ -242,7 +265,7 @@
                                 <th width="130px">Mã Loại Tour</th>
                                 <th width="200px">Đặc Điểm</th>
                                 <th width="200px">Địa Điểm</th>
-                                <th>Giá</th>
+                                <th>Giá Hiện Tại</th>
                                 <th>#</th>
                             </tr>
                         </thead>

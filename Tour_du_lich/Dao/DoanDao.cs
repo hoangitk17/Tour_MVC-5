@@ -16,7 +16,7 @@ namespace Tour_du_lich.Dao
             List<DoanModel> result = new List<DoanModel>();
             foreach (doan temp in DB.doans)
             {
-                DoanModel cost = new DoanModel(temp.madoan, temp.matour, temp.ngaybatdau, temp.ngayketthuc);
+                DoanModel cost = new DoanModel(temp.madoan, temp.tendoan, temp.matour, temp.ngaybatdau, temp.ngayketthuc);
                 result.Add(cost);
             }
 
@@ -52,6 +52,7 @@ namespace Tour_du_lich.Dao
                 Doan.matour = g.matour;
                 Doan.ngaybatdau = g.ngaybatdau;
                 Doan.ngayketthuc = g.ngayketthuc;
+                Doan.tendoan = g.tendoan;
 
                 DB.ctdoans.RemoveRange(DB.ctdoans.Where(x => x.madoan == Doan.madoan));
                 foreach (KhachModel k in g.khachs)
@@ -90,6 +91,7 @@ namespace Tour_du_lich.Dao
             if (temp != null)
             {
                 g.madoan = temp.madoan;
+                g.tendoan = temp.tendoan;
                 g.matour = temp.matour;
                 g.ngaybatdau = temp.ngaybatdau;
                 g.ngayketthuc = temp.ngayketthuc;
@@ -147,6 +149,7 @@ namespace Tour_du_lich.Dao
             {
                 doan data = new doan();
                 data.madoan = Doan.madoan;
+                data.tendoan = Doan.tendoan;
                 data.matour = Doan.matour;
                 data.ngaybatdau = Doan.ngaybatdau;
                 data.ngayketthuc = Doan.ngayketthuc;
@@ -220,5 +223,22 @@ namespace Tour_du_lich.Dao
             }
             return result;
         }
+
+        public bool ExistIdInAnotherTable(string id)
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            var ctdoan = DB.ctdoans.FirstOrDefault(x => x.madoan == id);
+            var chiphi = DB.chiphis.FirstOrDefault(x => x.madoan == id);
+            var phancong = DB.phancongs.FirstOrDefault(x => x.madoan == id);
+            if (ctdoan != null || chiphi != null || phancong != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
     }
 }

@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="68f84dc321554be6813dbdea59fa8c50" Name="Diagram1">
+      <Diagram DiagramId="4ca6a23ff83f4101abb6319c39480b5c" Name="Diagram1">
         <EntityTypeShape EntityType="DBTOURModel.chiphi" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.ctdoan" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.cttour" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.diadiem" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.doan" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.gia" Width="1.5" PointX="1.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.khachhang" Width="1.5" PointX="6.375" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.loaichiphi" Width="1.5" PointX="9.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.doan" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.gia" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.khachhang" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.loaichiphi" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.loaitour" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.nhanvien" Width="1.5" PointX="7.375" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBTOURModel.phancong" Width="1.5" PointX="4.625" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.nhanvien" Width="1.5" PointX="5.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBTOURModel.phancong" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBTOURModel.tour" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
         <AssociationConnector Association="DBTOURModel.FK__chiphi__madoan__4AB81AF0" ManuallyRouted="false" />

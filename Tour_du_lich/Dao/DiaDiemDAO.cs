@@ -75,6 +75,20 @@ namespace Tour_du_lich.Dao
             DB.SaveChanges();
         }
 
+        public bool ExistIdInAnotherTable(string id)
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            var cttour = DB.cttours.FirstOrDefault(x => x.madiadiem == id);
+            if (cttour != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void Edit(DiaDiemModel editedDiaDiem)
         {
             diadiem d = DB.diadiems.SingleOrDefault(diadiem => diadiem.madiadiem == editedDiaDiem.madiadiem);
