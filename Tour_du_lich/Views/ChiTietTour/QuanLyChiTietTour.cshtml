@@ -1,43 +1,44 @@
 ﻿
 @{
-    ViewBag.Title = "QuanLyPhanCong";
+    ViewBag.Title = "QuanLyChiTietTour";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 @using Tour_du_lich.Models
 
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Quản Lý Phân Công</h1>
+        <h1 class="mt-4">Quản Lý Chi Tiết Tour</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/Home">Màn Hình Chính</a></li>
             <li class="breadcrumb-item active">Quản Lý</li>
-            <li class="breadcrumb-item active">Quản Lý Phân Công</li>
+            <li class="breadcrumb-item active">Quản Lý Chi Tiết Tour</li>
         </ol>
         <div class="card mb-4">
             <div class="card-header" style="display: flex; justify-content: space-between">
                 <div>
                     <i class="fas fa-table mr-1"></i>
-                    Bảng Thông Tin Phân Công
+                    Bảng Thông Tin Chi Tiết Tour
                 </div>
                 <div>
-                    <button style="font-size:14px" type="button" class="btn custom-btn-primary" data-toggle="modal" data-target="#myModalAdd">
+                    @*<button style="font-size:14px" type="button" class="btn custom-btn-primary" data-toggle="modal" data-target="#myModalAdd">
                         <a style="color: white; text-decoration: none;" href="#" data-toggle="collapse">
-                            Thêm Phân Công
+                            Thêm Chi Tiết Tour
                             <span class="sb-nav-link-icon"><i class="fa fa-plus-square" style="font-size:14px;color:white"></i></span>
                         </a>
-                    </button>
+                    </button>*@
 
                     <!-- The Modal -->
-                    @using (Html.BeginForm("QuanLyPhanCong", "PhanCong", FormMethod.Post))
+                    @using (Html.BeginForm("QuanLyChiTietTour", "ChiTietTour", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalAdd">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="min-width: 600px">
 
                                     <!-- Modal Header -->
-                                    <div class="modal-header bg-cl-primary" >
-                                        <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Thêm Phân Công</h4>
+                                    <div class="modal-header bg-cl-primary">
+                                        <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Thêm Chi Tiết Tour</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
@@ -45,29 +46,29 @@
                                     <div class="modal-body">
                                         <div style="">
                                             <div style="margin-top:50px" class="row">
-                                                <div class="col-md-6 select-no-edit" >
+                                                <div class="col-md-6 select-no-edit">
                                                     <div>
-                                                        <label for="them-ma-nhan-vien" class="form-label"> Mã Nhân Viên</label>
+                                                        <label for="them-ma-tour" class="form-label"> Mã Tour</label>
                                                     </div>
                                                     <div>
-                                                        <select id="them-ma-nhan-vien" style="color: black">
-                                                            @foreach (NhanVienModel item in ViewBag.nhanviens)
+                                                        <select id="them-ma-tour" style="color: black">
+                                                            @foreach (TourDataModel item in ViewBag.tours)
                                                             {
-                                                                <option value="@item.manv">@item.manv</option>
+                                                                <option value="@item.matour">@item.matour</option>
                                                             }
                                                         </select>
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <div class="col-md-6 select-no-edit">
                                                     <div>
-                                                        <label for="them-ma-doan" class="form-label"> Mã Đoàn</label>
+                                                        <label for="them-ma-dia-diem" class="form-label"> Mã Địa Điểm</label>
                                                     </div>
                                                     <div>
-                                                        <select id="them-ma-doan" style="color: black">
-                                                            @foreach (DoanModel item in ViewBag.doans)
+                                                        <select id="them-ma-dia-diem" style="color: black">
+                                                            @foreach (DiaDiemModel item in ViewBag.diadiems)
                                                             {
-                                                                <option value="@item.madoan">@item.madoan</option>
+                                                                <option value="@item.madiadiem">@item.madiadiem</option>
                                                             }
                                                         </select>
                                                     </div>
@@ -76,10 +77,10 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-12">
                                                     <div>
-                                                        <label for="them-nhiem-vu" class="form-label">Nhiệm Vụ</label>
+                                                        <label for="them-nhiem-vu" class="form-label">Thứ Tự</label>
                                                     </div>
                                                     <div>
-                                                        <textarea id="them-nhiem-vu" placeholder="Nhập Nhiệm Vụ"></textarea>
+                                                        <textarea id="them-thu-tu" placeholder="Nhập Thứ Tự"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +90,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="custom-btn btn-16" data-dismiss="modal">Đóng</button>
-                                        <button id="btnAddPhanCong" type="button" class="custom-btn btn-12" data-dismiss="modal"><span>Add</span><span>Thêm</span></button>
+                                        <button id="btnAddChiTietTour" type="button" class="custom-btn btn-12" data-dismiss="modal"><span>Add</span><span>Thêm</span></button>
                                     </div>
 
                                 </div>
@@ -97,15 +98,15 @@
                         </div>
                     }
                     <!-- The Modal -->
-                    @using (Html.BeginForm("EditPhanCong", "PhanCong", FormMethod.Post))
+                    @using (Html.BeginForm("EditChiTietTour", "ChiTietTour", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalEdit">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="min-width: 600px">
 
                                     <!-- Modal Header -->
-                                    <div class="modal-header bg-cl-primary" >
-                                        <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Sửa Phân Công</h4>
+                                    <div class="modal-header bg-cl-primary">
+                                        <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Sửa Chi Tiết Tour</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
@@ -115,27 +116,27 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-6 select-no-edit">
                                                     <div>
-                                                        <label for="sua-ma-nhan-vien" class="form-label"> Mã Nhân Viên</label>
+                                                        <label for="sua-ma-tour" class="form-label"> Mã Tour</label>
                                                     </div>
                                                     <div>
-                                                        <select id="sua-ma-nhan-vien" style="color: black" disabled>
-                                                            @foreach (NhanVienModel item in ViewBag.nhanviens)
+                                                        <select id="sua-ma-tour" style="color: black">
+                                                            @foreach (TourDataModel item in ViewBag.tours)
                                                             {
-                                                                <option value="@item.manv">@item.manv</option>
+                                                                <option value="@item.matour">@item.matour</option>
                                                             }
                                                         </select>
                                                     </div>
-                                                    
+
                                                 </div>
                                                 <div class="col-md-6 select-no-edit">
                                                     <div>
-                                                        <label for="sua-ma-doan" class="form-label"> Mã Đoàn</label>
+                                                        <label for="sua-ma-dia-diem" class="form-label"> Mã Địa Điểm</label>
                                                     </div>
                                                     <div>
-                                                        <select id="sua-ma-doan" style="color: black" disabled>
-                                                            @foreach (DoanModel item in ViewBag.doans)
+                                                        <select id="sua-ma-dia-diem" style="color: black" disabled>
+                                                            @foreach (DiaDiemModel item in ViewBag.diadiems)
                                                             {
-                                                                <option value="@item.madoan">@item.madoan</option>
+                                                                <option value="@item.madiadiem">@item.madiadiem</option>
                                                             }
                                                         </select>
                                                     </div>
@@ -144,10 +145,10 @@
                                             <div style="margin-top:50px" class="row">
                                                 <div class="col-md-12">
                                                     <div>
-                                                        <label for="sua-nhiem-vu" class="form-label">  Nhiệm Vụ</label>
+                                                        <label for="sua-nhiem-vu" class="form-label">  Thứ Tự </label>
                                                     </div>
                                                     <div>
-                                                        <textarea id="sua-nhiem-vu"></textarea>
+                                                        <textarea id="sua-thu-tu" disabled></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -157,7 +158,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="custom-btn btn-16" data-dismiss="modal">Đóng</button>
-                                        <button id="btnEditPhanCong" type="button" class="custom-btn btn-12" data-dismiss="modal"><span>Edit</span><span>Sửa</span></button>
+                                        <button id="btnEditChiTietTour" type="button" class="custom-btn btn-12" data-dismiss="modal"><span>Edit</span><span>Sửa</span></button>
                                     </div>
 
                                 </div>
@@ -165,7 +166,7 @@
                         </div>
                     }
                     <!-- The Modal -->
-                    @using (Html.BeginForm("DeletePhanCong", "PhanCong", FormMethod.Post))
+                    @using (Html.BeginForm("DeleteChiTietTour", "ChiTietTour", FormMethod.Post))
                     {
                         <div class="modal fade" id="myModalDelete">
                             <div class="modal-dialog">
@@ -173,13 +174,13 @@
 
                                     <!-- Modal Header -->
                                     <div class="modal-header" style="background-color: #343a40; color: white">
-                                        <h4 class="modal-title">Xóa Phân Công</h4>
+                                        <h4 class="modal-title">Xóa Chi Tiết Tour</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        <div>Bạn có muốn xóa Phân Công này không?</div>
+                                        <div>Bạn có muốn xóa Chi Tiết Tour này không?</div>
                                     </div>
 
                                     <!-- Modal footer -->
@@ -199,22 +200,22 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th width="25%">Mã Đoàn</th>
-                                <th width="25%">Mã Nhân Viên</th>
-                                <th width="38%">Nhiệm Vụ</th>
+                                <th width="25%">Mã Tour</th>
+                                <th width="25%">Mã Địa Điểm</th>
+                                <th width="38%">Thứ Tự</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (PhanCongModel item in ViewBag.phancongs)
+                            @foreach (ChiTietTourModel item in ViewBag.chitiettours)
                             {
                                 <tr>
-                                    <td>@item.madoan</td>
-                                    <td>@item.manv</td>
-                                    <td>@item.nhiemvu</td>
+                                    <td>@item.matour</td>
+                                    <td>@item.madiadiem</td>
+                                    <td>@item.thutu</td>
                                     <td>
-                                        <button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoPhanCong('@item.manv','@item.madoan')">Sửa</button>
-                                        <button type="button" class="btn btn-danger" onclick="onClickDeletePhanCong('@item.manv','@item.madoan')">
+                                        @*<button data-toggle="modal" data-target="#myModalEdit" type="button" class="btn btn-warning" onclick="onGetInfoChiTietTour('@item.matour','@item.madiadiem')">Sửa</button>*@
+                                        <button type="button" class="btn btn-danger" onclick="onClickDeleteChiTietTour('@item.matour','@item.madiadiem')">
                                             Xóa
                                         </button>
                                     </td>
@@ -227,6 +228,8 @@
         </div>
     </div>
 </main>
+
+
 
 
 

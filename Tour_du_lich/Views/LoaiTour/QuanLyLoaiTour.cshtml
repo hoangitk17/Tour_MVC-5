@@ -34,33 +34,37 @@
                                 <div class="modal-content" style="min-width: 600px">
 
                                     <!-- Modal Header -->
-                            
-                                    <div class="modal-headerbg-cl-primary ">
-                                        <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Thêm Loại</h4>
+                                    @*<div class="modal-headerbg-cl-primary ">
+            <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Thêm Loại</h4>
+            <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
+        </div>*@
+
+                                    <div class="modal-header bg-cl-primary">
+                                        <h4 class="modal-title" style="flex:1;text-align:center;text-transform:uppercase">Thêm Loại Tour</h4>
                                         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
                                     </div>
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
                                         <div style="">
-                                            
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <label for="them-ma-loai-tour" class="form-label"> Mã Loại Tour</label>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <input id="them-ma-loai-tour"/>
-                                                    </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="them-ma-loai-tour" class="form-label"> Mã Loại Tour</label>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <label for="them-ten-loai-tour" class="form-label"> Tên Loại Tour</label>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <input id="them-ten-loai-tour" />
-                                                    </div>
+                                                <div class="col-md-12">
+                                                    <input id="them-ma-loai-tour" placeholder="Nhập Mã Loại Tour" />
                                                 </div>
-                                           
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label for="them-ten-loai-tour" class="form-label"> Tên Loại Tour</label>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <input id="them-ten-loai-tour" placeholder="Nhập Tên Loại Tour" />
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
 

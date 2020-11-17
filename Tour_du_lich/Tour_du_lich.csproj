@@ -129,10 +129,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ChiTietDoanController.cs" />
     <Compile Include="Controllers\DiaDiemController.cs" />
     <Compile Include="Controllers\DoanController.cs" />
     <Compile Include="Controllers\ChiPhiDoanController.cs" />
     <Compile Include="Controllers\ChiPhiTourController.cs" />
+    <Compile Include="Controllers\ChiTietTourController.cs" />
     <Compile Include="Controllers\LoiNhuanTourController.cs" />
     <Compile Include="Controllers\SoLanDiTourCuaNVController.cs" />
     <Compile Include="Controllers\DoanhThuTourController.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ChiPhiController.cs" />
     <Compile Include="Controllers\PhanCongController.cs" />
+    <Compile Include="Dao\ChiTietDoanDao.cs" />
     <Compile Include="Dao\DiaDiemDao.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\TourController.cs" />
@@ -153,6 +156,7 @@
     <Compile Include="Dao\KhachDao.cs" />
     <Compile Include="Dao\LoaiChiPhiDao.cs" />
     <Compile Include="Dao\ChiPhiDao.cs" />
+    <Compile Include="Dao\ChiTietTourDao.cs" />
     <Compile Include="Dao\PhanCongDao.cs" />
     <Compile Include="Dao\NhanVienDao.cs" />
     <Compile Include="Dao\LoaiTourDao.cs" />
@@ -163,6 +167,7 @@
     <Compile Include="Models\chiphi.cs">
       <DependentUpon>TourDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiTietDoanModel.cs" />
     <Compile Include="Models\ChiTietTourModel.cs" />
     <Compile Include="Models\ctdoan.cs">
       <DependentUpon>TourDBModel.tt</DependentUpon>
@@ -243,6 +248,7 @@
     <Content Include="Assets\css\general.css" />
     <Content Include="Assets\css\styles.css" />
     <Content Include="Assets\js\common.js" />
+    <Content Include="Assets\js\controller\ChiTietDoanController.js" />
     <Content Include="Assets\js\controller\DiaDiemController.js" />
     <Content Include="Assets\js\controller\DoanController.js" />
     <Content Include="Assets\js\controller\GiaController.js" />
@@ -250,6 +256,7 @@
     <Content Include="Assets\js\controller\LoaiTourController.js" />
     <Content Include="Assets\js\controller\LoaiChiPhiController.js" />
     <Content Include="Assets\js\controller\ChiPhiController.js" />
+    <Content Include="Assets\js\controller\ChiTietTourController.js" />
     <Content Include="Assets\js\controller\PhanCongController.js" />
     <Content Include="Assets\js\controller\NhanVienController.js" />
     <Content Include="Assets\js\controller\TourController.js" />
@@ -324,6 +331,8 @@
     <Content Include="Views\SoLanDiTourCuaNV\SoLanDiTourCuaNV.cshtml" />
     <Content Include="Views\ChiPhiTour\ChiPhiTour.cshtml" />
     <Content Include="Views\LoiNhuanTour\LoiNhuanTour.cshtml" />
+    <Content Include="Views\ChiTietTour\QuanLyChiTietTour.cshtml" />
+    <Content Include="Views\ChiTietDoan\QuanLyChiTietDoan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

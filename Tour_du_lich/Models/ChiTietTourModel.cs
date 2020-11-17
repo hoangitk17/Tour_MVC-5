@@ -15,7 +15,7 @@ namespace Tour_du_lich.Models
         {
 
         }
-        public ChiTietTourModel(string matour, string madiadiem, int thutu)
+        public ChiTietTourModel(string matour, string madiadiem, Nullable<int> thutu)
         {
             this.matour = matour;
             this.madiadiem = madiadiem;
