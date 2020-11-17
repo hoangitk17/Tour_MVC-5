@@ -133,6 +133,7 @@ namespace Tour_du_lich.Dao
             tour t = DB.tours.SingleOrDefault(tour => tour.matour == tourEdited.matour);
             if (t != null)
             {
+                t.giamacdinh = tourEdited.giamacdinh;
                 t.tentour = tourEdited.tentour;
                 t.maloai = tourEdited.maloai;
                 t.dacdiem = tourEdited.dacdiem;
@@ -209,6 +210,23 @@ namespace Tour_du_lich.Dao
                                                         ngaybatdau = d.ngaybatdau,
                                                         ngayketthuc = d.ngayketthuc,
                                                     }).ToList();
+            List<GiaModel> gia = new List<GiaModel>();
+            DateTime today = DateTime.Today;
+            foreach (gia temp in DB.gias)
+            {
+                GiaModel cost = new GiaModel(temp.magia, temp.matour, temp.giatien, temp.tgbd, temp.tgkt);
+                gia.Add(cost);
+            }
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                foreach (gia temp in DB.gias)
+                {
+                    if (temp.matour == item.matour && today <= temp.tgkt && today >= temp.tgbd)
+                    {
+                        item.gia = temp.giatien;
+                    }
+                }
+            }
             return doanhthutour;
         }
 
@@ -230,6 +248,23 @@ namespace Tour_du_lich.Dao
                                                         ngaybatdau = d.ngaybatdau,
                                                         ngayketthuc = d.ngayketthuc,
                                                     }).ToList();
+            List<GiaModel> gia = new List<GiaModel>();
+            DateTime today = DateTime.Today;
+            foreach (gia temp in DB.gias)
+            {
+                GiaModel cost = new GiaModel(temp.magia, temp.matour, temp.giatien, temp.tgbd, temp.tgkt);
+                gia.Add(cost);
+            }
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                foreach (gia temp in DB.gias)
+                {
+                    if(temp.matour == item.matour && today <= temp.tgkt && today >= temp.tgbd)
+                    {
+                        item.gia = temp.giatien;
+                    }
+                }
+            }
             ArrayList arr = new ArrayList();
             double result = 0;
             foreach (DoanhThuTourModel item in doanhthutour)
@@ -324,6 +359,23 @@ namespace Tour_du_lich.Dao
                                                     ngaybatdau = d.ngaybatdau,
                                                     ngayketthuc = d.ngayketthuc,
                                                 }).ToList();
+            List<GiaModel> gia = new List<GiaModel>();
+            DateTime today = DateTime.Today;
+            foreach (gia temp in DB.gias)
+            {
+                GiaModel cost = new GiaModel(temp.magia, temp.matour, temp.giatien, temp.tgbd, temp.tgkt);
+                gia.Add(cost);
+            }
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                foreach (gia temp in DB.gias)
+                {
+                    if (temp.matour == item.matour && today <= temp.tgkt && today >= temp.tgbd)
+                    {
+                        item.gia = temp.giatien;
+                    }
+                }
+            }
             ArrayList arr = new ArrayList();
             double result = 0;
             foreach (DoanhThuTourModel item in doanhthutour)
@@ -526,6 +578,23 @@ namespace Tour_du_lich.Dao
                                                     ngaybatdau = d.ngaybatdau,
                                                     ngayketthuc = d.ngayketthuc,
                                                 }).ToList();
+            List<GiaModel> gia = new List<GiaModel>();
+            DateTime today = DateTime.Today;
+            foreach (gia temp in DB.gias)
+            {
+                GiaModel cost = new GiaModel(temp.magia, temp.matour, temp.giatien, temp.tgbd, temp.tgkt);
+                gia.Add(cost);
+            }
+            foreach (DoanhThuTourModel item in doanhthutour)
+            {
+                foreach (gia temp in DB.gias)
+                {
+                    if (temp.matour == item.matour && today <= temp.tgkt && today >= temp.tgbd)
+                    {
+                        item.gia = temp.giatien;
+                    }
+                }
+            }
             ArrayList arr = new ArrayList();
             double result = 0;
             foreach(tour item in DB.tours)
