@@ -42,6 +42,23 @@ namespace Tour_du_lich.Dao
                                                 ngaybatdau = d.ngaybatdau,
                                                 ngayketthuc = d.ngayketthuc,
                                             }).ToList();
+            List<GiaModel> gia = new List<GiaModel>();
+            DateTime today = DateTime.Today;
+            foreach (gia temp in DB.gias)
+            {
+                GiaModel cost = new GiaModel(temp.magia, temp.matour, temp.giatien, temp.tgbd, temp.tgkt);
+                gia.Add(cost);
+            }
+            foreach (DoanhThuDoanModel item in doanhthudoan)
+            {
+                foreach (gia temp in DB.gias)
+                {
+                    if (temp.matour == item.matour && today <= temp.tgkt && today >= temp.tgbd)
+                    {
+                        item.gia = temp.giatien;
+                    }
+                }
+            }
             return doanhthudoan;
         }
         public bool Update(DoanModel g)
