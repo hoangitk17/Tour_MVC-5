@@ -58,8 +58,16 @@ namespace Tour_du_lich.Controllers
             KhachDao KhachDao = new KhachDao();
             try
             {
-                KhachDao.Delete(id);
-                string code = Constants.SUCCESS;
+                string code;
+                if (KhachDao.ExistIdInAnotherTable(id))
+                {
+                    code = Constants.EXISTS_FOREIGN_KEY;
+                }
+                else
+                {
+                    KhachDao.Delete(id);
+                    code = Constants.SUCCESS;
+                }
                 return Json(new { Code = code, JsonRequestBehavior.AllowGet });
             }
             catch (Exception ex)

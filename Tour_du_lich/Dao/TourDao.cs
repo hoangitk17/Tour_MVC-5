@@ -170,9 +170,9 @@ namespace Tour_du_lich.Dao
         }
         public bool ExistIdInAnotherTable(string id)
         {
-            var gia = DB.gias.SingleOrDefault(x => x.matour == id);
-            var doan = DB.doans.SingleOrDefault(x => x.matour == id);
-            var exists_ma_tour_ct = DB.cttours.SingleOrDefault(x => x.matour == id);
+            var gia = DB.gias.FirstOrDefault(x => x.matour == id);
+            var doan = DB.doans.FirstOrDefault(x => x.matour == id);
+            var exists_ma_tour_ct = DB.cttours.FirstOrDefault(x => x.matour == id);
             if (gia != null || doan != null || exists_ma_tour_ct != null)
             {
                 return true;

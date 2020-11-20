@@ -170,6 +170,12 @@
                             ).then((value) => {
                                 window.location.href = "/Khach/QuanLyKhach";
                             });
+                        } else if (data.Code == "EXISTS_FOREIGN_KEY") {
+                            Swal.fire(
+                                'Xóa thất bại!',
+                                'Khách hàng này đã tồn tại trong bảng chi tiết đoàn!',
+                                'error'
+                            )
                         }
 
                     },

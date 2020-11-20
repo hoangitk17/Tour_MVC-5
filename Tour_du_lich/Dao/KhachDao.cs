@@ -96,5 +96,19 @@ namespace Tour_du_lich.Dao
             }
             DB.SaveChanges();
         }
+
+        public bool ExistIdInAnotherTable(string id)
+        {
+            DB.Configuration.ProxyCreationEnabled = false;
+            var cttour = DB.ctdoans.FirstOrDefault(x => x.makh == id);
+            if (cttour != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
